@@ -157,8 +157,14 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
     {
       id: "average",
       section: "Academics",
-      title: "What's your current or expected average?",
-      hint: "Your top 6 Grade 12 U/M courses. If you don't have Grade 12 marks yet, you can use your Grade 11 final average.",
+      title:
+        answers.grade === 11
+          ? "What Grade 12 average do you expect?"
+          : "What's your current or expected average?",
+      hint:
+        answers.grade === 11
+          ? "Estimate your average across your top 6 Grade 12 U/M courses next year. A rough guess is fine."
+          : "Your top 6 Grade 12 U/M courses.",
       render: () => (
         <div className="grid gap-3">
           <label className="grid max-w-40 gap-1 text-sm">
@@ -186,23 +192,20 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
             />
             Not sure yet
           </label>
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={answers.averageIsGrade11}
-              onChange={(e) => set({ averageIsGrade11: e.target.checked })}
-              className="accent-primary size-4"
-            />
-            This is my Grade 11 final average
-          </label>
         </div>
       ),
     },
     {
       id: "courses",
       section: "Academics",
-      title: "Which courses have you taken or plan to take?",
-      hint: "Include Grade 11 and 12 courses. This is how we check prerequisites.",
+      title:
+        answers.grade === 11
+          ? "Which Grade 12 courses do you plan to take?"
+          : "Which Grade 12 courses are you taking or planning to take?",
+      hint:
+        answers.grade === 11
+          ? "Predict your Grade 12 timetable. Programs check Grade 12 courses, so this is how we check prerequisites."
+          : "Programs check Grade 12 courses, so this is how we check prerequisites.",
       render: () => (
         <CourseMatcher
           courses={courses}
@@ -216,7 +219,10 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
       id: "marks",
       section: "Academics",
       title: "Marks in key subjects (optional)",
-      hint: "Some programs need a minimum mark in a course. Leave blank if you're not sure.",
+      hint:
+        answers.grade === 11
+          ? "Some programs need a minimum mark in a Grade 12 course. Enter the marks you expect, or leave blank."
+          : "Some programs need a minimum mark in a Grade 12 course. Leave blank if you're not sure.",
       render: () => (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
           {MarkSubjectSchema.options.map((s) => (
@@ -293,16 +299,17 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
     {
       id: "type",
       section: "Preferences",
-      title: "College or university?",
+      title: "Which programs do you want to see?",
+      hint: "Joint university–college programs count as university programs.",
       render: () => (
         <Radios
-          name="institutionType"
-          value={answers.institutionType}
-          onChange={(institutionType) => set({ institutionType })}
+          name="programType"
+          value={answers.programType}
+          onChange={(programType) => set({ programType })}
           options={[
-            { value: "college", label: "College" },
-            { value: "university", label: "University" },
-            { value: "any", label: "No preference" },
+            { value: "university", label: "University programs" },
+            { value: "college", label: "College programs" },
+            { value: "any", label: "Both" },
           ]}
         />
       ),
@@ -329,22 +336,6 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
             </label>
           ))}
         </div>
-      ),
-    },
-    {
-      id: "french",
-      section: "Preferences",
-      title: "Are you interested in studying in French?",
-      render: () => (
-        <Radios
-          name="french"
-          value={answers.french ? "yes" : "no"}
-          onChange={(v) => set({ french: v === "yes" })}
-          options={[
-            { value: "yes", label: "Yes" },
-            { value: "no", label: "No preference" },
-          ]}
-        />
       ),
     },
     {

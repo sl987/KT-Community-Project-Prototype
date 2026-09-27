@@ -37,21 +37,19 @@ export const answersFromHash = (hash: string) => {
 
 export const resultsPath = (a: QuizAnswers) => `/quiz/results#a=${encodeAnswers(a)}`;
 
-export const QUIZ_STORAGE_KEY = "ohp.quiz.v1";
+export const QUIZ_STORAGE_KEY = "ohp.quiz.v2";
 
 export const DEFAULT_ANSWERS: QuizAnswers = {
-  v: 1,
+  v: 2,
   grade: null,
   average: null,
-  averageIsGrade11: false,
   courses: [],
   marks: {},
   interests: {},
   workStyle: {},
   length: "any",
-  institutionType: "any",
+  programType: "any",
   regions: [],
-  french: false,
   salaryImportance: 3,
   demandImportance: 3,
 };

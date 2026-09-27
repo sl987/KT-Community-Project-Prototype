@@ -14,7 +14,7 @@ const PHASE_DOT: Record<PathwayStep["phase"], string> = {
   work: "bg-emerald-600",
 };
 
-/** Vertical stepper from Grade 11 to working professional (§6.4). */
+/** Vertical stepper from Grade 12 to working professional (§6.4). */
 export function PathwayTimeline({
   steps,
   officialUrl,

@@ -8,6 +8,7 @@ import {
   CREDENTIAL_LABELS,
   DOMAIN_LABELS,
   PORTAL_LABELS,
+  PROGRAM_TYPE_LABELS,
   REGION_LABELS,
 } from "@/lib/format";
 import {
@@ -15,6 +16,7 @@ import {
   CredentialSchema,
   DomainSchema,
   PortalSchema,
+  ProgramTypeSchema,
   RegionSchema,
 } from "@/lib/schema";
 import { toggle, useFilters } from "./useFilters";
@@ -111,14 +113,24 @@ export function FilterBar() {
         </span>
       </summary>
       <div className="grid gap-5 border-t p-4 sm:grid-cols-2 lg:grid-cols-4">
-        <CheckboxGroup
-          legend="Area of health care"
-          name="domain"
-          options={DomainSchema.options}
-          labels={DOMAIN_LABELS}
-          value={f.domain}
-          onChange={(domain) => set({ domain })}
-        />
+        <div className="grid content-start gap-5">
+          <CheckboxGroup
+            legend="Program type"
+            name="programType"
+            options={ProgramTypeSchema.options}
+            labels={PROGRAM_TYPE_LABELS}
+            value={f.programType}
+            onChange={(programType) => set({ programType })}
+          />
+          <CheckboxGroup
+            legend="Area of health care"
+            name="domain"
+            options={DomainSchema.options}
+            labels={DOMAIN_LABELS}
+            value={f.domain}
+            onChange={(domain) => set({ domain })}
+          />
+        </div>
         <div className="grid content-start gap-5">
           <CheckboxGroup
             legend="Patient contact"
@@ -210,11 +222,6 @@ export function FilterBar() {
           <fieldset>
             <legend className="mb-1 text-sm font-medium">More options</legend>
             <Toggle label="Co-op available" checked={f.coop} onChange={(coop) => set({ coop })} />
-            <Toggle
-              label="French-language option"
-              checked={f.french}
-              onChange={(french) => set({ french })}
-            />
             <Toggle
               label="Job outlook good or better"
               checked={f.goodOutlook}

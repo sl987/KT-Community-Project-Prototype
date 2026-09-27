@@ -26,6 +26,7 @@ export function summary(o: Overrides = {}): ProgramSummary {
     slug,
     name: `Program ${slug}`,
     credential: "diploma",
+    programType: "college",
     durationYears: 2,
     coop: false,
     portal: "OCAS",
@@ -34,12 +35,11 @@ export function summary(o: Overrides = {}): ProgramSummary {
       { id: "c1", name: "College One", city: "Toronto", region: "GTA", type: "college" },
     ],
     regions: ["GTA"],
-    french: false,
     medianWage: 30,
     outlook: "good",
     prerequisites: [
       { kind: "required", courses: ["ENG4C"] },
-      { kind: "required", courses: ["SBI3C"] },
+      { kind: "required", courses: ["SBI4U"] },
     ],
     prereqsVerified: true,
     admissionAverage: {

@@ -3,7 +3,7 @@
 import type { CourseOption } from "@/lib/data";
 
 /**
- * Multi-select of Ontario course codes, grouped by subject (§7.2, §8A).
+ * Multi-select of Ontario Grade 12 course codes, grouped by subject (§7.2, §8A).
  * Controlled: the parent owns the selected list (URL state or quiz state).
  */
 export function CourseMatcher({
@@ -11,13 +11,11 @@ export function CourseMatcher({
   selected,
   onChange,
   idPrefix = "course",
-  grades = [11, 12],
 }: {
   courses: CourseOption[];
   selected: string[];
   onChange: (next: string[]) => void;
   idPrefix?: string;
-  grades?: (11 | 12)[];
 }) {
   const subjects = [...new Set(courses.map((c) => c.subject))];
   const set = new Set(selected);
@@ -27,7 +25,7 @@ export function CourseMatcher({
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {subjects.map((subject) => {
-        const list = courses.filter((c) => c.subject === subject && grades.includes(c.grade));
+        const list = courses.filter((c) => c.subject === subject);
         if (list.length === 0) return null;
         const count = list.filter((c) => set.has(c.code)).length;
         return (
@@ -53,9 +51,7 @@ export function CourseMatcher({
                         className="accent-primary size-4"
                       />
                       <span className="font-mono text-xs">{c.code}</span>
-                      <span>
-                        {c.name} <span className="text-muted-foreground">(Gr {c.grade})</span>
-                      </span>
+                      <span>{c.name}</span>
                     </label>
                   </li>
                 );

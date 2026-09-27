@@ -4,6 +4,7 @@ import type {
   Credential,
   Domain,
   OutlookRating,
+  ProgramType,
   Region,
   Riasec,
   StepPhase,
@@ -33,7 +34,12 @@ export const CREDENTIAL_LABELS: Record<Credential, string> = {
   diploma: "Diploma",
   advanced_diploma: "Advanced diploma",
   degree: "Degree",
-  collaborative_degree: "Collaborative degree",
+  collaborative_degree: "Collaborative degree (university + college)",
+};
+
+export const PROGRAM_TYPE_LABELS: Record<ProgramType, string> = {
+  university: "University (incl. joint university–college)",
+  college: "College",
 };
 
 export const REGION_LABELS: Record<Region, string> = {

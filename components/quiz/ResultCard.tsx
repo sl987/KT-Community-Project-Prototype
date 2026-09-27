@@ -39,14 +39,22 @@ export const prereqTone = (s: ProgramResult["prereqStatus"]) => (s === "met" ? "
 export const fitTone = (f: AcademicFit) =>
   f === "likely" || f === "possible" ? "good" : f === "unknown" ? "neutral" : "warn";
 
-/** One ranked profession with its best programs, reasons, and watch-outs (§8 results). */
+/**
+ * One ranked profession with its best programs, reasons, and watch-outs (§8 results).
+ * Shows its place in the list but no score, so it reads as an idea to explore, not an instruction.
+ */
 export function ResultCard({ result, rank }: { result: ProfessionResult; rank: number }) {
   const best = result.programs[0];
   return (
     <article className="bg-card grid break-inside-avoid gap-4 rounded-xl border p-4 sm:p-5">
-      <header className="flex flex-wrap items-start justify-between gap-3">
+      <header className="flex flex-wrap items-start gap-3">
+        <span
+          className="bg-muted flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold tabular-nums"
+          aria-label={`Ranked ${rank}`}
+        >
+          {rank}
+        </span>
         <div>
-          <p className="text-muted-foreground text-sm">Match #{rank}</p>
           <h3 className="text-xl font-semibold">
             <Link
               href={`/professions/${result.slug}`}
@@ -56,18 +64,14 @@ export function ResultCard({ result, rank }: { result: ProfessionResult; rank: n
             </Link>
           </h3>
         </div>
-        <p className="text-right">
-          <span className="block text-3xl font-semibold tabular-nums">{result.matchPercent}%</span>
-          <span className="text-muted-foreground text-xs">match</span>
-        </p>
       </header>
       <div className="flex flex-wrap gap-2">
         <Badge tone={prereqTone(best.prereqStatus)}>{PREREQ_BADGE[best.prereqStatus]}</Badge>
         <Badge tone={fitTone(best.academicFit)}>{FIT_BADGE[best.academicFit]}</Badge>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
-        <section aria-label="Why this matches" className="bg-muted/50 rounded-lg p-3">
-          <h4 className="mb-1 text-sm font-semibold">Why this matches</h4>
+        <section aria-label="Why it came up" className="bg-muted/50 rounded-lg p-3">
+          <h4 className="mb-1 text-sm font-semibold">Why it came up</h4>
           {result.why.length ? (
             <ul className="grid gap-1 text-sm">
               {result.why.map((w) => (
@@ -118,6 +122,9 @@ export function ResultCard({ result, rank }: { result: ProfessionResult; rank: n
                 {r.program.name} — {r.program.institutions.map((i) => i.name).join(" & ")}
               </Link>
               <span className="flex flex-wrap gap-1">
+                <Badge tone="neutral">
+                  {r.program.programType === "university" ? "University" : "College"}
+                </Badge>
                 <Badge tone={prereqTone(r.prereqStatus)}>{PREREQ_BADGE[r.prereqStatus]}</Badge>
                 <Badge tone={fitTone(r.academicFit)}>{FIT_BADGE[r.academicFit]}</Badge>
               </span>

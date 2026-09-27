@@ -17,6 +17,13 @@ export const CredentialSchema = z.enum([
   "degree",
   "collaborative_degree",
 ]);
+/**
+ * How a program is grouped for students: degrees and collaborative/joint
+ * university–college degrees count as "university"; diplomas as "college".
+ */
+export const ProgramTypeSchema = z.enum(["university", "college"]);
+export const programTypeOf = (credential: z.infer<typeof CredentialSchema>) =>
+  credential === "degree" || credential === "collaborative_degree" ? "university" : "college";
 export const ContactLevelSchema = z.enum(["high", "moderate", "technical"]);
 export const DomainSchema = z.enum([
   "diagnostic_imaging",
@@ -67,20 +74,20 @@ export const InstitutionSchema = z.object({
   city: z.string().min(1),
   region: RegionSchema,
   url: Url,
-  language: z.array(z.enum(["en", "fr"])).min(1),
   provenance: ProvenanceSchema,
 });
 
 // ---------- Courses ----------
 
+/** Only Grade 12 (level 4) Ontario courses are tracked; Grade 11 students plan theirs. */
 export const CourseCodeSchema = z
   .string()
-  .regex(/^[A-Z]{3}[1-4][A-Z]$/, "Ontario course codes look like SCH4U");
+  .regex(/^[A-Z]{3}4[A-Z]$/, "Grade 12 Ontario course codes look like SCH4U");
 
 export const CourseSchema = z.object({
   code: CourseCodeSchema,
   name: z.string().min(1),
-  grade: z.union([z.literal(11), z.literal(12)]),
+  grade: z.literal(12),
   /** U university, M university/college, C college, E workplace, O open. */
   pathway: z.enum(["U", "M", "C", "E", "O"]),
   subject: z.string().min(1),
@@ -401,18 +408,19 @@ const Likert = z.number().int().min(1).max(5);
 
 /** Survey answers. Encoded into the results URL fragment; never sent to a server. */
 export const QuizAnswersSchema = z.object({
-  v: z.literal(1),
+  v: z.literal(2),
   grade: z.union([z.literal(11), z.literal(12)]).nullable(),
+  /** Current or expected Grade 12 average. Grade 11 students estimate it. */
   average: z.number().min(0).max(100).nullable(),
-  averageIsGrade11: z.boolean(),
+  /** Grade 12 courses taken, in progress, or (for Grade 11 students) planned. */
   courses: z.array(CourseCodeSchema),
   marks: z.partialRecord(MarkSubjectSchema, z.number().min(0).max(100)),
   interests: z.record(z.string(), Likert),
   workStyle: z.partialRecord(WorkStyleKeySchema, Likert),
   length: z.enum(["short", "long", "any"]),
-  institutionType: z.enum(["college", "university", "any"]),
+  /** Hard filter: which kind of program to show. */
+  programType: z.enum(["college", "university", "any"]),
   regions: z.array(RegionSchema),
-  french: z.boolean(),
   salaryImportance: Likert,
   demandImportance: Likert,
 });
@@ -492,6 +500,7 @@ export const ProgramsFileSchema = z.array(ProgramSchema);
 export type Region = z.infer<typeof RegionSchema>;
 export type Portal = z.infer<typeof PortalSchema>;
 export type Credential = z.infer<typeof CredentialSchema>;
+export type ProgramType = z.infer<typeof ProgramTypeSchema>;
 export type ContactLevel = z.infer<typeof ContactLevelSchema>;
 export type Domain = z.infer<typeof DomainSchema>;
 export type Riasec = z.infer<typeof RiasecSchema>;

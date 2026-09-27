@@ -4,7 +4,13 @@ test("browse → filter → open program; filters survive refresh", async ({ pag
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   const cards = page.getByRole("article");
-  await expect(cards).toHaveCount(4);
+  await expect(cards).toHaveCount(7);
+
+  // Program type: every current program is a college program.
+  await page.getByRole("checkbox", { name: /^University/ }).check();
+  await expect(cards).toHaveCount(0);
+  await page.getByRole("checkbox", { name: /^University/ }).uncheck();
+  await expect(cards).toHaveCount(7);
 
   // Quick matcher: pick a course.
   await page.getByText(/Choose courses/).click();

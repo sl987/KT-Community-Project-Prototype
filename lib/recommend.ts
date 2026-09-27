@@ -134,10 +134,7 @@ export function academicFit(
 }
 
 export function preferenceFit(
-  answers: Pick<
-    QuizAnswers,
-    "length" | "institutionType" | "french" | "salaryImportance" | "demandImportance"
-  >,
+  answers: Pick<QuizAnswers, "length" | "salaryImportance" | "demandImportance">,
   p: ProgramSummary,
   wageRange: { min: number; max: number } | null,
 ): number {
@@ -146,10 +143,6 @@ export function preferenceFit(
     const short = p.durationYears <= 3;
     parts.push([1, (answers.length === "short") === short ? 1 : 0]);
   }
-  if (answers.institutionType !== "any") {
-    parts.push([1, p.institutions.some((i) => i.type === answers.institutionType) ? 1 : 0]);
-  }
-  if (answers.french) parts.push([1, p.french ? 1 : 0]);
 
   const wage =
     p.medianWage === null || wageRange === null
@@ -181,11 +174,14 @@ export interface ProgramResult {
   };
 }
 
+/**
+ * A ranked profession. Deliberately carries no score: results are shown as an
+ * ordered list of ideas to explore, never as a "% match" that tells students what to pick.
+ */
 export interface ProfessionResult {
   professionId: string;
   slug: string;
   title: string;
-  matchPercent: number;
   programs: ProgramResult[];
   why: string[];
   watchOuts: string[];
@@ -211,10 +207,11 @@ export function recommend(
   allPrograms: readonly ProgramSummary[],
   config: QuizConfig,
 ): Recommendation {
-  // 1. Hard filter: the eligibility gate (again), then excluded regions.
+  // 1. Hard filter: the eligibility gate (again), program type, then excluded regions.
   const candidates = allPrograms.filter(
     (p) =>
       isEligible(p) &&
+      (answers.programType === "any" || p.programType === answers.programType) &&
       (answers.regions.length === 0 || p.regions.some((r) => answers.regions.includes(r))),
   );
 
@@ -272,7 +269,6 @@ export function recommend(
         professionId: best.program.profession.id,
         slug: best.program.profession.slug,
         title: best.program.profession.title,
-        matchPercent: Math.round(best.scores.total * 100),
         programs: list.slice(0, config.programsPerProfession),
         why: explainWhy(best, answers, config, student),
         watchOuts: explainWatchOuts(best, answers, config),
@@ -319,7 +315,7 @@ export function explainWhy(
     why.push("Your average is at or above the program's recent range");
   }
   if (why.length < 2 && r.scores.preferences >= 0.75) {
-    why.push("Fits your practical preferences (length, school type, pay, demand)");
+    why.push("Fits your practical preferences (length, pay, demand)");
   }
   return why.slice(0, 4);
 }

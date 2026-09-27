@@ -41,10 +41,10 @@ describe("applyFilters", () => {
   const b = summary({
     slug: "b",
     credential: "degree",
+    programType: "university",
     durationYears: 4,
     portal: "OUAC",
     coop: true,
-    french: true,
     medianWage: null,
     outlook: null,
     regions: ["Eastern"],
@@ -66,7 +66,8 @@ describe("applyFilters", () => {
     expect(ids({ region: ["Eastern"] })).toEqual(["b"]);
     expect(ids({ portal: ["OCAS"] })).toEqual(["a"]);
     expect(ids({ coop: true })).toEqual(["b"]);
-    expect(ids({ french: true })).toEqual(["b"]);
+    expect(ids({ programType: ["university"] })).toEqual(["b"]);
+    expect(ids({ programType: ["college"] })).toEqual(["a"]);
   });
 
   it("excludes unverified (null) values from wage and outlook filters", () => {
@@ -76,7 +77,7 @@ describe("applyFilters", () => {
   });
 
   it("'qualified' keeps only programs whose prerequisites are all met", () => {
-    expect(ids({ qualified: true, courses: ["ENG4C", "SBI3C"] })).toEqual(["a", "b"]);
+    expect(ids({ qualified: true, courses: ["ENG4C", "SBI4U"] })).toEqual(["a", "b"]);
     expect(ids({ qualified: true, courses: ["ENG4C"] })).toEqual([]);
   });
 

@@ -22,5 +22,29 @@
       "verifiedBy": "agent",
       "needsVerification": ["url", "underRHPA"]
     }
+  },
+  {
+    "id": "cmlto",
+    "name": "College of Medical Laboratory Technologists of Ontario",
+    "acronym": "CMLTO",
+    "url": "https://www.cmlto.com",
+    "underRHPA": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["url", "underRHPA"]
+    }
+  },
+  {
+    "id": "cmrito",
+    "name": "College of Medical Radiation and Imaging Technologists of Ontario",
+    "acronym": "CMRITO",
+    "url": "https://www.cmrito.org",
+    "underRHPA": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["url", "underRHPA"]
+    }
   }
 ]

@@ -25,7 +25,7 @@ describe("validateData on the seed data", () => {
   it("passes with no errors", () => {
     const r = run(seed());
     expect(r.errors).toEqual([]);
-    expect(r.data?.programs).toHaveLength(4);
+    expect(r.data?.programs).toHaveLength(7);
   });
 
   it("reports needsVerification for every seed record", () => {

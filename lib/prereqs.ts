@@ -38,7 +38,8 @@ export const describePrereq = (p: Prerequisite) => p.courses.join(" or ");
 export type PrereqStatus = "met" | "fixable" | "blocked";
 
 /**
- * §8 step 2: met = nothing missing; fixable = missing 1–2 while in Grade 11, or 1 in Grade 12;
+ * §8 step 2: met = nothing missing; fixable = missing 1–2 while in Grade 11 (still planning
+ * Grade 12 courses), or 1 in Grade 12;
  * blocked = more than that. An unknown grade is treated as Grade 12 (the stricter case).
  */
 export function prereqStatus(missingCount: number, grade: 11 | 12 | null): PrereqStatus {

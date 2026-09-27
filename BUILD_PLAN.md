@@ -110,7 +110,7 @@ Target for launch: **8–12 professions** with **2–4 eligible programs each**,
   programs.json
   institutions.json
   regulators.json
-  courses.json                  # Ontario Grade 11/12 course codes + names
+  courses.json                  # Ontario Grade 12 course codes + names (no Grade 11, no French)
   quiz.json                     # Survey questions + weights
 /lib
   schema.ts                     # Zod schemas + inferred types
@@ -237,7 +237,6 @@ interface Institution {
   city: string;
   region: Region;
   url: string;
-  language: ("en" | "fr")[];
 }
 
 interface Prerequisite {
@@ -359,7 +358,7 @@ Route: `/programs/[slug]`, statically generated. Sections in order:
    - *Team:* how they work with other professions, linking to the team explorer.
    - *Day in the life:* a callout.
 4. **Step-by-step pathway timeline (`PathwayTimeline`).** A vertical stepper from Grade 11 to working professional. It must include:
-   - High school prerequisites (Grade 11 and 12)
+   - High school prerequisites (Grade 12)
    - Application: portal, code, deadlines, supplementary pieces
    - Each program year, with placements marked
    - Non-academic requirements, placed at the point they're due
@@ -388,14 +387,14 @@ Any `null` field renders `UnverifiedField` ("Not yet verified — check official
 1. **Hero.** One-line value proposition, plus buttons for "Take the 5-minute quiz" and "Browse all programs."
 2. **Quick matcher.** Pick your Grade 12 courses to instantly see how many programs you qualify for.
 3. **Filter bar (URL-persisted via `nuqs`):**
-   - Courses taken or planned (multi-select with Ontario codes; include Grade 11 prerequisites where relevant)
+   - Courses taken or planned (multi-select of Ontario Grade 12 codes; Grade 11 students pick the Grade 12 courses they plan to take)
    - Domain
    - Patient contact level
    - Credential and duration
    - Region
    - Portal (OUAC or OCAS)
    - Co-op available
-   - French-language option
+   - Program type: university (including collaborative/joint university–college degrees) or college
    - Outlook rating (good or better)
    - Median wage range
 4. **Program grid.** Cards show profession, school, credential, years, median wage, outlook, and a prereq match indicator (e.g., "You have 4/5 prereqs").
@@ -418,8 +417,8 @@ Route: `/quiz`. A stepper of about 5 minutes with a progress bar. One question p
 
 **A. Academics**
 - Current grade (11 or 12).
-- Current or expected average (%) for top 6 Grade 12 U/M courses. Allow "Not sure yet," or entering Grade 11 finals as a proxy.
-- Courses taken or planned: a multi-select of Grade 11/12 U/M/C codes from `courses.json`, grouped by subject.
+- Current or expected average (%) for top 6 Grade 12 U/M courses. Allow "Not sure yet." Grade 11 students enter the Grade 12 average they expect.
+- Courses taken or planned: a multi-select of Grade 12 U/M/C codes from `courses.json`, grouped by subject. Grade 11 students predict their Grade 12 courses.
 - Optional marks in key subjects (Biology, Chemistry, Physics, Math, English).
 
 **B. Interests (RIASEC)**
@@ -435,7 +434,7 @@ Route: `/quiz`. A stepper of about 5 minutes with a progress bar. One question p
 - Program length: 2–3 years vs 4 years vs no preference.
 - College vs university vs no preference.
 - Regions willing to study in (multi-select).
-- French-language interest.
+- Program type: university programs (collaborative/joint university–college degrees count as university), college programs, or both. This is a hard filter.
 - Importance of salary and of job demand (1–5 each).
 
 ### Scoring engine (`lib/recommend.ts`)
@@ -457,7 +456,7 @@ The engine is deterministic and explainable. No LLM runs at runtime.
    Never state or imply guaranteed admission.
 4. **Interest fit (0–1).** Cosine similarity between the student's RIASEC vector and the profession's code weights.
 5. **Work-style fit (0–1).** 1 minus the normalized distance between the student's comfort answers and the profession's `WorkStyleProfile`. Heavily penalize hard mismatches, such as "very uncomfortable with blood" against `bloodAndBodyFluids: 2`.
-6. **Preference fit (0–1).** Length, credential type, French, and the salary and demand weightings.
+6. **Preference fit (0–1).** Length and the salary and demand weightings. Results are ranked but never shown with a percentage or score, so they suggest options rather than tell students what to pick.
 7. **Final score:**
    ```
    score = 0.35·interest + 0.30·workStyle + 0.20·preferences + 0.15·academicFitScore
@@ -561,7 +560,7 @@ Stop after each phase for owner review.
 ### Phase 0 — Foundation
 - Scaffold Next.js, TypeScript, Tailwind, shadcn/ui, ESLint/Prettier, Vitest, and Playwright.
 - Implement `lib/schema.ts`, `eligibility.ts`, and `validate-data.ts` (wired to `prebuild`).
-- Create `courses.json` covering Ontario Grade 11/12 codes relevant to health programs, including ENG4U, SBI3U/4U, SCH3U/4U, SPH3U/4U, MHF4U, MCV4U, MDM4U, and relevant M/C courses.
+- Create `courses.json` covering Ontario Grade 12 codes relevant to health programs, including ENG4U, SBI4U, SCH4U, SPH4U, MHF4U, MCV4U, MDM4U, and relevant M/C courses.
 - Create seed data: 2 professions × 2 programs, with structure complete and unverified values `null`.
 - **Done when:**
   - `npm run build` passes.
@@ -600,7 +599,7 @@ Stop after each phase for owner review.
   - High-risk changes are labelled.
 
 ### Phase 5 — Team explorer and polish
-- Build `/team` with 2–3 journeys, French-language program filter, dark mode QA, OG images per program, sitemap, and robots.
+- Build `/team` with 2–3 journeys, dark mode QA, OG images per program, sitemap, and robots.
 - **Done when:**
   - The team explorer is keyboard accessible.
   - Every program has an OG image.

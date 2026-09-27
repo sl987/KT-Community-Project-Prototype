@@ -68,14 +68,9 @@ describe("workStyleFit", () => {
 });
 
 describe("preferenceFit", () => {
-  it("rewards matching length and institution type", () => {
+  it("rewards matching length", () => {
     const p = summary({ durationYears: 2 });
-    const base = {
-      institutionType: "any",
-      french: false,
-      salaryImportance: 1,
-      demandImportance: 1,
-    } as const;
+    const base = { salaryImportance: 1, demandImportance: 1 } as const;
     expect(preferenceFit({ ...base, length: "short" }, p, null)).toBe(1);
     expect(preferenceFit({ ...base, length: "long" }, p, null)).toBe(0);
   });
@@ -88,7 +83,7 @@ describe("recommend", () => {
       eligibility: { ...summary().eligibility, requiresFurtherEducation: true },
     });
     const r = recommend(
-      answers({ courses: ["ENG4C", "SBI3C"] }),
+      answers({ courses: ["ENG4C", "SBI4U"] }),
       [bad, summary({ slug: "ok" })],
       config,
     );
@@ -116,11 +111,29 @@ describe("recommend", () => {
     expect(r.top[0].watchOuts).toContain("Missing ENG4C");
   });
 
+  it("shows only the chosen program type; collaborative degrees count as university", () => {
+    const college = summary({ slug: "college" });
+    const joint = summary({
+      slug: "joint",
+      credential: "collaborative_degree",
+      programType: "university",
+      profession: { id: "joint", slug: "joint" },
+    });
+    const courses = ["ENG4C", "SBI4U"];
+    const slugs = (programType: "university" | "college" | "any") =>
+      recommend(answers({ courses, programType }), [college, joint], config)
+        .top.flatMap((t) => t.programs.map((x) => x.program.slug))
+        .sort();
+    expect(slugs("university")).toEqual(["joint"]);
+    expect(slugs("college")).toEqual(["college"]);
+    expect(slugs("any")).toEqual(["college", "joint"]);
+  });
+
   it("drops programs outside the student's chosen regions", () => {
     const gta = summary({ slug: "gta" });
     const north = summary({ slug: "north", regions: ["Northern"] });
     const r = recommend(
-      answers({ regions: ["Northern"], courses: ["ENG4C", "SBI3C"] }),
+      answers({ regions: ["Northern"], courses: ["ENG4C", "SBI4U"] }),
       [gta, north],
       config,
     );
@@ -131,14 +144,15 @@ describe("recommend", () => {
     const social = summary({ slug: "social", profession: { riasec: ["S"] } });
     const tech = summary({ slug: "tech", profession: { riasec: ["R", "C"] } });
     const likesPeople = answers({
-      courses: ["ENG4C", "SBI3C"],
+      courses: ["ENG4C", "SBI4U"],
       interests: { s1: 5, s2: 5, s3: 5, r1: 1, r2: 1, r3: 1, c1: 1, c2: 1, c3: 1 },
     });
     const r = recommend(likesPeople, [tech, social], config);
     expect(r.top.map((t) => t.slug)).toEqual(["prof-social", "prof-tech"]);
     expect(r.top[0].why).toContain("Strong Social interests");
     expect(r.top[0].why).toContain("You have all 2 prerequisites");
-    expect(r.top[0].matchPercent).toBeGreaterThan(r.top[1].matchPercent);
+    // Ranked, but no numeric score is exposed to the UI.
+    expect(r.top[0]).not.toHaveProperty("matchPercent");
   });
 
   it("groups programs by profession, best first, and caps the list", () => {
@@ -150,7 +164,7 @@ describe("recommend", () => {
       }),
     );
     const r = recommend(
-      answers({ courses: ["ENG4C", "SBI3C"], salaryImportance: 5 }),
+      answers({ courses: ["ENG4C", "SBI4U"], salaryImportance: 5 }),
       progs,
       config,
     );
@@ -171,7 +185,7 @@ describe("recommend", () => {
       profession: { workStyle: { ...summary().profession.workStyle, shiftWork: 2 } },
     });
     const r = recommend(
-      answers({ average: 70, courses: ["ENG4C", "SBI3C"], workStyle: { shiftWork: 2 } }),
+      answers({ average: 70, courses: ["ENG4C", "SBI4U"], workStyle: { shiftWork: 2 } }),
       [p],
       config,
     );

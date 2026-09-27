@@ -42,7 +42,8 @@ export function DiscoveryHub({
             Quick matcher
           </h2>
           <p className="text-muted-foreground text-sm">
-            Pick the Grade 11 and 12 courses you&apos;ve taken or plan to take.
+            Pick the Grade 12 courses you&apos;re taking or plan to take. In Grade 11? Choose the
+            Grade 12 courses you expect to take next year.
           </p>
         </div>
         <p className="bg-muted rounded-lg px-3 py-2 text-sm" aria-live="polite">

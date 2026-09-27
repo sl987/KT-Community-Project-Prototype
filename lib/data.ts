@@ -30,7 +30,9 @@ import {
   type ContactLevel,
   type OutlookRating,
   type Prerequisite,
+  programTypeOf,
   type Program,
+  type ProgramType,
   type Region,
   type Riasec,
   type WorkStyleProfile,
@@ -81,6 +83,8 @@ export interface ProgramSummary {
   slug: string;
   name: string;
   credential: Credential;
+  /** University (incl. collaborative/joint degrees) or college. */
+  programType: ProgramType;
   durationYears: number;
   coop: boolean;
   portal: "OUAC" | "OCAS";
@@ -93,7 +97,6 @@ export interface ProgramSummary {
     type: "university" | "college";
   }[];
   regions: Region[];
-  french: boolean;
   profession: {
     id: string;
     slug: string;
@@ -127,6 +130,7 @@ export function summarizeProgram(p: Program): ProgramSummary {
     slug: p.slug,
     name: p.name,
     credential: p.credential,
+    programType: programTypeOf(p.credential),
     durationYears: p.durationYears,
     coop: p.coop,
     portal: p.application.portal,
@@ -139,7 +143,6 @@ export function summarizeProgram(p: Program): ProgramSummary {
       type: i.type,
     })),
     regions: [...new Set(insts.map((i) => i.region))],
-    french: insts.some((i) => i.language.includes("fr")),
     profession: {
       id: prof.id,
       slug: prof.slug,
@@ -168,7 +171,7 @@ export const programSummaries: ProgramSummary[] = programs.map(summarizeProgram)
 export interface CourseOption {
   code: string;
   name: string;
-  grade: 11 | 12;
+  grade: 12;
   subject: string;
 }
 

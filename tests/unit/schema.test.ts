@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PrerequisiteSchema, ProgramSchema } from "@/lib/schema";
+import { CourseCodeSchema, PrerequisiteSchema, ProgramSchema, programTypeOf } from "@/lib/schema";
 import { eligibleProgram, ineligibleProgram } from "../fixtures/programs";
 
 describe("ProgramSchema", () => {
@@ -45,5 +45,18 @@ describe("PrerequisiteSchema", () => {
     expect(
       PrerequisiteSchema.safeParse({ kind: "anyOf", courses: ["MHF4U", "MCV4U"] }).success,
     ).toBe(true);
+  });
+});
+
+describe("Grade 12 only and program type", () => {
+  it("accepts Grade 12 course codes and rejects Grade 11 ones", () => {
+    expect(CourseCodeSchema.safeParse("SBI4U").success).toBe(true);
+    expect(CourseCodeSchema.safeParse("SBI3U").success).toBe(false);
+  });
+
+  it("groups collaborative degrees with university programs", () => {
+    expect(programTypeOf("collaborative_degree")).toBe("university");
+    expect(programTypeOf("degree")).toBe("university");
+    expect(programTypeOf("advanced_diploma")).toBe("college");
   });
 });

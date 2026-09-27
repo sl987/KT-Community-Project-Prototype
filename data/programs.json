@@ -9,10 +9,16 @@
     "credentialName": "Ontario College Diploma",
     "durationYears": 2,
     "coop": false,
-    "accredited": { "byBody": null, "sourceUrl": null },
+    "accredited": {
+      "byBody": null,
+      "sourceUrl": null
+    },
     "application": {
       "portal": "OCAS",
-      "programCode": { "value": null, "sourceUrl": null },
+      "programCode": {
+        "value": null,
+        "sourceUrl": null
+      },
       "equalConsiderationDate": null,
       "intakes": ["fall"]
     },
@@ -34,14 +40,19 @@
       "totalHours": null,
       "sourceUrl": null
     },
-    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": null,
+        "sourceUrl": null
+      }
+    },
     "timeline": [
       {
         "order": 1,
         "phase": "high_school",
-        "title": "Complete Grade 11 and 12 prerequisites",
-        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
-        "durationLabel": "Grade 11–12",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses this program requires. In Grade 11? Plan them into your Grade 12 timetable. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 12",
         "sourceUrl": null
       },
       {
@@ -143,10 +154,16 @@
     "credentialName": "Ontario College Diploma",
     "durationYears": 2,
     "coop": false,
-    "accredited": { "byBody": null, "sourceUrl": null },
+    "accredited": {
+      "byBody": null,
+      "sourceUrl": null
+    },
     "application": {
       "portal": "OCAS",
-      "programCode": { "value": null, "sourceUrl": null },
+      "programCode": {
+        "value": null,
+        "sourceUrl": null
+      },
       "equalConsiderationDate": null,
       "intakes": ["fall"]
     },
@@ -168,14 +185,19 @@
       "totalHours": null,
       "sourceUrl": null
     },
-    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": null,
+        "sourceUrl": null
+      }
+    },
     "timeline": [
       {
         "order": 1,
         "phase": "high_school",
-        "title": "Complete Grade 11 and 12 prerequisites",
-        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
-        "durationLabel": "Grade 11–12",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses this program requires. In Grade 11? Plan them into your Grade 12 timetable. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 12",
         "sourceUrl": null
       },
       {
@@ -277,10 +299,16 @@
     "credentialName": "Ontario College Advanced Diploma",
     "durationYears": 3,
     "coop": false,
-    "accredited": { "byBody": null, "sourceUrl": null },
+    "accredited": {
+      "byBody": null,
+      "sourceUrl": null
+    },
     "application": {
       "portal": "OCAS",
-      "programCode": { "value": null, "sourceUrl": null },
+      "programCode": {
+        "value": null,
+        "sourceUrl": null
+      },
       "equalConsiderationDate": null,
       "intakes": ["fall"]
     },
@@ -302,14 +330,19 @@
       "totalHours": null,
       "sourceUrl": null
     },
-    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": null,
+        "sourceUrl": null
+      }
+    },
     "timeline": [
       {
         "order": 1,
         "phase": "high_school",
-        "title": "Complete Grade 11 and 12 prerequisites",
-        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
-        "durationLabel": "Grade 11–12",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses this program requires. In Grade 11? Plan them into your Grade 12 timetable. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 12",
         "sourceUrl": null
       },
       {
@@ -411,10 +444,16 @@
     "credentialName": "Ontario College Advanced Diploma",
     "durationYears": 3,
     "coop": false,
-    "accredited": { "byBody": null, "sourceUrl": null },
+    "accredited": {
+      "byBody": null,
+      "sourceUrl": null
+    },
     "application": {
       "portal": "OCAS",
-      "programCode": { "value": null, "sourceUrl": null },
+      "programCode": {
+        "value": null,
+        "sourceUrl": null
+      },
       "equalConsiderationDate": null,
       "intakes": ["fall"]
     },
@@ -436,14 +475,19 @@
       "totalHours": null,
       "sourceUrl": null
     },
-    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": null,
+        "sourceUrl": null
+      }
+    },
     "timeline": [
       {
         "order": 1,
         "phase": "high_school",
-        "title": "Complete Grade 11 and 12 prerequisites",
-        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
-        "durationLabel": "Grade 11–12",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses this program requires. In Grade 11? Plan them into your Grade 12 timetable. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 12",
         "sourceUrl": null
       },
       {
@@ -530,6 +574,564 @@
         "nonAcademic",
         "clinicalPlacements",
         "costs",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "michener-respiratory-therapy",
+    "slug": "michener-respiratory-therapy",
+    "professionId": "respiratory-therapist",
+    "institutionIds": ["michener-toronto"],
+    "name": "Respiratory Therapy",
+    "credential": "advanced_diploma",
+    "credentialName": "Advanced Diploma",
+    "durationYears": 3,
+    "coop": false,
+    "accredited": {
+      "byBody": "Accreditation Canada",
+      "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+    },
+    "application": {
+      "portal": "OCAS",
+      "programCode": {
+        "value": "MICH RS111",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [
+        {
+          "kind": "required",
+          "courses": ["ENG4U"],
+          "minMark": 70
+        },
+        {
+          "kind": "anyOf",
+          "courses": ["MHF4U", "MCV4U", "MDM4U"],
+          "minMark": 70,
+          "note": "Any Grade 12 U math. Confirm with Michener which courses count."
+        },
+        {
+          "kind": "required",
+          "courses": ["SCH4U"],
+          "minMark": 70
+        },
+        {
+          "kind": "required",
+          "courses": ["SBI4U"],
+          "minMark": 70
+        },
+        {
+          "kind": "required",
+          "courses": ["SPH4U"],
+          "minMark": 70,
+          "note": "Michener also accepts Grade 11 U Physics."
+        }
+      ],
+      "admissionAverage": {
+        "low": 75,
+        "high": null,
+        "type": "minimum",
+        "cycle": "Fall 2027 entry",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      "supplementary": [
+        {
+          "type": "casper",
+          "label": "Casper assessment (50% of the admission decision)",
+          "required": true,
+          "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+        }
+      ],
+      "otherNotes": [
+        "Minimum 75% overall average in your top Grade 12 U courses. One more Grade 12 U or U/M course is also required."
+      ],
+      "programRequirements": ["Ontario Secondary School Diploma (OSSD) or equivalent"]
+    },
+    "nonAcademic": [
+      {
+        "type": "vulnerable_sector_check",
+        "label": "Vulnerable sector check",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      {
+        "type": "cpr_bls",
+        "label": "CPR-BLS certification",
+        "timing": "By June 15 of Year 2",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      {
+        "type": "n95_fit_test",
+        "label": "N95 fit test",
+        "timing": "Before the Year 3 clinical placement",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      }
+    ],
+    "clinicalPlacements": {
+      "description": "A 31-week clinical placement in Year 3 (late August to April) at affiliated sites across Ontario.",
+      "totalHours": null,
+      "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+    },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": 7406,
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      "extraFeesNote": "Michener estimates about $22,219 in total for all 3 years (domestic, including fees)."
+    },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses Michener requires (English, Math, Chemistry, Biology, and Physics at the U level, each at 70% or higher). In Grade 11? Plan them into your Grade 12 timetable.",
+        "durationLabel": "Grade 12",
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Apply to program code MICH RS111 and send your transcript. Book and complete the Casper test, which counts for half of the admission decision.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "Year 1 of the Respiratory Therapy program at Michener.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Year 2 of the Respiratory Therapy program at Michener.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 5,
+        "phase": "placement",
+        "title": "Year 3: clinical placement",
+        "description": "A 31-week clinical placement in Year 3 (late August to April) at affiliated sites across Ontario.",
+        "durationLabel": "Year 3",
+        "prereqsForStep": ["Non-academic requirements complete (checks, certifications, etc.)"],
+        "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+      },
+      {
+        "order": 6,
+        "phase": "exam",
+        "title": "Write the CBRC exam",
+        "description": "The national exam for this profession. Details are not yet verified; check the College of Respiratory Therapists of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 7,
+        "phase": "registration",
+        "title": "Register with the College of Respiratory Therapists of Ontario",
+        "description": "Apply for registration so you can legally work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Exam passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "work",
+        "title": "Start working as a Respiratory Therapist",
+        "description": "You can now work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Michener lists an OSSD route with Grade 12 prerequisites, and graduates register with the CRTO after the national exam.",
+      "sourceUrl": "https://michener.ca/programs-courses/respiratory-therapy-program/"
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": "2026-09-26",
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "application.equalConsiderationDate",
+        "academic.admissionAverage.high",
+        "clinicalPlacements.totalHours",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "michener-medical-laboratory-sciences",
+    "slug": "michener-medical-laboratory-sciences",
+    "professionId": "medical-laboratory-technologist",
+    "institutionIds": ["michener-toronto"],
+    "name": "Medical Laboratory Sciences",
+    "credential": "advanced_diploma",
+    "credentialName": "Advanced Diploma",
+    "durationYears": 3,
+    "coop": false,
+    "accredited": {
+      "byBody": "Accreditation Canada",
+      "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+    },
+    "application": {
+      "portal": "OCAS",
+      "programCode": {
+        "value": "MICH ML111",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [
+        {
+          "kind": "anyOf",
+          "courses": ["ENG4U", "ENG4C"],
+          "minMark": 70
+        },
+        {
+          "kind": "anyOf",
+          "courses": ["MHF4U", "MCV4U", "MDM4U", "MAP4C", "MCT4C"],
+          "minMark": 70,
+          "note": "Any Grade 12 C or U math."
+        },
+        {
+          "kind": "anyOf",
+          "courses": ["SCH4U", "SCH4C"],
+          "minMark": 70
+        },
+        {
+          "kind": "required",
+          "courses": ["SBI4U"],
+          "minMark": 70,
+          "note": "Michener also accepts Grade 11 C or U Biology."
+        }
+      ],
+      "admissionAverage": {
+        "low": 70,
+        "high": null,
+        "type": "minimum",
+        "cycle": "Fall 2027 entry",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      "supplementary": [],
+      "otherNotes": ["Minimum 70% overall average in your top Grade 12 U or C courses."],
+      "programRequirements": ["Ontario Secondary School Diploma (OSSD) or equivalent"]
+    },
+    "nonAcademic": [
+      {
+        "type": "first_aid",
+        "label": "Standard First Aid certification",
+        "timing": "By July 31 before starting",
+        "stage": "before_start",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "type": "vulnerable_sector_check",
+        "label": "Vulnerable sector check",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "type": "cpr_bls",
+        "label": "CPR-BLS certification",
+        "timing": "By July 15 of Year 2",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "type": "whmis",
+        "label": "WHMIS and other annual safety training",
+        "stage": "ongoing",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "type": "mask_fit",
+        "label": "Mask fitting",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      }
+    ],
+    "clinicalPlacements": {
+      "description": "A 20-week clinical placement (September to February) in hospital, community, and teaching labs, mostly in Ontario.",
+      "totalHours": null,
+      "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+    },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": 10350,
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      "extraFeesNote": "Michener estimates about $31,049 in total for all 3 years (domestic, including fees)."
+    },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses Michener requires (English, Math, Chemistry, and Biology at the C or U level, each at 70% or higher). In Grade 11? Plan them into your Grade 12 timetable.",
+        "durationLabel": "Grade 12",
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Apply to program code MICH ML111 and send your transcript.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "Year 1 of the Medical Laboratory Sciences program at Michener.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Year 2 of the Medical Laboratory Sciences program at Michener.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 5,
+        "phase": "placement",
+        "title": "Year 3: clinical placement",
+        "description": "A 20-week clinical placement (September to February) in hospital, community, and teaching labs, mostly in Ontario.",
+        "durationLabel": "Year 3",
+        "prereqsForStep": ["Non-academic requirements complete (checks, certifications, etc.)"],
+        "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+      },
+      {
+        "order": 6,
+        "phase": "exam",
+        "title": "Write the national certification exam",
+        "description": "The national exam for this profession. Details are not yet verified; check the College of Medical Laboratory Technologists of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 7,
+        "phase": "registration",
+        "title": "Register with the College of Medical Laboratory Technologists of Ontario",
+        "description": "Apply for registration so you can legally work as a Medical Laboratory Technologist in Ontario.",
+        "prereqsForStep": ["Exam passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "work",
+        "title": "Start working as a Medical Laboratory Technologist",
+        "description": "You can now work as a Medical Laboratory Technologist in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Michener lists an OSSD route with Grade 12 prerequisites, and graduates can certify nationally and register with the CMLTO.",
+      "sourceUrl": "https://michener.ca/programs-courses/medical-laboratory-sciences-program/"
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": "2026-09-26",
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "application.equalConsiderationDate",
+        "academic.admissionAverage.high",
+        "clinicalPlacements.totalHours",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "michener-mri",
+    "slug": "michener-mri",
+    "professionId": "mri-technologist",
+    "institutionIds": ["michener-toronto"],
+    "name": "Magnetic Resonance Imaging (MRI)",
+    "credential": "advanced_diploma",
+    "credentialName": "Advanced Diploma",
+    "durationYears": 2,
+    "coop": false,
+    "accredited": {
+      "byBody": "Accreditation Canada",
+      "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+    },
+    "application": {
+      "portal": "OCAS",
+      "programCode": {
+        "value": "MICH MRI1D",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [
+        {
+          "kind": "required",
+          "courses": ["ENG4U"],
+          "minMark": 85
+        },
+        {
+          "kind": "anyOf",
+          "courses": ["MHF4U", "MCV4U", "MDM4U"],
+          "minMark": 85,
+          "note": "Any Grade 12 U math. Confirm with Michener which courses count."
+        },
+        {
+          "kind": "required",
+          "courses": ["SBI4U"],
+          "minMark": 85
+        }
+      ],
+      "admissionAverage": {
+        "low": 85,
+        "high": null,
+        "type": "minimum",
+        "cycle": "Fall 2027 entry",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      "supplementary": [
+        {
+          "type": "casper",
+          "label": "Casper assessment (50% of the admission decision)",
+          "required": true,
+          "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+        }
+      ],
+      "otherNotes": [
+        "Minimum 85% average in your top 6 Grade 12 U courses. Michener also has routes for applicants with university or college pre-health studies."
+      ],
+      "programRequirements": ["Ontario Secondary School Diploma (OSSD) or equivalent"]
+    },
+    "nonAcademic": [
+      {
+        "type": "vulnerable_sector_check",
+        "label": "Vulnerable sector check",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      {
+        "type": "cpr_bls",
+        "label": "CPR-BLS certification",
+        "timing": "Before the clinical phase",
+        "stage": "before_placement",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      {
+        "type": "whmis",
+        "label": "WHMIS and other annual safety training",
+        "stage": "ongoing",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      }
+    ],
+    "clinicalPlacements": {
+      "description": "A 30-week full-time clinical placement (September to April) in hospitals and imaging centres across Ontario, including evening, night, and weekend shifts.",
+      "totalHours": null,
+      "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+    },
+    "costs": {
+      "tuitionDomesticPerYear": {
+        "value": 13111,
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      "extraFeesNote": "Michener estimates about $26,222 in total for both years (domestic, including fees)."
+    },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 12 prerequisites",
+        "description": "Take the Grade 12 courses Michener requires (English, Math, and Biology at the U level, each at 85% or higher). In Grade 11? Plan them into your Grade 12 timetable.",
+        "durationLabel": "Grade 12",
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Apply to program code MICH MRI1D and send your transcript. Book and complete the Casper test, which counts for half of the admission decision.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "Year 1 of the Magnetic Resonance Imaging (MRI) program at Michener.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "placement",
+        "title": "Year 2: clinical placement",
+        "description": "A 30-week full-time clinical placement (September to April) in hospitals and imaging centres across Ontario, including evening, night, and weekend shifts.",
+        "durationLabel": "Year 2",
+        "prereqsForStep": ["Non-academic requirements complete (checks, certifications, etc.)"],
+        "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+      },
+      {
+        "order": 5,
+        "phase": "exam",
+        "title": "Write the CAMRT certification exam",
+        "description": "The national exam for this profession. Details are not yet verified; check the College of Medical Radiation and Imaging Technologists of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 6,
+        "phase": "registration",
+        "title": "Register with the College of Medical Radiation and Imaging Technologists of Ontario",
+        "description": "Apply for registration so you can legally work as an MRI Technologist in Ontario.",
+        "prereqsForStep": ["Exam passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 7,
+        "phase": "work",
+        "title": "Start working as an MRI Technologist",
+        "description": "You can now work as an MRI Technologist in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Michener lists a direct-from-secondary-school route (OSSD with Grade 12 U prerequisites), and graduates can certify with CAMRT and register with the CMRITO.",
+      "sourceUrl": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/"
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": "2026-09-26",
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "application.equalConsiderationDate",
+        "academic.admissionAverage.high",
+        "clinicalPlacements.totalHours",
         "timeline",
         "eligibility"
       ]

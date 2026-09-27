@@ -1,7 +1,8 @@
 # Ontario Healthcare Pathways
 
 Helps Ontario Grade 11–12 students find regulated healthcare careers they can enter straight
-from high school with a single program. See [BUILD_PLAN.md](BUILD_PLAN.md) for the full spec.
+from high school with a single English-language Ontario program. Prerequisites are tracked as
+Grade 12 courses only; Grade 11 students plan theirs. See [BUILD_PLAN.md](BUILD_PLAN.md) for the full spec.
 
 > **All current data is placeholder content awaiting verification.** Every unverified value is
 > `null` and shows as "Not yet verified" on the site. See "Before launch" below.

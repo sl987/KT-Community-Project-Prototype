@@ -1,12 +1,14 @@
 /** Discovery-hub filtering (§7.3). Pure, so it can be unit tested and shared. */
 import type { ProgramSummary } from "./data";
 import { matchPrereqs } from "./prereqs";
-import type { ContactLevel, Credential, Domain, Portal, Region } from "./schema";
+import type { ContactLevel, Credential, Domain, Portal, ProgramType, Region } from "./schema";
 
 export interface Filters {
   courses: string[];
   /** Only programs whose prerequisites the student fully has. */
   qualified: boolean;
+  /** University (incl. collaborative degrees) or college programs. */
+  programType: ProgramType[];
   domain: Domain[];
   contact: ContactLevel[];
   credential: Credential[];
@@ -14,7 +16,6 @@ export interface Filters {
   region: Region[];
   portal: Portal[];
   coop: boolean;
-  french: boolean;
   /** Outlook "good" or better. */
   goodOutlook: boolean;
   minWage: number | null;
@@ -24,6 +25,7 @@ export interface Filters {
 export const EMPTY_FILTERS: Filters = {
   courses: [],
   qualified: false,
+  programType: [],
   domain: [],
   contact: [],
   credential: [],
@@ -31,7 +33,6 @@ export const EMPTY_FILTERS: Filters = {
   region: [],
   portal: [],
   coop: false,
-  french: false,
   goodOutlook: false,
   minWage: null,
   maxWage: null,
@@ -46,6 +47,7 @@ const anyOf = <T>(selected: readonly T[], value: T) =>
  */
 export function applyFilters(programs: readonly ProgramSummary[], f: Filters): ProgramSummary[] {
   return programs.filter((p) => {
+    if (!anyOf(f.programType, p.programType)) return false;
     if (!anyOf(f.domain, p.profession.domain)) return false;
     if (!anyOf(f.contact, p.profession.contactLevel)) return false;
     if (!anyOf(f.credential, p.credential)) return false;
@@ -53,7 +55,6 @@ export function applyFilters(programs: readonly ProgramSummary[], f: Filters): P
     if (f.region.length > 0 && !p.regions.some((r) => f.region.includes(r))) return false;
     if (!anyOf(f.portal, p.portal)) return false;
     if (f.coop && !p.coop) return false;
-    if (f.french && !p.french) return false;
     if (f.goodOutlook && p.outlook !== "good" && p.outlook !== "very_good") return false;
     if (f.minWage !== null && (p.medianWage === null || p.medianWage < f.minWage)) return false;
     if (f.maxWage !== null && (p.medianWage === null || p.medianWage > f.maxWage)) return false;
@@ -69,6 +70,7 @@ export function applyFilters(programs: readonly ProgramSummary[], f: Filters): P
 export const activeFilterCount = (f: Filters) =>
   [
     f.qualified,
+    f.programType.length > 0,
     f.domain.length > 0,
     f.contact.length > 0,
     f.credential.length > 0,
@@ -76,7 +78,6 @@ export const activeFilterCount = (f: Filters) =>
     f.region.length > 0,
     f.portal.length > 0,
     f.coop,
-    f.french,
     f.goodOutlook,
     f.minWage !== null || f.maxWage !== null,
   ].filter(Boolean).length;

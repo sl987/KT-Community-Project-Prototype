@@ -6,37 +6,16 @@
     "needsVerification": ["sourceUrl", "courses"]
   },
   "courses": [
-    { "code": "ENG3U", "name": "English", "grade": 11, "pathway": "U", "subject": "English" },
-    { "code": "ENG3C", "name": "English", "grade": 11, "pathway": "C", "subject": "English" },
     { "code": "ENG4U", "name": "English", "grade": 12, "pathway": "U", "subject": "English" },
     { "code": "ENG4C", "name": "English", "grade": 12, "pathway": "C", "subject": "English" },
 
-    { "code": "SBI3U", "name": "Biology", "grade": 11, "pathway": "U", "subject": "Science" },
-    { "code": "SBI3C", "name": "Biology", "grade": 11, "pathway": "C", "subject": "Science" },
     { "code": "SBI4U", "name": "Biology", "grade": 12, "pathway": "U", "subject": "Science" },
-    { "code": "SCH3U", "name": "Chemistry", "grade": 11, "pathway": "U", "subject": "Science" },
     { "code": "SCH4U", "name": "Chemistry", "grade": 12, "pathway": "U", "subject": "Science" },
     { "code": "SCH4C", "name": "Chemistry", "grade": 12, "pathway": "C", "subject": "Science" },
-    { "code": "SPH3U", "name": "Physics", "grade": 11, "pathway": "U", "subject": "Science" },
     { "code": "SPH4U", "name": "Physics", "grade": 12, "pathway": "U", "subject": "Science" },
     { "code": "SPH4C", "name": "Physics", "grade": 12, "pathway": "C", "subject": "Science" },
     { "code": "SNC4M", "name": "Science", "grade": 12, "pathway": "M", "subject": "Science" },
 
-    { "code": "MCR3U", "name": "Functions", "grade": 11, "pathway": "U", "subject": "Mathematics" },
-    {
-      "code": "MCF3M",
-      "name": "Functions and Applications",
-      "grade": 11,
-      "pathway": "M",
-      "subject": "Mathematics"
-    },
-    {
-      "code": "MBF3C",
-      "name": "Foundations for College Mathematics",
-      "grade": 11,
-      "pathway": "C",
-      "subject": "Mathematics"
-    },
     {
       "code": "MHF4U",
       "name": "Advanced Functions",
@@ -80,51 +59,13 @@
       "pathway": "U",
       "subject": "Health and Physical Education"
     },
-    {
-      "code": "PPZ3C",
-      "name": "Health for Life",
-      "grade": 11,
-      "pathway": "C",
-      "subject": "Health and Physical Education"
-    },
 
-    {
-      "code": "HSP3U",
-      "name": "Introduction to Anthropology, Psychology, and Sociology",
-      "grade": 11,
-      "pathway": "U",
-      "subject": "Social Sciences"
-    },
-    {
-      "code": "HSP3C",
-      "name": "Introduction to Anthropology, Psychology, and Sociology",
-      "grade": 11,
-      "pathway": "C",
-      "subject": "Social Sciences"
-    },
     {
       "code": "HSB4U",
       "name": "Challenge and Change in Society",
       "grade": 12,
       "pathway": "U",
       "subject": "Social Sciences"
-    },
-
-    { "code": "FEF3U", "name": "Core French", "grade": 11, "pathway": "U", "subject": "French" },
-    { "code": "FEF4U", "name": "Core French", "grade": 12, "pathway": "U", "subject": "French" },
-    {
-      "code": "FIF3U",
-      "name": "French Immersion",
-      "grade": 11,
-      "pathway": "U",
-      "subject": "French"
-    },
-    {
-      "code": "FIF4U",
-      "name": "French Immersion",
-      "grade": 12,
-      "pathway": "U",
-      "subject": "French"
     }
   ]
 }

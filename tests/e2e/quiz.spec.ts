@@ -37,9 +37,10 @@ test("quiz → results; answers never leave the browser", async ({ page, baseURL
 
   await completeQuiz(page);
   await expect(page).toHaveURL(/\/quiz\/results#a=/);
-  await expect(page.getByRole("heading", { name: "Your top matches" })).toBeVisible();
-  await expect(page.getByText(/match$/).first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Why this matches" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Careers to explore" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Why it came up" }).first()).toBeVisible();
+  // Results are ranked but never shown as a percentage match.
+  await expect(page.getByText(/\d+%\s*match/i)).toHaveCount(0);
 
   const token = new URL(page.url()).hash.replace("#a=", "");
   expect(token.length).toBeGreaterThan(20);
@@ -56,14 +57,14 @@ test("quiz → results; answers never leave the browser", async ({ page, baseURL
 
 test("results are shareable via URL and print a counsellor summary", async ({ page, context }) => {
   await completeQuiz(page);
-  await expect(page.getByRole("heading", { name: "Your top matches" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Careers to explore" })).toBeVisible();
   const url = page.url();
 
   // Open the shared link in a fresh page with no saved state.
   const other = await context.newPage();
   await other.addInitScript(() => window.localStorage.clear());
   await other.goto(url);
-  await expect(other.getByRole("heading", { name: "Your top matches" })).toBeVisible();
+  await expect(other.getByRole("heading", { name: "Careers to explore" })).toBeVisible();
 
   // Print view: counsellor summary appears, buttons disappear.
   await other.emulateMedia({ media: "print" });
@@ -74,7 +75,7 @@ test("results are shareable via URL and print a counsellor summary", async ({ pa
 
 test("after finishing, you can start a new quiz with cleared answers", async ({ page }) => {
   await completeQuiz(page);
-  await expect(page.getByRole("heading", { name: "Your top matches" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Careers to explore" })).toBeVisible();
   await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Quiz" }).click();
   await expect(page.getByText(/You finished this quiz before/)).toBeVisible();
   await page.getByRole("button", { name: /Start a new quiz/ }).click();

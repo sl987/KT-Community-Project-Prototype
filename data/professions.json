@@ -45,7 +45,10 @@
           "sourceUrl": null
         }
       ],
-      "jurisprudenceExam": { "required": true, "sourceUrl": null },
+      "jurisprudenceExam": {
+        "required": true,
+        "sourceUrl": null
+      },
       "registration": {
         "steps": [
           "Apply to the College of Nurses of Ontario",
@@ -56,10 +59,28 @@
       }
     },
     "labourMarket": {
-      "nocCode": { "value": null, "sourceUrl": null },
-      "wageOntario": { "low": null, "median": null, "high": null, "year": null, "sourceUrl": null },
-      "workerCount": { "value": null, "asOf": null, "basis": null, "sourceUrl": null },
-      "outlook": { "rating": null, "period": null, "sourceUrl": null }
+      "nocCode": {
+        "value": null,
+        "sourceUrl": null
+      },
+      "wageOntario": {
+        "low": null,
+        "median": null,
+        "high": null,
+        "year": null,
+        "sourceUrl": null
+      },
+      "workerCount": {
+        "value": null,
+        "asOf": null,
+        "basis": null,
+        "sourceUrl": null
+      },
+      "outlook": {
+        "rating": null,
+        "period": null,
+        "sourceUrl": null
+      }
     },
     "provenance": {
       "lastVerified": null,
@@ -134,10 +155,220 @@
       }
     },
     "labourMarket": {
-      "nocCode": { "value": null, "sourceUrl": null },
-      "wageOntario": { "low": null, "median": null, "high": null, "year": null, "sourceUrl": null },
-      "workerCount": { "value": null, "asOf": null, "basis": null, "sourceUrl": null },
-      "outlook": { "rating": null, "period": null, "sourceUrl": null }
+      "nocCode": {
+        "value": null,
+        "sourceUrl": null
+      },
+      "wageOntario": {
+        "low": null,
+        "median": null,
+        "high": null,
+        "year": null,
+        "sourceUrl": null
+      },
+      "workerCount": {
+        "value": null,
+        "asOf": null,
+        "basis": null,
+        "sourceUrl": null
+      },
+      "outlook": {
+        "rating": null,
+        "period": null,
+        "sourceUrl": null
+      }
+    },
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "protectedTitles",
+        "summary",
+        "scopeOfPractice",
+        "typicalDuties",
+        "workSettings",
+        "teamConnections",
+        "riasec",
+        "workStyle",
+        "licensing",
+        "labourMarket"
+      ]
+    }
+  },
+  {
+    "id": "medical-laboratory-technologist",
+    "slug": "medical-laboratory-technologist",
+    "title": "Medical Laboratory Technologist",
+    "regulatorId": "cmlto",
+    "protectedTitles": ["Medical Laboratory Technologist", "MLT"],
+    "domain": "lab_pathology",
+    "contactLevel": "technical",
+    "summary": "Medical Laboratory Technologists test blood, tissue, and other samples in the lab so doctors and nurses can diagnose and treat patients.",
+    "scopeOfPractice": {
+      "description": "Not yet verified. The official scope of practice will be summarized here from the College of Medical Laboratory Technologists of Ontario.",
+      "sourceUrl": null
+    },
+    "typicalDuties": [
+      "Run tests on blood, urine, and tissue samples",
+      "Operate and check automated lab analyzers",
+      "Make sure results are accurate before they are reported",
+      "Follow strict safety and quality steps"
+    ],
+    "workSettings": ["lab", "hospital"],
+    "teamConnections": [
+      {
+        "professionId": "registered-practical-nurse",
+        "how": "Nurses collect many of the samples that lab technologists test, and act on the results."
+      }
+    ],
+    "riasec": ["I", "R", "C"],
+    "workStyle": {
+      "bloodAndBodyFluids": 2,
+      "needles": 1,
+      "physicalDemand": 1,
+      "shiftWork": 2,
+      "acuteEmergency": 0,
+      "techEquipment": 2,
+      "patientInteraction": 0,
+      "independence": 1
+    },
+    "licensing": {
+      "exams": [
+        {
+          "name": "National entry-to-practice exam for medical laboratory technologists",
+          "administeredBy": "Not yet verified",
+          "eligibilityPrereqs": ["Graduate of an accredited medical laboratory science program"],
+          "sourceUrl": null
+        }
+      ],
+      "registration": {
+        "steps": [
+          "Apply to the College of Medical Laboratory Technologists of Ontario",
+          "Pass the required exam",
+          "Pay registration fees"
+        ],
+        "sourceUrl": null
+      }
+    },
+    "labourMarket": {
+      "nocCode": {
+        "value": null,
+        "sourceUrl": null
+      },
+      "wageOntario": {
+        "low": null,
+        "median": null,
+        "high": null,
+        "year": null,
+        "sourceUrl": null
+      },
+      "workerCount": {
+        "value": null,
+        "asOf": null,
+        "basis": null,
+        "sourceUrl": null
+      },
+      "outlook": {
+        "rating": null,
+        "period": null,
+        "sourceUrl": null
+      }
+    },
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "protectedTitles",
+        "summary",
+        "scopeOfPractice",
+        "typicalDuties",
+        "workSettings",
+        "teamConnections",
+        "riasec",
+        "workStyle",
+        "licensing",
+        "labourMarket"
+      ]
+    }
+  },
+  {
+    "id": "mri-technologist",
+    "slug": "mri-technologist",
+    "title": "Magnetic Resonance Imaging (MRI) Technologist",
+    "regulatorId": "cmrito",
+    "protectedTitles": ["Medical Radiation Technologist"],
+    "domain": "diagnostic_imaging",
+    "contactLevel": "moderate",
+    "summary": "MRI Technologists use powerful magnets and computers to take detailed pictures of the inside of the body, and keep patients safe and comfortable during scans.",
+    "scopeOfPractice": {
+      "description": "Not yet verified. The official scope of practice will be summarized here from the College of Medical Radiation and Imaging Technologists of Ontario.",
+      "sourceUrl": null
+    },
+    "typicalDuties": [
+      "Screen patients for MRI safety (for example, metal implants)",
+      "Position patients and run MRI scans",
+      "Adjust scan settings to get clear images",
+      "Explain the scan and help patients stay calm and still"
+    ],
+    "workSettings": ["hospital", "outpatient_clinic"],
+    "teamConnections": [
+      {
+        "professionId": "registered-practical-nurse",
+        "how": "Nurses help prepare and monitor patients who need an MRI, especially patients admitted to hospital."
+      }
+    ],
+    "riasec": ["R", "I", "S"],
+    "workStyle": {
+      "bloodAndBodyFluids": 0,
+      "needles": 1,
+      "physicalDemand": 1,
+      "shiftWork": 1,
+      "acuteEmergency": 0,
+      "techEquipment": 2,
+      "patientInteraction": 1,
+      "independence": 1
+    },
+    "licensing": {
+      "exams": [
+        {
+          "name": "CAMRT certification exam (Magnetic Resonance)",
+          "administeredBy": "Canadian Association of Medical Radiation Technologists",
+          "eligibilityPrereqs": ["Graduate of an accredited MRI program"],
+          "sourceUrl": null
+        }
+      ],
+      "registration": {
+        "steps": [
+          "Apply to the College of Medical Radiation and Imaging Technologists of Ontario",
+          "Pass the required exam",
+          "Pay registration fees"
+        ],
+        "sourceUrl": null
+      }
+    },
+    "labourMarket": {
+      "nocCode": {
+        "value": null,
+        "sourceUrl": null
+      },
+      "wageOntario": {
+        "low": null,
+        "median": null,
+        "high": null,
+        "year": null,
+        "sourceUrl": null
+      },
+      "workerCount": {
+        "value": null,
+        "asOf": null,
+        "basis": null,
+        "sourceUrl": null
+      },
+      "outlook": {
+        "rating": null,
+        "period": null,
+        "sourceUrl": null
+      }
     },
     "provenance": {
       "lastVerified": null,

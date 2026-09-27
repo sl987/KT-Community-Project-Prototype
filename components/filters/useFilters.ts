@@ -14,6 +14,7 @@ import {
   CredentialSchema,
   DomainSchema,
   PortalSchema,
+  ProgramTypeSchema,
   RegionSchema,
 } from "@/lib/schema";
 
@@ -21,6 +22,7 @@ import {
 export const filterParsers = {
   courses: parseAsArrayOf(parseAsString).withDefault([]),
   qualified: parseAsBoolean.withDefault(false),
+  programType: parseAsArrayOf(parseAsStringLiteral(ProgramTypeSchema.options)).withDefault([]),
   domain: parseAsArrayOf(parseAsStringLiteral(DomainSchema.options)).withDefault([]),
   contact: parseAsArrayOf(parseAsStringLiteral(ContactLevelSchema.options)).withDefault([]),
   credential: parseAsArrayOf(parseAsStringLiteral(CredentialSchema.options)).withDefault([]),
@@ -28,7 +30,6 @@ export const filterParsers = {
   region: parseAsArrayOf(parseAsStringLiteral(RegionSchema.options)).withDefault([]),
   portal: parseAsArrayOf(parseAsStringLiteral(PortalSchema.options)).withDefault([]),
   coop: parseAsBoolean.withDefault(false),
-  french: parseAsBoolean.withDefault(false),
   goodOutlook: parseAsBoolean.withDefault(false),
   minWage: parseAsInteger,
   maxWage: parseAsInteger,
@@ -45,6 +46,7 @@ export function useFilters() {
     clearFilters: () =>
       setState({
         qualified: null,
+        programType: null,
         domain: null,
         contact: null,
         credential: null,
@@ -52,7 +54,6 @@ export function useFilters() {
         region: null,
         portal: null,
         coop: null,
-        french: null,
         goodOutlook: null,
         minWage: null,
         maxWage: null,

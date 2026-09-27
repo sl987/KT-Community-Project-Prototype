@@ -80,7 +80,11 @@ export default function AboutPage() {
           The quiz scores each eligible program on your interests (35%), your work-style comfort
           (30%), your practical preferences (20%), and how your average compares with the
           program&apos;s recent range (15%). Programs you&apos;re missing several prerequisites for
-          are shown separately. Results are a starting point, not a prediction of admission.
+          are shown separately. Results are listed in order, but we don&apos;t show a percentage or
+          score: the list is a set of ideas to explore, not an instruction about what to pick. You
+          can choose to see university programs (joint university–college programs count as
+          university), college programs, or both. Prerequisites are checked against Grade 12
+          courses. If you&apos;re in Grade 11, pick the Grade 12 courses you plan to take.
         </p>
       </section>
 

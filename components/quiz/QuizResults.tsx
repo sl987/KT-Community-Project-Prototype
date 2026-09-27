@@ -88,7 +88,7 @@ export function QuizResults({
         {compareIds.length >= 2 && (
           <Link href={`/compare?ids=${compareIds.join(",")}`} className={btn}>
             <Scale aria-hidden />
-            Compare top matches
+            Compare the first three
           </Link>
         )}
         <button type="button" onClick={share} className={btn}>
@@ -111,13 +111,20 @@ export function QuizResults({
       <CounsellorSummary answers={answers} config={config} courses={courses} />
 
       <section aria-labelledby="top-h" className="grid gap-4">
-        <h2 id="top-h" className="text-xl font-semibold">
-          Your top matches
-        </h2>
+        <div className="grid gap-1">
+          <h2 id="top-h" className="text-xl font-semibold">
+            Careers to explore
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Listed in order of how closely they line up with your answers. The order is a place to
+            start looking, not a score or a recommendation of what to choose.
+          </p>
+        </div>
         {top.length === 0 ? (
           <p className="text-muted-foreground">
-            No programs matched your region and prerequisite answers. Try choosing more regions, or
-            look at the programs you could reach with extra courses below.
+            No programs matched your program type, region, and prerequisite answers. Try choosing
+            both university and college programs or more regions, or look at the programs you could
+            reach with extra courses below.
           </p>
         ) : (
           <ol className="grid gap-4">
@@ -195,10 +202,10 @@ function CounsellorSummary({
         <dt>Average</dt>
         <dd>
           {answers.average !== null
-            ? `${answers.average}%${answers.averageIsGrade11 ? " (Grade 11 final)" : ""}`
+            ? `${answers.average}%${answers.grade === 11 ? " (expected Grade 12)" : ""}`
             : "Not sure yet"}
         </dd>
-        <dt>Courses</dt>
+        <dt>{answers.grade === 11 ? "Planned Grade 12 courses" : "Grade 12 courses"}</dt>
         <dd>{courseNames.length ? courseNames.join(", ") : "None selected"}</dd>
         <dt>Top interests</dt>
         <dd>{topCodes.length ? topCodes.join(", ") : "Not answered"}</dd>
@@ -207,6 +214,16 @@ function CounsellorSummary({
           {answers.regions.length
             ? answers.regions.map((r) => REGION_LABELS[r]).join(", ")
             : "Anywhere"}
+        </dd>
+        <dt>Program type</dt>
+        <dd>
+          {
+            {
+              university: "University (incl. joint university–college)",
+              college: "College",
+              any: "Both",
+            }[answers.programType]
+          }
         </dd>
         <dt>Program length</dt>
         <dd>{{ short: "2–3 years", long: "4 years", any: "No preference" }[answers.length]}</dd>

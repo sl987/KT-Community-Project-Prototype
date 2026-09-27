@@ -7,11 +7,10 @@
     "city": "Toronto",
     "region": "GTA",
     "url": "https://humber.ca",
-    "language": ["en"],
     "provenance": {
       "lastVerified": null,
       "verifiedBy": "agent",
-      "needsVerification": ["name", "campus", "url", "language"]
+      "needsVerification": ["name", "campus", "url"]
     }
   },
   {
@@ -22,11 +21,10 @@
     "city": "Ottawa",
     "region": "Eastern",
     "url": "https://www.algonquincollege.com",
-    "language": ["en"],
     "provenance": {
       "lastVerified": null,
       "verifiedBy": "agent",
-      "needsVerification": ["campus", "url", "language"]
+      "needsVerification": ["campus", "url"]
     }
   },
   {
@@ -37,11 +35,24 @@
     "city": "London",
     "region": "Southwestern",
     "url": "https://www.fanshawec.ca",
-    "language": ["en"],
     "provenance": {
       "lastVerified": null,
       "verifiedBy": "agent",
-      "needsVerification": ["campus", "url", "language"]
+      "needsVerification": ["campus", "url"]
+    }
+  },
+  {
+    "id": "michener-toronto",
+    "name": "The Michener Institute of Education at UHN",
+    "type": "college",
+    "campus": "St. Patrick",
+    "city": "Toronto",
+    "region": "GTA",
+    "url": "https://michener.ca",
+    "provenance": {
+      "lastVerified": "2026-09-26",
+      "verifiedBy": "agent",
+      "needsVerification": ["campus"]
     }
   }
 ]
