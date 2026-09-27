@@ -72,6 +72,17 @@ test("results are shareable via URL and print a counsellor summary", async ({ pa
   await expect(other.getByText("ENG4C (English)")).toBeVisible();
 });
 
+test("after finishing, you can start a new quiz with cleared answers", async ({ page }) => {
+  await completeQuiz(page);
+  await expect(page.getByRole("heading", { name: "Your top matches" })).toBeVisible();
+  await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Quiz" }).click();
+  await expect(page.getByText(/You finished this quiz before/)).toBeVisible();
+  await page.getByRole("button", { name: /Start a new quiz/ }).click();
+  await expect(page.getByRole("radio", { name: "Grade 12" })).not.toBeChecked();
+  await page.reload();
+  await expect(page.getByRole("button", { name: /Start the quiz/ })).toBeVisible();
+});
+
 test("results page without answers asks you to take the quiz", async ({ page }) => {
   await page.goto("/quiz/results");
   await expect(page.getByRole("link", { name: "Take the quiz" })).toBeVisible();

@@ -101,7 +101,7 @@ export function QuizResults({
         </button>
         <button type="button" onClick={retake} className={btn}>
           <RotateCcw aria-hidden />
-          Retake
+          Start a new quiz
         </button>
       </div>
       <p className="sr-only" aria-live="polite">

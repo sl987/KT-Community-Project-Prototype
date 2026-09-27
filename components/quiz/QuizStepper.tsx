@@ -73,24 +73,43 @@ function Radios<T extends string | number>({
   );
 }
 
-function loadSaved(): { answers: QuizAnswers; index: number } | null {
+interface Saved {
+  answers: QuizAnswers;
+  index: number;
+  /** True once "See my results" was pressed. */
+  completed: boolean;
+}
+
+function loadSaved(): Saved | null {
   try {
     const raw = window.localStorage.getItem(QUIZ_STORAGE_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as { index?: unknown };
+    const parsed = JSON.parse(raw) as { index?: unknown; completed?: unknown };
     const answers = QuizAnswersSchema.safeParse(parsed);
     if (!answers.success) return null;
-    return { answers: answers.data, index: typeof parsed.index === "number" ? parsed.index : 0 };
+    return {
+      answers: answers.data,
+      index: typeof parsed.index === "number" ? parsed.index : 0,
+      completed: parsed.completed === true,
+    };
   } catch {
     return null;
   }
 }
 
-function save(answers: QuizAnswers, index: number) {
+function save(answers: QuizAnswers, index: number, completed = false) {
   try {
-    window.localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify({ ...answers, index }));
+    window.localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify({ ...answers, index, completed }));
   } catch {
     // Storage unavailable (private mode etc.): the quiz still works, just can't resume.
+  }
+}
+
+function clearSaved() {
+  try {
+    window.localStorage.removeItem(QUIZ_STORAGE_KEY);
+  } catch {
+    // Ignore: storage may be unavailable.
   }
 }
 
@@ -98,7 +117,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
   const router = useRouter();
   const [answers, setAnswers] = useState<QuizAnswers>(DEFAULT_ANSWERS);
   const [index, setIndex] = useState(-1); // -1 = intro
-  const [saved, setSaved] = useState<{ answers: QuizAnswers; index: number } | null>(null);
+  const [saved, setSaved] = useState<Saved | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -359,7 +378,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
   ];
 
   const finish = () => {
-    save(answers, screens.length - 1);
+    save(answers, screens.length - 1, true);
     router.push(resultsPath(answers));
   };
 
@@ -374,33 +393,56 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
           About 5 minutes. {screens.length} short questions in four parts: academics, interests,
           work style, and preferences. You can skip any question.
         </p>
+        {saved && (
+          <p className="text-muted-foreground text-sm" role="status">
+            {saved.completed
+              ? "You finished this quiz before on this device. Start a new quiz to clear those answers, or go back and change them."
+              : "You have unfinished answers saved on this device."}
+          </p>
+        )}
         <div className="flex flex-wrap gap-3">
           {saved ? (
             <>
-              <button
-                type="button"
-                className={buttonVariants({ size: "lg", className: "h-11 px-4" })}
-                onClick={() => {
-                  setAnswers(saved.answers);
-                  setIndex(Math.min(saved.index, screens.length - 1));
-                }}
-              >
-                Resume where I left off
-              </button>
-              <button
-                type="button"
-                className={buttonVariants({
-                  size: "lg",
-                  variant: "outline",
-                  className: "h-11 px-4",
-                })}
-                onClick={() => {
-                  setAnswers(DEFAULT_ANSWERS);
-                  setIndex(0);
-                }}
-              >
-                Start over
-              </button>
+              {(() => {
+                const startNew = (
+                  <button
+                    key="new"
+                    type="button"
+                    className={buttonVariants({
+                      size: "lg",
+                      variant: saved.completed ? "default" : "outline",
+                      className: "h-11 px-4",
+                    })}
+                    onClick={() => {
+                      clearSaved();
+                      setSaved(null);
+                      setAnswers(DEFAULT_ANSWERS);
+                      setIndex(0);
+                    }}
+                  >
+                    Start a new quiz (clear answers)
+                  </button>
+                );
+                const resume = (
+                  <button
+                    key="resume"
+                    type="button"
+                    className={buttonVariants({
+                      size: "lg",
+                      variant: saved.completed ? "outline" : "default",
+                      className: "h-11 px-4",
+                    })}
+                    onClick={() => {
+                      setAnswers(saved.answers);
+                      setIndex(saved.completed ? 0 : Math.min(saved.index, screens.length - 1));
+                    }}
+                  >
+                    {saved.completed ? "Change my previous answers" : "Resume where I left off"}
+                  </button>
+                );
+                // The main action comes first: clearing after a finished quiz, resuming otherwise.
+                return saved.completed ? [startNew, resume] : [resume, startNew];
+              })()}
             </>
           ) : (
             <button
