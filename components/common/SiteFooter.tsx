@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/format";
 export function SiteFooter() {
   return (
     <footer className="mt-16 border-t print:hidden">
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="text-muted-foreground mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p>
           Last data update:{" "}
           {lastDataUpdate ? (
@@ -15,7 +15,7 @@ export function SiteFooter() {
           )}
           . This site is a starting point, not advice. Always confirm on official program pages.
         </p>
-        <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
+        <Link href="/about" className="hover:text-foreground underline underline-offset-4">
           About, sources &amp; methodology
         </Link>
       </div>

@@ -7,9 +7,12 @@ function OutlookMeter({ rating }: { rating: OutlookRating }) {
   const pct = Math.round(OUTLOOK_SCORE[rating] * 100);
   return (
     <div className="flex items-center gap-2">
-      <div className="h-2 w-28 overflow-hidden rounded-full bg-muted" aria-hidden>
+      <div className="bg-muted h-2 w-28 overflow-hidden rounded-full" aria-hidden>
         {rating !== "undetermined" && (
-          <div className="h-full rounded-full bg-chart-2" style={{ width: `${Math.max(pct, 6)}%` }} />
+          <div
+            className="bg-chart-2 h-full rounded-full"
+            style={{ width: `${Math.max(pct, 6)}%` }}
+          />
         )}
       </div>
       <span className="font-medium">{OUTLOOK_LABELS[rating]}</span>
@@ -56,7 +59,7 @@ export function DemandPanel({
       </div>
       {regions.length > 0 && (
         <table className="w-full text-sm">
-          <caption className="mb-1 text-left text-muted-foreground">Outlook by region</caption>
+          <caption className="text-muted-foreground mb-1 text-left">Outlook by region</caption>
           <tbody>
             {regions.map(([region, rating]) => (
               <tr key={region}>
@@ -69,7 +72,7 @@ export function DemandPanel({
           </tbody>
         </table>
       )}
-      <p className="text-xs text-muted-foreground">
+      <p className="text-muted-foreground text-xs">
         Outlook source: <SourceLink href={outlook.sourceUrl} label="Job Bank" />
         {!outlook.sourceUrl && "not yet verified"}
       </p>

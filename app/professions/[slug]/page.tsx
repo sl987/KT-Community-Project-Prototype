@@ -44,14 +44,17 @@ export default async function ProfessionPage({ params }: PageProps<"/professions
   const regUrl = regulator?.url ?? null;
 
   return (
-    <article className="mx-auto grid max-w-5xl gap-10 px-4 py-8">
+    <article className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-10 px-4 py-8">
       <header className="grid gap-3">
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-          <Link href="/" className="underline underline-offset-2">Programs</Link> / Professions
+        <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
+          <Link href="/" className="underline underline-offset-2">
+            Programs
+          </Link>{" "}
+          / Professions
         </nav>
         <VerifiedBadge provenance={prof.provenance} />
         <h1 className="text-3xl font-semibold tracking-tight">{prof.title}</h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">{prof.summary}</p>
+        <p className="text-muted-foreground max-w-2xl text-lg">{prof.summary}</p>
         <ul className="flex flex-wrap gap-2 text-sm">
           <li className="rounded-full border px-3 py-1">{DOMAIN_LABELS[prof.domain]}</li>
           <li className="rounded-full border px-3 py-1">{CONTACT_LABELS[prof.contactLevel]}</li>
@@ -85,8 +88,10 @@ export default async function ProfessionPage({ params }: PageProps<"/professions
         </ul>
       </section>
 
-      <section aria-labelledby="job-h" className="grid gap-3">
-        <h2 id="job-h" className="text-xl font-semibold">The job</h2>
+      <section aria-labelledby="job-h" className="grid grid-cols-[minmax(0,1fr)] gap-3">
+        <h2 id="job-h" className="text-xl font-semibold">
+          The job
+        </h2>
         <ScopeTabs
           summary={prof.summary}
           duties={prof.typicalDuties}
@@ -106,7 +111,9 @@ export default async function ProfessionPage({ params }: PageProps<"/professions
       </section>
 
       <section aria-labelledby="lic-h" className="grid gap-3 text-sm">
-        <h2 id="lic-h" className="text-xl font-semibold">Licensing and registration</h2>
+        <h2 id="lic-h" className="text-xl font-semibold">
+          Licensing and registration
+        </h2>
         {isFlagged(prof.provenance, "licensing") && (
           <UnverifiedField officialUrl={regUrl} officialLabel="regulator's website" />
         )}
@@ -124,7 +131,11 @@ export default async function ProfessionPage({ params }: PageProps<"/professions
               )}
               <p className="mt-1">
                 Fee:{" "}
-                {e.feeCAD?.value != null ? formatCAD(e.feeCAD.value) : <UnverifiedField officialUrl={regUrl} />}
+                {e.feeCAD?.value != null ? (
+                  formatCAD(e.feeCAD.value)
+                ) : (
+                  <UnverifiedField officialUrl={regUrl} />
+                )}
               </p>
               <SourceLink href={e.sourceUrl} />
             </li>
@@ -151,7 +162,9 @@ export default async function ProfessionPage({ params }: PageProps<"/professions
       </section>
 
       <section aria-labelledby="pay-h" className="grid gap-3">
-        <h2 id="pay-h" className="text-xl font-semibold">Pay and demand</h2>
+        <h2 id="pay-h" className="text-xl font-semibold">
+          Pay and demand
+        </h2>
         <div className="grid gap-4 md:grid-cols-2">
           <SalaryPanel
             wage={prof.labourMarket.wageOntario}

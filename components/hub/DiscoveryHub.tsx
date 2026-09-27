@@ -27,7 +27,9 @@ export function DiscoveryHub({
     (p) => matchPrereqs(p.prerequisites, selectedCourses).missing.length === 0,
   ).length;
 
-  const compareSet = compare.filter((s) => programs.some((p) => p.slug === s)).slice(0, MAX_COMPARE);
+  const compareSet = compare
+    .filter((s) => programs.some((p) => p.slug === s))
+    .slice(0, MAX_COMPARE);
   const compared = compareSet.map((s) => programs.find((p) => p.slug === s)!);
   const setCompare = (next: string[]) => setFilters({ compare: next.length ? next : null });
   const courseQuery = selectedCourses.length ? `?courses=${selectedCourses.join(",")}` : "";
@@ -39,11 +41,11 @@ export function DiscoveryHub({
           <h2 id="matcher-heading" className="text-xl font-semibold">
             Quick matcher
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Pick the Grade 11 and 12 courses you&apos;ve taken or plan to take.
           </p>
         </div>
-        <p className="rounded-lg bg-muted px-3 py-2 text-sm" aria-live="polite">
+        <p className="bg-muted rounded-lg px-3 py-2 text-sm" aria-live="polite">
           {selectedCourses.length === 0 ? (
             "No courses selected yet."
           ) : (
@@ -55,7 +57,10 @@ export function DiscoveryHub({
             </>
           )}
         </p>
-        <details className="rounded-xl border" open={selectedCourses.length === 0 ? undefined : true}>
+        <details
+          className="rounded-xl border"
+          open={selectedCourses.length === 0 ? undefined : true}
+        >
           <summary className="cursor-pointer rounded-xl px-4 py-3 font-medium">
             Choose courses ({selectedCourses.length} selected)
           </summary>
@@ -75,13 +80,13 @@ export function DiscoveryHub({
           <h2 id="programs-heading" className="text-xl font-semibold">
             Programs
           </h2>
-          <p className="text-sm text-muted-foreground" aria-live="polite">
+          <p className="text-muted-foreground text-sm" aria-live="polite">
             Showing {visible.length} of {programs.length}
           </p>
         </div>
         <FilterBar />
         {visible.length === 0 ? (
-          <p className="rounded-lg border p-6 text-center text-muted-foreground">
+          <p className="text-muted-foreground rounded-lg border p-6 text-center">
             No programs match these filters. Try removing one.
           </p>
         ) : (

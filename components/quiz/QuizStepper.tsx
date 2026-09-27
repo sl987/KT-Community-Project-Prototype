@@ -57,14 +57,14 @@ function Radios<T extends string | number>({
       {options.map((o) => (
         <label
           key={String(o.value)}
-          className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm has-checked:border-primary has-checked:bg-primary/10 hover:bg-muted"
+          className="has-checked:border-primary has-checked:bg-primary/10 hover:bg-muted flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm"
         >
           <input
             type="radio"
             name={name}
             checked={value === o.value}
             onChange={() => onChange(o.value)}
-            className="size-4 accent-primary"
+            className="accent-primary size-4"
           />
           {o.label}
         </label>
@@ -151,10 +151,11 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
               max={100}
               value={answers.average ?? ""}
               onChange={(e) => {
-                const n = e.target.value === "" ? null : Math.min(100, Math.max(0, Number(e.target.value)));
+                const n =
+                  e.target.value === "" ? null : Math.min(100, Math.max(0, Number(e.target.value)));
                 set({ average: n });
               }}
-              className="h-11 rounded-md border bg-background px-3 text-base"
+              className="bg-background h-11 rounded-md border px-3 text-base"
             />
           </label>
           <label className="flex items-center gap-2 text-sm">
@@ -162,7 +163,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
               type="checkbox"
               checked={answers.average === null}
               onChange={(e) => e.target.checked && set({ average: null })}
-              className="size-4 accent-primary"
+              className="accent-primary size-4"
             />
             Not sure yet
           </label>
@@ -171,7 +172,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
               type="checkbox"
               checked={answers.averageIsGrade11}
               onChange={(e) => set({ averageIsGrade11: e.target.checked })}
-              className="size-4 accent-primary"
+              className="accent-primary size-4"
             />
             This is my Grade 11 final average
           </label>
@@ -214,49 +215,45 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
                   else marks[s] = Math.min(100, Math.max(0, Number(e.target.value)));
                   set({ marks });
                 }}
-                className="h-11 rounded-md border bg-background px-3 text-base"
+                className="bg-background h-11 rounded-md border px-3 text-base"
               />
             </label>
           ))}
         </div>
       ),
     },
-    ...config.interestItems.map(
-      (item, i): Screen => ({
-        id: `interest-${item.id}`,
-        section: "Interests",
-        title: `Would you enjoy this? (${i + 1} of ${config.interestItems.length})`,
-        hint: item.text,
-        render: () => (
-          <Radios
-            name={`interest-${item.id}`}
-            value={answers.interests[item.id]}
-            onChange={(v) => set({ interests: { ...answers.interests, [item.id]: v } })}
-            options={LIKERT.map((label, j) => ({ value: j + 1, label }))}
-            columns
-          />
-        ),
-      }),
-    ),
-    ...config.workStyleQuestions.map(
-      (q): Screen => ({
-        id: `ws-${q.key}`,
-        section: "Work style",
-        title: q.text,
-        render: () => (
-          <Radios
-            name={`ws-${q.key}`}
-            value={answers.workStyle[q.key]}
-            onChange={(v) => set({ workStyle: { ...answers.workStyle, [q.key]: v } })}
-            options={[1, 2, 3, 4, 5].map((v) => ({
-              value: v,
-              label: v === 1 ? `1 — ${q.lowLabel}` : v === 5 ? `5 — ${q.highLabel}` : String(v),
-            }))}
-            columns
-          />
-        ),
-      }),
-    ),
+    ...config.interestItems.map((item, i): Screen => ({
+      id: `interest-${item.id}`,
+      section: "Interests",
+      title: `Would you enjoy this? (${i + 1} of ${config.interestItems.length})`,
+      hint: item.text,
+      render: () => (
+        <Radios
+          name={`interest-${item.id}`}
+          value={answers.interests[item.id]}
+          onChange={(v) => set({ interests: { ...answers.interests, [item.id]: v } })}
+          options={LIKERT.map((label, j) => ({ value: j + 1, label }))}
+          columns
+        />
+      ),
+    })),
+    ...config.workStyleQuestions.map((q): Screen => ({
+      id: `ws-${q.key}`,
+      section: "Work style",
+      title: q.text,
+      render: () => (
+        <Radios
+          name={`ws-${q.key}`}
+          value={answers.workStyle[q.key]}
+          onChange={(v) => set({ workStyle: { ...answers.workStyle, [q.key]: v } })}
+          options={[1, 2, 3, 4, 5].map((v) => ({
+            value: v,
+            label: v === 1 ? `1 — ${q.lowLabel}` : v === 5 ? `5 — ${q.highLabel}` : String(v),
+          }))}
+          columns
+        />
+      ),
+    })),
     {
       id: "length",
       section: "Preferences",
@@ -301,13 +298,13 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
           {RegionSchema.options.map((r) => (
             <label
               key={r}
-              className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 text-sm has-checked:border-primary has-checked:bg-primary/10"
+              className="has-checked:border-primary has-checked:bg-primary/10 flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 text-sm"
             >
               <input
                 type="checkbox"
                 checked={answers.regions.includes(r)}
                 onChange={() => set({ regions: toggle(answers.regions, r) })}
-                className="size-4 accent-primary"
+                className="accent-primary size-4"
               />
               {REGION_LABELS[r]}
             </label>
@@ -369,7 +366,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
   if (index < 0) {
     return (
       <div className="grid gap-5">
-        <p className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/5 p-3 text-sm">
+        <p className="border-primary/40 bg-primary/5 flex items-center gap-2 rounded-lg border p-3 text-sm">
           <Lock className="size-4 shrink-0" aria-hidden />
           Your answers stay on your device. We don&apos;t ask for your name, email, or school.
         </p>
@@ -392,7 +389,11 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
               </button>
               <button
                 type="button"
-                className={buttonVariants({ size: "lg", variant: "outline", className: "h-11 px-4" })}
+                className={buttonVariants({
+                  size: "lg",
+                  variant: "outline",
+                  className: "h-11 px-4",
+                })}
                 onClick={() => {
                   setAnswers(DEFAULT_ANSWERS);
                   setIndex(0);
@@ -430,7 +431,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
       }}
     >
       <div className="grid gap-1">
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="text-muted-foreground flex justify-between text-xs">
           <span>{screen.section}</span>
           <span>
             {index + 1} of {screens.length}
@@ -442,9 +443,9 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={pct}
-          className="h-2 overflow-hidden rounded-full bg-muted"
+          className="bg-muted h-2 overflow-hidden rounded-full"
         >
-          <div className="h-full bg-primary transition-[width]" style={{ width: `${pct}%` }} />
+          <div className="bg-primary h-full transition-[width]" style={{ width: `${pct}%` }} />
         </div>
       </div>
       <fieldset className="grid gap-4">
@@ -454,7 +455,11 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
           </h2>
         </legend>
         {screen.hint && (
-          <p className={screen.section === "Interests" ? "text-lg font-medium" : "text-muted-foreground"}>
+          <p
+            className={
+              screen.section === "Interests" ? "text-lg font-medium" : "text-muted-foreground"
+            }
+          >
             {screen.hint}
           </p>
         )}

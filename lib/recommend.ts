@@ -5,7 +5,13 @@
 import type { ProgramSummary } from "./data";
 import { isEligible } from "./eligibility";
 import { OUTLOOK_SCORE } from "./format";
-import { describePrereq, matchPrereqs, prereqStatus, type PrereqMatch, type PrereqStatus } from "./prereqs";
+import {
+  describePrereq,
+  matchPrereqs,
+  prereqStatus,
+  type PrereqMatch,
+  type PrereqStatus,
+} from "./prereqs";
 import {
   RiasecSchema,
   type AcademicFit,
@@ -60,7 +66,10 @@ export function interestFit(
   rankWeights: readonly number[],
 ): number {
   if (!student) return 0.5;
-  const prof = Object.fromEntries(RiasecSchema.options.map((c) => [c, 0])) as Record<Riasec, number>;
+  const prof = Object.fromEntries(RiasecSchema.options.map((c) => [c, 0])) as Record<
+    Riasec,
+    number
+  >;
   professionCodes.forEach((c, i) => (prof[c] = rankWeights[i] ?? 0));
   let dot = 0;
   let a2 = 0;

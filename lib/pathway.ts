@@ -40,7 +40,8 @@ export function buildPathway(
   const hs = first("high_school");
   if (hs) {
     const prereqs = program.academic.prerequisites.map(
-      (p) => `${describePrereq(p)}${p.minMark != null ? ` (minimum ${p.minMark}%)` : ""}${p.note ? ` — ${p.note}` : ""}`,
+      (p) =>
+        `${describePrereq(p)}${p.minMark != null ? ` (minimum ${p.minMark}%)` : ""}${p.note ? ` — ${p.note}` : ""}`,
     );
     if (prereqs.length) hs.lists.push({ title: "Prerequisite courses", items: prereqs });
     else hs.facts.push({ label: "Prerequisite courses", value: null });
@@ -57,7 +58,10 @@ export function buildPathway(
         label: "Equal consideration date",
         value: a.equalConsiderationDate ? formatDate(a.equalConsiderationDate) : null,
       },
-      { label: "Starts in", value: a.intakes.map((i) => i[0].toUpperCase() + i.slice(1)).join(", ") },
+      {
+        label: "Starts in",
+        value: a.intakes.map((i) => i[0].toUpperCase() + i.slice(1)).join(", "),
+      },
     );
     const supp = program.academic.supplementary.map(
       (s) => `${s.label}${s.required ? " (required)" : " (optional)"}`,
@@ -92,12 +96,18 @@ export function buildPathway(
   const examSteps = steps.filter((s) => s.phase === "exam" && !isJuris(s));
   const remaining = [...lic.exams];
   for (const step of examSteps) {
-    const byName = remaining.findIndex((e) => step.title.toLowerCase().includes(e.name.toLowerCase()));
+    const byName = remaining.findIndex((e) =>
+      step.title.toLowerCase().includes(e.name.toLowerCase()),
+    );
     const idx = byName >= 0 ? byName : 0;
     const assigned = step === examSteps.at(-1) ? remaining.splice(0) : remaining.splice(idx, 1);
     for (const exam of assigned) {
       step.facts.push(
-        { label: `${exam.name}: administered by`, value: exam.administeredBy, sourceUrl: exam.sourceUrl },
+        {
+          label: `${exam.name}: administered by`,
+          value: exam.administeredBy,
+          sourceUrl: exam.sourceUrl,
+        },
         { label: `${exam.name}: format`, value: exam.format ?? null },
         { label: `${exam.name}: typical timing`, value: exam.typicalTiming ?? null },
         {
@@ -107,7 +117,10 @@ export function buildPathway(
         },
       );
       if (exam.eligibilityPrereqs.length) {
-        step.lists.push({ title: `To be eligible for the ${exam.name}`, items: exam.eligibilityPrereqs });
+        step.lists.push({
+          title: `To be eligible for the ${exam.name}`,
+          items: exam.eligibilityPrereqs,
+        });
       }
     }
   }

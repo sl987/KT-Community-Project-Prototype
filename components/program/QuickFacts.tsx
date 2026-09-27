@@ -13,9 +13,9 @@ export function QuickFacts({ facts }: { facts: QuickFact[] }) {
     <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
       {facts.map((f) => (
         <li key={f.label}>
-          <details className="group h-full rounded-xl border bg-card p-3">
+          <details className="group bg-card h-full rounded-xl border p-3">
             <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span className="block text-xs text-muted-foreground">{f.label}</span>
+              <span className="text-muted-foreground block text-xs">{f.label}</span>
               <span
                 className={
                   f.value
@@ -25,11 +25,11 @@ export function QuickFacts({ facts }: { facts: QuickFact[] }) {
               >
                 {f.value ?? "Not yet verified"}
               </span>
-              <span className="text-xs text-muted-foreground underline underline-offset-2 group-open:hidden">
+              <span className="text-muted-foreground text-xs underline underline-offset-2 group-open:hidden">
                 Show source
               </span>
             </summary>
-            <div className="mt-1 text-xs text-muted-foreground">
+            <div className="text-muted-foreground mt-1 text-xs">
               {f.note && <p>{f.note}</p>}
               {f.sourceUrl ? <SourceLink href={f.sourceUrl} /> : <p>No source recorded yet.</p>}
             </div>

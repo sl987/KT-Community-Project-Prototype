@@ -23,22 +23,22 @@ export function PathwayTimeline({
   officialUrl: string | null;
 }) {
   return (
-    <ol className="relative grid gap-6 border-l-2 border-border pl-6">
+    <ol className="border-border relative grid gap-6 border-l-2 pl-6">
       {steps.map((s, i) => (
         <li key={`${s.order}-${i}`} className="relative">
           <span
             className={cn(
-              "absolute top-1.5 -left-[31px] size-3.5 rounded-full ring-4 ring-background",
+              "ring-background absolute top-1.5 -left-[31px] size-3.5 rounded-full ring-4",
               PHASE_DOT[s.phase],
             )}
             aria-hidden
           />
-          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+          <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
             Step {i + 1} · {PHASE_LABELS[s.phase]}
             {s.durationLabel && <> · {s.durationLabel}</>}
           </p>
           <h3 className="text-base font-semibold">{s.title}</h3>
-          <p className="text-sm text-muted-foreground">{s.description}</p>
+          <p className="text-muted-foreground text-sm">{s.description}</p>
 
           {s.prereqsForStep && s.prereqsForStep.length > 0 && (
             <div className="mt-2 text-sm">

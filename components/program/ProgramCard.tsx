@@ -60,9 +60,9 @@ export function ProgramCard({
   const inst = p.institutions.map((i) => i.name).join(" & ");
   const where = [...new Set(p.institutions.map((i) => i.city))].join(", ");
   return (
-    <article className="relative flex flex-col gap-3 rounded-xl border bg-card p-4 text-card-foreground shadow-xs transition-shadow focus-within:ring-2 focus-within:ring-ring hover:shadow-md">
+    <article className="bg-card text-card-foreground focus-within:ring-ring relative flex flex-col gap-3 rounded-xl border p-4 shadow-xs transition-shadow focus-within:ring-2 hover:shadow-md">
       <div>
-        <p className="text-sm text-muted-foreground">{p.profession.title}</p>
+        <p className="text-muted-foreground text-sm">{p.profession.title}</p>
         <h3 className="text-lg leading-snug font-semibold">
           <Link
             href={href ?? `/programs/${p.slug}`}
@@ -73,7 +73,7 @@ export function ProgramCard({
         </h3>
         <p className="text-sm">{inst}</p>
       </div>
-      <ul className="grid gap-1 text-sm text-muted-foreground">
+      <ul className="text-muted-foreground grid gap-1 text-sm">
         <li className="flex items-center gap-1.5">
           <GraduationCap className="size-4" aria-hidden />
           {CREDENTIAL_LABELS[p.credential]} · <Clock className="size-4" aria-hidden />
@@ -86,13 +86,13 @@ export function ProgramCard({
       </ul>
       <dl className="grid grid-cols-2 gap-2 text-sm">
         <div>
-          <dt className="text-xs text-muted-foreground">Median wage</dt>
+          <dt className="text-muted-foreground text-xs">Median wage</dt>
           <dd className="font-medium">
             {p.medianWage !== null ? formatHourly(p.medianWage) : "Not yet verified"}
           </dd>
         </div>
         <div>
-          <dt className="text-xs text-muted-foreground">Job outlook</dt>
+          <dt className="text-muted-foreground text-xs">Job outlook</dt>
           <dd className="font-medium">
             {p.outlook ? OUTLOOK_LABELS[p.outlook] : "Not yet verified"}
           </dd>
@@ -109,7 +109,7 @@ export function ProgramCard({
             checked={compare.checked}
             disabled={compare.disabled}
             onChange={compare.onChange}
-            className="size-4 accent-primary"
+            className="accent-primary size-4"
           />
           Compare
           {compare.disabled && <span className="sr-only">(maximum of 3 selected)</span>}

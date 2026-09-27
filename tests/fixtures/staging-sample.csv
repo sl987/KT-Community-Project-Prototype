@@ -1,0 +1,7 @@
+recordType,recordId,fieldPath,oldValue,newValue,sourceUrl,evidenceNote,detectedAt,agentConfidence,status,reviewedBy,reviewedAt
+program,humber-practical-nursing,application.programCode.value,,"""TEST-ONLY""",https://humber.ca/test-fixture,TEST FIXTURE ROW - not real data,2026-09-20,0.9,approved,owner,2026-09-21
+program,humber-practical-nursing,academic.prerequisites,[],"[{""kind"":""required"",""courses"":[""ENG4C""]}]",https://humber.ca/test-fixture,TEST FIXTURE ROW - high-risk example,2026-09-20,0.8,approved,owner,2026-09-21
+program,algonquin-practical-nursing,application.programCode.value,,"""TEST-ONLY""",https://www.reddit.com/r/test,TEST FIXTURE ROW - unofficial source,2026-09-20,0.5,approved,owner,2026-09-21
+program,algonquin-practical-nursing,durationYears,5,3,https://www.algonquincollege.com/test-fixture,TEST FIXTURE ROW - stale oldValue,2026-09-20,0.7,approved,owner,2026-09-21
+program,fanshawe-respiratory-therapy,durationYears,3,4,,TEST FIXTURE ROW - missing source,2026-09-20,0.7,approved,owner,2026-09-21
+profession,respiratory-therapist,labourMarket.wageOntario.median,,40,https://www.jobbank.gc.ca/test-fixture,TEST FIXTURE ROW - still pending,2026-09-20,0.6,pending,,

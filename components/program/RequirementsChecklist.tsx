@@ -33,7 +33,9 @@ export function RequirementsChecklist({
   const [urlCourses] = useQueryState("courses", parseAsArrayOf(parseAsString));
   const saved = useSyncExternalStore(noopSubscribe, readSavedCourses, () => "");
   const courses = urlCourses?.length ? urlCourses : saved ? saved.split(",") : null;
-  const from = urlCourses?.length ? "the courses you selected" : "courses from your quiz (saved on this device)";
+  const from = urlCourses?.length
+    ? "the courses you selected"
+    : "courses from your quiz (saved on this device)";
 
   if (prerequisites.length === 0) {
     return (
@@ -46,7 +48,7 @@ export function RequirementsChecklist({
   const have = new Set(courses ?? []);
   return (
     <div className="grid gap-2">
-      {courses && <p className="text-sm text-muted-foreground">Checked against {from}.</p>}
+      {courses && <p className="text-muted-foreground text-sm">Checked against {from}.</p>}
       {!verified && <UnverifiedField officialUrl={officialUrl} />}
       <ul className="grid gap-1">
         {prerequisites.map((p) => {
@@ -55,12 +57,18 @@ export function RequirementsChecklist({
             <li key={describePrereq(p)} className="flex items-start gap-2 text-sm">
               {courses ? (
                 met ? (
-                  <CircleCheck className="mt-0.5 size-4 shrink-0 text-emerald-700 dark:text-emerald-400" aria-label="You have this" />
+                  <CircleCheck
+                    className="mt-0.5 size-4 shrink-0 text-emerald-700 dark:text-emerald-400"
+                    aria-label="You have this"
+                  />
                 ) : (
-                  <CircleX className="mt-0.5 size-4 shrink-0 text-rose-700 dark:text-rose-400" aria-label="Missing" />
+                  <CircleX
+                    className="mt-0.5 size-4 shrink-0 text-rose-700 dark:text-rose-400"
+                    aria-label="Missing"
+                  />
                 )
               ) : (
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground" aria-hidden />
+                <span className="bg-foreground mt-2 size-1.5 shrink-0 rounded-full" aria-hidden />
               )}
               <span>
                 <span className="font-mono">{describePrereq(p)}</span>

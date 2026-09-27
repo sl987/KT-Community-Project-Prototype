@@ -54,7 +54,9 @@ export async function generateMetadata({
   const program = getProgram(slug);
   if (!program) return {};
   const prof = getProfession(program.professionId);
-  const inst = programInstitutions(program).map((i) => i.name).join(" & ");
+  const inst = programInstitutions(program)
+    .map((i) => i.name)
+    .join(" & ");
   return {
     title: `${program.name} at ${inst}`,
     description: `Path from Grade 12 to ${prof?.title ?? "working professional"}: requirements, licensing, pay and demand.`,
@@ -69,7 +71,7 @@ const AVERAGE_TYPE: Record<string, string> = {
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section aria-labelledby={id} className="grid scroll-mt-4 gap-3">
+    <section aria-labelledby={id} className="grid scroll-mt-4 grid-cols-[minmax(0,1fr)] gap-3">
       <h2 id={id} className="text-xl font-semibold tracking-tight">
         {title}
       </h2>
@@ -101,11 +103,14 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
   ];
 
   return (
-    <article className="mx-auto grid max-w-5xl gap-10 px-4 py-8">
+    <article className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-10 px-4 py-8">
       {/* 1. Header */}
       <header className="grid gap-3">
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-          <Link href="/" className="underline underline-offset-2">Programs</Link> /{" "}
+        <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
+          <Link href="/" className="underline underline-offset-2">
+            Programs
+          </Link>{" "}
+          /{" "}
           <Link href={`/professions/${profession.slug}`} className="underline underline-offset-2">
             {profession.title}
           </Link>
@@ -114,7 +119,7 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           <VerifiedBadge provenance={program.provenance} />
           <a
             href={reportErrorHref(`${program.name} (${program.slug})`)}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-2"
+            className="text-muted-foreground inline-flex items-center gap-1 text-xs underline underline-offset-2"
           >
             <Flag className="size-3" aria-hidden />
             Report an error
@@ -124,19 +129,19 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
         <p className="text-lg">
           {institutions.map((i) => `${i.name} (${i.campus} campus, ${i.city})`).join(" & ")}
         </p>
-        <dl className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
+        <dl className="grid gap-1 text-sm sm:flex sm:flex-wrap sm:gap-x-6 [&>div]:min-w-0">
           <div>
-            <dt className="inline text-muted-foreground">Credential: </dt>
+            <dt className="text-muted-foreground inline">Credential: </dt>
             <dd className="inline">
               {program.credentialName} ({CREDENTIAL_LABELS[program.credential]})
             </dd>
           </div>
           <div>
-            <dt className="inline text-muted-foreground">Length: </dt>
+            <dt className="text-muted-foreground inline">Length: </dt>
             <dd className="inline">{formatYears(program.durationYears)}</dd>
           </div>
           <div>
-            <dt className="inline text-muted-foreground">Apply through: </dt>
+            <dt className="text-muted-foreground inline">Apply through: </dt>
             <dd className="inline">
               {PORTAL_LABELS[program.application.portal]}, code{" "}
               {program.application.programCode.value ?? (
@@ -145,7 +150,7 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
             </dd>
           </div>
           <div>
-            <dt className="inline text-muted-foreground">Region: </dt>
+            <dt className="text-muted-foreground inline">Region: </dt>
             <dd className="inline">
               {[...new Set(institutions.map((i) => REGION_LABELS[i.region]))].join(", ")}
             </dd>
@@ -312,7 +317,7 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           />
           <DemandPanel labour={lm} officialUrl="https://www.jobbank.gc.ca" />
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Tuition:{" "}
           {program.costs?.tuitionDomesticPerYear.value != null ? (
             <>
@@ -321,7 +326,8 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
                 currency: "CAD",
                 maximumFractionDigits: 0,
               })}{" "}
-              per year (domestic) <SourceLink href={program.costs.tuitionDomesticPerYear.sourceUrl} />
+              per year (domestic){" "}
+              <SourceLink href={program.costs.tuitionDomesticPerYear.sourceUrl} />
             </>
           ) : (
             <UnverifiedField officialUrl={officialUrl} />
@@ -350,14 +356,19 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           <ul className="list-disc pl-5 text-sm break-all">
             {sources.map((s) => (
               <li key={s}>
-                <a href={s} target="_blank" rel="noopener noreferrer" className="underline">
+                <a
+                  href={s}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 underline"
+                >
                   {s}
                 </a>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             No sources recorded yet. Every value on this page is waiting for verification.
           </p>
         )}
@@ -366,14 +377,19 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           <ul className="list-disc pl-5">
             {official.map((o) => (
               <li key={o.url}>
-                <a href={o.url} target="_blank" rel="noopener noreferrer" className="underline">
+                <a
+                  href={o.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 underline"
+                >
                   {o.label}
                 </a>
               </li>
             ))}
           </ul>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-muted-foreground text-xs">
           {program.provenance.lastVerified
             ? `Last verified ${formatDate(program.provenance.lastVerified)}.`
             : "This program has not been verified yet."}

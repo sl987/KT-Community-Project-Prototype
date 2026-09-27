@@ -42,13 +42,13 @@ function CheckboxGroup<T extends string>({
       <ul className="grid gap-0.5">
         {options.map((o) => (
           <li key={o}>
-            <label className="flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm hover:bg-muted">
+            <label className="hover:bg-muted flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm">
               <input
                 type="checkbox"
                 name={name}
                 checked={value.includes(o)}
                 onChange={() => onChange(toggle(value, o))}
-                className="size-4 accent-primary"
+                className="accent-primary size-4"
               />
               {labels[o]}
             </label>
@@ -69,12 +69,12 @@ function Toggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <label className="flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm hover:bg-muted">
+    <label className="hover:bg-muted flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm">
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="size-4 accent-primary"
+        className="accent-primary size-4"
       />
       {label}
     </label>
@@ -103,10 +103,10 @@ export function FilterBar() {
       <summary className="flex cursor-pointer list-none items-center gap-2 rounded-xl px-4 py-3 font-medium [&::-webkit-details-marker]:hidden">
         <SlidersHorizontal className="size-4" aria-hidden />
         Filters{n > 0 && ` (${n} active)`}
-        <span className="ml-auto text-sm font-normal text-muted-foreground group-open:hidden">
+        <span className="text-muted-foreground ml-auto text-sm font-normal group-open:hidden">
           Show
         </span>
-        <span className="ml-auto hidden text-sm font-normal text-muted-foreground group-open:inline">
+        <span className="text-muted-foreground ml-auto hidden text-sm font-normal group-open:inline">
           Hide
         </span>
       </summary>
@@ -175,7 +175,7 @@ export function FilterBar() {
           <fieldset>
             <legend className="mb-1 text-sm font-medium">Median wage (hourly)</legend>
             <div className="grid grid-cols-2 gap-2">
-              <label className="text-xs text-muted-foreground">
+              <label className="text-muted-foreground text-xs">
                 At least
                 <select
                   className={selectClass}
@@ -190,7 +190,7 @@ export function FilterBar() {
                   ))}
                 </select>
               </label>
-              <label className="text-xs text-muted-foreground">
+              <label className="text-muted-foreground text-xs">
                 At most
                 <select
                   className={selectClass}
@@ -238,7 +238,7 @@ export function FilterBar() {
         </div>
       </div>
       {(f.goodOutlook || f.minWage !== null || f.maxWage !== null) && (
-        <p className="border-t px-4 py-2 text-xs text-muted-foreground">
+        <p className="text-muted-foreground border-t px-4 py-2 text-xs">
           Programs whose wage or outlook is not yet verified are hidden by these filters.
         </p>
       )}

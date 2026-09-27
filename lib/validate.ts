@@ -269,7 +269,8 @@ export function validateData(raw: RawData, today: Date = new Date()): Validation
     const keys = quiz.workStyleQuestions.map((q) => q.key);
     for (const key of WorkStyleKeySchema.options) {
       const n = keys.filter((k) => k === key).length;
-      if (n !== 1) errors.push(`quiz.json: work-style "${key}" must have exactly one question (has ${n})`);
+      if (n !== 1)
+        errors.push(`quiz.json: work-style "${key}" must have exactly one question (has ${n})`);
     }
   }
 

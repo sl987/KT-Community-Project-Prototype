@@ -24,7 +24,11 @@ export function NonAcademicChecklist({
         <UnverifiedField officialUrl={officialUrl} />
         <p className="text-muted-foreground">
           Most programs with clinical placements need things like a vulnerable sector check,
-          immunizations, and CPR. <Link href="/guide#readiness" className="underline">Learn what these are</Link>.
+          immunizations, and CPR.{" "}
+          <Link href="/guide#readiness" className="underline">
+            Learn what these are
+          </Link>
+          .
         </p>
       </div>
     );
@@ -37,7 +41,7 @@ export function NonAcademicChecklist({
           <div key={stage}>
             <h3 className="mb-2 font-medium">{title}</h3>
             {list.length === 0 ? (
-              <p className="text-sm text-muted-foreground">Nothing listed.</p>
+              <p className="text-muted-foreground text-sm">Nothing listed.</p>
             ) : (
               <ul className="grid gap-2 text-sm">
                 {list.map((i) => (

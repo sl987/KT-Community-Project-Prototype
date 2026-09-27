@@ -17,7 +17,7 @@ export function SourceLink({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground",
+        "text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-xs underline underline-offset-2",
         className,
       )}
     >

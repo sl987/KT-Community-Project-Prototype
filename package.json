@@ -14,7 +14,10 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "sync": "tsx scripts/sync-from-sheet.ts",
+    "sync:dry-run": "tsx scripts/sync-from-sheet.ts --csv tests/fixtures/staging-sample.csv --dry-run",
+    "report:stale": "tsx scripts/stale-report.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

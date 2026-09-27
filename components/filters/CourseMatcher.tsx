@@ -43,14 +43,14 @@ export function CourseMatcher({
                   <li key={c.code}>
                     <label
                       htmlFor={id}
-                      className="flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm hover:bg-muted"
+                      className="hover:bg-muted flex min-h-8 cursor-pointer items-center gap-2 rounded-md px-1 text-sm"
                     >
                       <input
                         id={id}
                         type="checkbox"
                         checked={set.has(c.code)}
                         onChange={() => toggle(c.code)}
-                        className="size-4 accent-primary"
+                        className="accent-primary size-4"
                       />
                       <span className="font-mono text-xs">{c.code}</span>
                       <span>

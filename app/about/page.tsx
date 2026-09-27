@@ -14,7 +14,7 @@ export default function AboutPage() {
     <div className="mx-auto grid max-w-3xl gap-8 px-4 py-10 [&_h2]:text-xl [&_h2]:font-semibold [&_section]:grid [&_section]:gap-2">
       <header className="grid gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">About this site</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-muted-foreground text-lg">
           Ontario Healthcare Pathways helps Grade 11 and 12 students, and the adults helping them,
           find regulated health care careers you can start straight from high school.
         </p>

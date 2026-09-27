@@ -60,5 +60,5 @@ export function useFilters() {
   };
 }
 
-export const toggle = <T,>(list: readonly T[], value: T) =>
+export const toggle = <T>(list: readonly T[], value: T) =>
   list.includes(value) ? list.filter((v) => v !== value) : [...list, value];

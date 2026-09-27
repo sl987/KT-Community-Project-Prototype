@@ -4,7 +4,10 @@ import { describePrereq, matchPrereqs } from "@/lib/prereqs";
 /** Generic ways to pick up a missing course (§7.6). No specific providers. */
 export const WAYS_TO_GET_A_COURSE = [
   { title: "Summer school", text: "Many school boards offer credit courses in July." },
-  { title: "Night school or con-ed", text: "Evening or weekend courses through your school board." },
+  {
+    title: "Night school or con-ed",
+    text: "Evening or weekend courses through your school board.",
+  },
   {
     title: "E-learning",
     text: "Online courses through your board or a provincially inspected school.",
@@ -35,7 +38,10 @@ export function MissingCourseHelper({
   for (const { p, m } of matches) {
     for (const miss of m.missing) {
       const key = describePrereq(miss);
-      missingCounts.set(key, [...(missingCounts.get(key) ?? []), `${p.profession.title} (${p.institutions[0]?.name})`]);
+      missingCounts.set(key, [
+        ...(missingCounts.get(key) ?? []),
+        `${p.profession.title} (${p.institutions[0]?.name})`,
+      ]);
     }
   }
   const gaps = [...missingCounts.entries()].sort((a, b) => b[1].length - a[1].length);
@@ -47,7 +53,10 @@ export function MissingCourseHelper({
       </summary>
       <div className="grid gap-4 border-t p-4 text-sm">
         {courses.length === 0 ? (
-          <p>Select the courses you have or plan to take above, and we&apos;ll show what&apos;s still open to you.</p>
+          <p>
+            Select the courses you have or plan to take above, and we&apos;ll show what&apos;s still
+            open to you.
+          </p>
         ) : (
           <>
             <p>
@@ -78,13 +87,13 @@ export function MissingCourseHelper({
           <h3 className="mb-1 font-medium">Ways to get a missing course</h3>
           <ul className="grid gap-2 sm:grid-cols-2">
             {WAYS_TO_GET_A_COURSE.map((w) => (
-              <li key={w.title} className="rounded-lg bg-muted/60 p-3">
+              <li key={w.title} className="bg-muted/60 rounded-lg p-3">
                 <p className="font-medium">{w.title}</p>
                 <p className="text-muted-foreground">{w.text}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-muted-foreground">
+          <p className="text-muted-foreground mt-2">
             Talk to your guidance counsellor about which option fits your timeline.
           </p>
         </div>

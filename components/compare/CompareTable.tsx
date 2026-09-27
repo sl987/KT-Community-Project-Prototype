@@ -34,7 +34,10 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
 
   const rows: { label: string; cell: (p: ProgramSummary) => ReactNode }[] = [
     { label: "Profession", cell: (p) => p.profession.title },
-    { label: "School", cell: (p) => p.institutions.map((i) => `${i.name} (${i.city})`).join(" & ") },
+    {
+      label: "School",
+      cell: (p) => p.institutions.map((i) => `${i.name} (${i.city})`).join(" & "),
+    },
     { label: "Credential", cell: (p) => CREDENTIAL_LABELS[p.credential] },
     { label: "Length", cell: (p) => formatYears(p.durationYears) },
     {
@@ -62,13 +65,17 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
           </div>
         ),
     },
-    { label: "Median wage", cell: (p) => (p.medianWage !== null ? formatHourly(p.medianWage) : NV) },
+    {
+      label: "Median wage",
+      cell: (p) => (p.medianWage !== null ? formatHourly(p.medianWage) : NV),
+    },
     { label: "Job outlook", cell: (p) => (p.outlook ? OUTLOOK_LABELS[p.outlook] : NV) },
     {
       label: "Licensing exams",
       cell: (p) =>
-        [...p.profession.exams, ...(p.profession.jurisprudence ? ["Jurisprudence exam"] : [])].join(", ") ||
-        NV,
+        [...p.profession.exams, ...(p.profession.jurisprudence ? ["Jurisprudence exam"] : [])].join(
+          ", ",
+        ) || NV,
     },
     {
       label: "Non-academic requirements",
@@ -83,7 +90,7 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
   return (
     <div className="grid gap-4">
       {selected.length < 2 && (
-        <p className="rounded-lg bg-muted p-3 text-sm">
+        <p className="bg-muted rounded-lg p-3 text-sm">
           Pick at least 2 programs to compare. You can add them below or from the{" "}
           <Link href="/" className="underline">
             program list
@@ -96,25 +103,36 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
           role="region"
           aria-label="Program comparison table"
           tabIndex={0}
-          className="-mx-4 overflow-x-auto px-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="focus-visible:ring-ring -mx-4 overflow-x-auto px-4 focus-visible:ring-2 focus-visible:outline-none"
         >
           <table className="w-full min-w-[36rem] border-separate border-spacing-0 text-sm">
             <caption className="sr-only">Comparison of {selected.length} programs</caption>
             <thead>
               <tr>
-                <th scope="col" className="sticky left-0 z-10 w-32 bg-background p-2 text-left align-bottom">
+                <th
+                  scope="col"
+                  className="bg-background sticky left-0 z-10 w-32 p-2 text-left align-bottom"
+                >
                   <span className="sr-only">Attribute</span>
                 </th>
                 {selected.map((p) => (
                   <th key={p.slug} scope="col" className="border-b p-2 text-left align-bottom">
                     <div className="flex items-start justify-between gap-2">
-                      <Link href={`/programs/${p.slug}`} className="font-semibold underline underline-offset-2">
-                        {p.name}
-                      </Link>
+                      <span>
+                        <Link
+                          href={`/programs/${p.slug}`}
+                          className="font-semibold underline underline-offset-2"
+                        >
+                          {p.name}
+                        </Link>
+                        <span className="text-muted-foreground block text-xs font-normal">
+                          {p.institutions.map((i) => i.name).join(" & ")}
+                        </span>
+                      </span>
                       <button
                         type="button"
                         onClick={() => setSelected(selected.filter((s) => s !== p))}
-                        className="rounded-md p-1 hover:bg-muted"
+                        className="hover:bg-muted rounded-md p-1"
                         aria-label={`Remove ${p.name} at ${p.institutions[0]?.name}`}
                       >
                         <X className="size-4" aria-hidden />
@@ -129,7 +147,7 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
                 <tr key={r.label}>
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 border-b bg-background p-2 text-left align-top font-medium text-muted-foreground"
+                    className="bg-background text-muted-foreground sticky left-0 z-10 border-b p-2 text-left align-top font-medium"
                   >
                     {r.label}
                   </th>
@@ -148,7 +166,7 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
         <label className="grid max-w-md gap-1 text-sm">
           Add a program
           <select
-            className="h-11 rounded-md border bg-background px-2"
+            className="bg-background h-11 rounded-md border px-2"
             value=""
             onChange={(e) => {
               const p = programs.find((x) => x.slug === e.target.value);

@@ -23,11 +23,21 @@ export function ScopeTabs(p: ScopeTabsProps) {
     <Tabs defaultValue="what">
       <div className="-mx-4 overflow-x-auto px-4 pb-2">
         <TabsList className="h-10">
-          <TabsTrigger value="what" className="px-3">What they do</TabsTrigger>
-          <TabsTrigger value="scope" className="px-3">Scope of practice</TabsTrigger>
-          <TabsTrigger value="where" className="px-3">Where they work</TabsTrigger>
-          <TabsTrigger value="team" className="px-3">Team</TabsTrigger>
-          <TabsTrigger value="day" className="px-3">Day in the life</TabsTrigger>
+          <TabsTrigger value="what" className="px-3">
+            What they do
+          </TabsTrigger>
+          <TabsTrigger value="scope" className="px-3">
+            Scope of practice
+          </TabsTrigger>
+          <TabsTrigger value="where" className="px-3">
+            Where they work
+          </TabsTrigger>
+          <TabsTrigger value="team" className="px-3">
+            Team
+          </TabsTrigger>
+          <TabsTrigger value="day" className="px-3">
+            Day in the life
+          </TabsTrigger>
         </TabsList>
       </div>
       <TabsContent value="what" className="grid gap-2 pt-2 text-base">
@@ -46,7 +56,7 @@ export function ScopeTabs(p: ScopeTabsProps) {
         {p.scope.controlledActs && p.scope.controlledActs.length > 0 && (
           <div>
             <p className="font-medium">Controlled acts</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               A controlled act is a task that only certain licensed professionals can legally do.
             </p>
             <ul className="list-disc pl-5">
@@ -61,7 +71,12 @@ export function ScopeTabs(p: ScopeTabsProps) {
         )}
         <p className="flex flex-wrap gap-3 text-sm">
           {p.regulator && (
-            <a href={p.regulator.url} target="_blank" rel="noopener noreferrer" className="underline">
+            <a
+              href={p.regulator.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
               {p.regulator.name}
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
@@ -103,7 +118,7 @@ export function ScopeTabs(p: ScopeTabsProps) {
       </TabsContent>
       <TabsContent value="day" className="pt-2 text-base">
         {p.dayInTheLife ? (
-          <blockquote className="rounded-lg border-l-4 border-primary bg-muted/50 p-4">
+          <blockquote className="border-primary bg-muted/50 rounded-lg border-l-4 p-4">
             {p.dayInTheLife}
           </blockquote>
         ) : (

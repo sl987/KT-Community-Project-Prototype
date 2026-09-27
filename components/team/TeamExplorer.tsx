@@ -20,9 +20,9 @@ export interface TeamEdge {
   how: string;
 }
 
-const SIZE = 460;
+const SIZE = 520;
 const C = SIZE / 2;
-const RING = 165;
+const RING = 190;
 
 /** Splits a label into at most two balanced lines for the SVG. */
 function twoLines(label: string): string[] {
@@ -75,7 +75,15 @@ export function TeamExplorer({
           aria-label="Diagram of health professions working around a patient"
         >
           <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <marker
+              id="arrow"
+              viewBox="0 0 10 10"
+              refX="8"
+              refY="5"
+              markerWidth="6"
+              markerHeight="6"
+              orient="auto-start-reverse"
+            >
               <path d="M0 0 L10 5 L0 10 z" className="fill-primary" />
             </marker>
           </defs>
@@ -83,7 +91,15 @@ export function TeamExplorer({
           {nodes.map((n) => {
             const p = pos.get(n.label)!;
             return (
-              <line key={`spoke-${n.label}`} x1={C} y1={C} x2={p.x} y2={p.y} className="stroke-border" strokeDasharray="3 4" />
+              <line
+                key={`spoke-${n.label}`}
+                x1={C}
+                y1={C}
+                x2={p.x}
+                y2={p.y}
+                className="stroke-border"
+                strokeDasharray="3 4"
+              />
             );
           })}
           {/* Team connections from the data */}
@@ -91,7 +107,17 @@ export function TeamExplorer({
             const a = pos.get(e.from);
             const b = pos.get(e.to);
             if (!a || !b) return null;
-            return <line key={`${e.from}-${e.to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className="stroke-muted-foreground" strokeWidth={2} />;
+            return (
+              <line
+                key={`${e.from}-${e.to}`}
+                x1={a.x}
+                y1={a.y}
+                x2={b.x}
+                y2={b.y}
+                className="stroke-muted-foreground"
+                strokeWidth={2}
+              />
+            );
           })}
           {/* Journey path */}
           {path.slice(1).map((b, i) => {
@@ -114,7 +140,12 @@ export function TeamExplorer({
             );
           })}
           <circle cx={C} cy={C} r={40} className="fill-muted stroke-border" />
-          <text x={C} y={C + 5} textAnchor="middle" className="fill-foreground text-[14px] font-semibold">
+          <text
+            x={C}
+            y={C + 5}
+            textAnchor="middle"
+            className="fill-foreground text-[14px] font-semibold"
+          >
             Patient
           </text>
           {nodes.map((n) => {
@@ -144,7 +175,10 @@ export function TeamExplorer({
                     x={p.x}
                     y={p.y + 44 + i * 14}
                     textAnchor="middle"
-                    className={cn("text-[12px]", active ? "fill-foreground font-semibold" : "fill-foreground")}
+                    className={cn(
+                      "text-[12px]",
+                      active ? "fill-foreground font-semibold" : "fill-foreground",
+                    )}
                   >
                     {l}
                   </text>
@@ -152,7 +186,12 @@ export function TeamExplorer({
               </>
             );
             return n.slug ? (
-              <a key={n.label} href={`/professions/${n.slug}`} aria-label={`${n.label} (profession page)`} className="outline-none [&:focus-visible_circle]:stroke-ring [&:focus-visible_circle]:stroke-[4]">
+              <a
+                key={n.label}
+                href={`/professions/${n.slug}`}
+                aria-label={`${n.label} (profession page)`}
+                className="[&:focus-visible_circle]:stroke-ring outline-none [&:focus-visible_circle]:stroke-[4]"
+              >
                 {body}
               </a>
             ) : (
@@ -162,7 +201,7 @@ export function TeamExplorer({
             );
           })}
         </svg>
-        <figcaption className="text-center text-xs text-muted-foreground">
+        <figcaption className="text-muted-foreground text-center text-xs">
           Solid circles have a profession page. Dashed circles aren&apos;t in the directory yet.
           Grey lines show professions that often work together.
         </figcaption>
@@ -179,7 +218,7 @@ export function TeamExplorer({
                 aria-pressed={j.id === journeyId}
                 onClick={() => pick(j.id)}
                 className={cn(
-                  "rounded-lg border p-3 text-left text-sm hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                  "hover:bg-muted focus-visible:ring-ring rounded-lg border p-3 text-left text-sm focus-visible:ring-2 focus-visible:outline-none",
                   j.id === journeyId && "border-primary bg-primary/10",
                 )}
               >
@@ -191,8 +230,11 @@ export function TeamExplorer({
         </fieldset>
 
         {journey && (
-          <section aria-label={`${journey.title} journey`} className="grid gap-3 rounded-xl border p-4">
-            <p className="text-xs text-muted-foreground" aria-live="polite">
+          <section
+            aria-label={`${journey.title} journey`}
+            className="grid gap-3 rounded-xl border p-4"
+          >
+            <p className="text-muted-foreground text-xs" aria-live="polite">
               Step {step + 1} of {journey.steps.length}: {journey.steps[step].label}
             </p>
             <ol className="grid gap-2 text-sm">
@@ -205,14 +247,14 @@ export function TeamExplorer({
                       onClick={() => setStep(i)}
                       aria-current={i === step ? "step" : undefined}
                       className={cn(
-                        "w-full rounded-lg p-2 text-left hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                        i === step && "bg-primary/10 ring-1 ring-primary",
+                        "hover:bg-muted focus-visible:ring-ring w-full rounded-lg p-2 text-left focus-visible:ring-2 focus-visible:outline-none",
+                        i === step && "bg-primary/10 ring-primary ring-1",
                       )}
                     >
                       <span className="font-medium">
                         {i + 1}. {s.label}
                       </span>
-                      <span className="block text-muted-foreground">{s.role}</span>
+                      <span className="text-muted-foreground block">{s.role}</span>
                     </button>
                     {i === step && node?.slug && (
                       <Link href={`/professions/${node.slug}`} className="ml-2 text-sm underline">

@@ -20,9 +20,9 @@ export default function GuidePage() {
     <div className="mx-auto grid max-w-3xl gap-10 px-4 py-10">
       <header className="grid gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">Application &amp; readiness guide</h1>
-        <p className="text-lg text-muted-foreground">
-          What to do in Grade 11 and 12, what extra application pieces mean, and what you&apos;ll need
-          before clinical placements.
+        <p className="text-muted-foreground text-lg">
+          What to do in Grade 11 and 12, what extra application pieces mean, and what you&apos;ll
+          need before clinical placements.
         </p>
         <VerifiedBadge provenance={guide.provenance} />
       </header>
@@ -31,7 +31,7 @@ export default function GuidePage() {
         <h2 id="timeline-h" className="text-xl font-semibold">
           Grade 11 → Grade 12 timeline
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Application cycle: {guide.cycle ?? "not yet verified"}. Dates change every year, so always
           check the portal.
         </p>
@@ -50,7 +50,9 @@ export default function GuidePage() {
                       Date:{" "}
                       {t.date.value ? (
                         <>
-                          {/^\d{4}-\d{2}-\d{2}$/.test(t.date.value) ? formatDate(t.date.value) : t.date.value}{" "}
+                          {/^\d{4}-\d{2}-\d{2}$/.test(t.date.value)
+                            ? formatDate(t.date.value)
+                            : t.date.value}{" "}
                           <SourceLink href={t.date.sourceUrl} />
                         </>
                       ) : (
@@ -62,7 +64,7 @@ export default function GuidePage() {
             </ol>
           </div>
         ))}
-        <div className="rounded-lg bg-muted/50 p-3 text-sm">
+        <div className="bg-muted/50 rounded-lg p-3 text-sm">
           <p className="font-medium">Missing a prerequisite?</p>
           <ul className="list-disc pl-5">
             {WAYS_TO_GET_A_COURSE.map((w) => (
@@ -78,7 +80,7 @@ export default function GuidePage() {
         <h2 id="supp-h" className="text-xl font-semibold">
           Supplementary requirements explained
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Some programs ask for more than marks. Each program page says which ones it needs.
         </p>
         {guide.supplementary.map((s) => (
@@ -99,7 +101,7 @@ export default function GuidePage() {
         <h2 id="ready-h" className="text-xl font-semibold">
           Placement readiness
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Programs with clinical placements usually need these. Your program will give you the exact
           list and deadlines.
         </p>
@@ -128,7 +130,11 @@ export default function GuidePage() {
         <ul className="grid gap-2">
           {guide.costs.map((c) => (
             <li key={c.id} className="flex gap-3 rounded-lg border p-3 text-sm">
-              <input type="checkbox" aria-label={`Budgeted for ${c.label}`} className="mt-1 size-4 accent-primary" />
+              <input
+                type="checkbox"
+                aria-label={`Budgeted for ${c.label}`}
+                className="accent-primary mt-1 size-4"
+              />
               <div>
                 <p className="font-medium">{c.label}</p>
                 <p className="text-muted-foreground">{c.description}</p>

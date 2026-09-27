@@ -38,7 +38,11 @@ export function QuizResults({
   courses: CourseOption[];
 }) {
   const router = useRouter();
-  const hash = useSyncExternalStore(subscribeHash, () => window.location.hash, () => null);
+  const hash = useSyncExternalStore(
+    subscribeHash,
+    () => window.location.hash,
+    () => null,
+  );
   const [copied, setCopied] = useState(false);
 
   if (hash === null) return <p className="text-muted-foreground">Loading your results…</p>;
@@ -131,7 +135,7 @@ export function QuizResults({
           <h2 id="extra-h" className="text-xl font-semibold">
             Possible with extra courses
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             You&apos;re missing more prerequisites for these than you can usually add in time. They
             could still work with summer school, night school, e-learning, or upgrading.
           </p>
@@ -200,7 +204,9 @@ function CounsellorSummary({
         <dd>{topCodes.length ? topCodes.join(", ") : "Not answered"}</dd>
         <dt>Regions</dt>
         <dd>
-          {answers.regions.length ? answers.regions.map((r) => REGION_LABELS[r]).join(", ") : "Anywhere"}
+          {answers.regions.length
+            ? answers.regions.map((r) => REGION_LABELS[r]).join(", ")
+            : "Anywhere"}
         </dd>
         <dt>Program length</dt>
         <dd>{{ short: "2–3 years", long: "4 years", any: "No preference" }[answers.length]}</dd>

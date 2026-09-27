@@ -1,0 +1,71 @@
+name: Data sync
+
+# Reads APPROVED rows from the verification Sheet and opens a pull request.
+# Never merges: the owner reviews every change (BUILD_PLAN.md §12).
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays, 13:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: build the PR body but don't change data or open a PR"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: data-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Merge approved Sheet rows into /data
+        id: sync
+        run: npm run sync -- ${{ inputs.dry_run && '--dry-run' || '' }}
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+
+      - name: Show PR body in the job summary
+        if: always()
+        run: test -f sync-output/pr-body.md && cat sync-output/pr-body.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Format changed data
+        if: steps.sync.outputs.changed == 'true'
+        run: npx prettier --write "data/*.json" && npm run validate
+
+      - name: Open pull request
+        if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data-sync/sheet
+          delete-branch: true
+          add-paths: data/*.json
+          commit-message: "data: sync approved changes from verification Sheet"
+          title: "Data sync: approved changes from the verification Sheet"
+          body-path: sync-output/pr-body.md
+          labels: ${{ steps.sync.outputs.labels }}
+
+  stale-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Data freshness report (job summary)
+        run: npm run report:stale

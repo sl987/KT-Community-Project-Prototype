@@ -26,7 +26,8 @@ export function SalaryPanel({
   const annualMedian =
     annual?.median ?? (wage.median !== null ? Math.round(wage.median * FULL_TIME_HOURS) : null);
   const annualBasis =
-    annual?.basis ?? `median hourly wage × ${FULL_TIME_HOURS.toLocaleString()} hours (full-time year)`;
+    annual?.basis ??
+    `median hourly wage × ${FULL_TIME_HOURS.toLocaleString()} hours (full-time year)`;
 
   return (
     <div className="grid gap-3 rounded-xl border p-4">
@@ -39,15 +40,21 @@ export function SalaryPanel({
           <table className="w-full text-sm">
             <caption className="sr-only">Ontario hourly wages</caption>
             <thead>
-              <tr className="text-left text-muted-foreground">
-                <th scope="col" className="font-normal">Level</th>
-                <th scope="col" className="font-normal">Hourly wage</th>
+              <tr className="text-muted-foreground text-left">
+                <th scope="col" className="font-normal">
+                  Level
+                </th>
+                <th scope="col" className="font-normal">
+                  Hourly wage
+                </th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r) => (
                 <tr key={r.label}>
-                  <th scope="row" className="py-0.5 text-left font-normal">{r.label}</th>
+                  <th scope="row" className="py-0.5 text-left font-normal">
+                    {r.label}
+                  </th>
                   <td>{r.value !== null ? formatHourly(r.value) : "Not yet verified"}</td>
                 </tr>
               ))}
@@ -66,7 +73,7 @@ export function SalaryPanel({
           <UnverifiedField officialUrl={officialUrl} officialLabel="Job Bank wage page" />
         )}
       </p>
-      <p className="text-xs text-muted-foreground">
+      <p className="text-muted-foreground text-xs">
         Data year: {wage.year ?? "not yet verified"} <SourceLink href={wage.sourceUrl} />
       </p>
     </div>

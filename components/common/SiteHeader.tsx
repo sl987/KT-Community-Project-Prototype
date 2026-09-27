@@ -18,7 +18,7 @@ export function SiteHeader() {
           href="/"
           className="flex items-center gap-2 rounded-md py-2 font-semibold tracking-tight"
         >
-          <HeartPulse className="size-5 text-primary" aria-hidden />
+          <HeartPulse className="text-primary size-5" aria-hidden />
           Ontario Healthcare Pathways
         </Link>
         <nav aria-label="Main" className="order-last w-full sm:order-none sm:ml-auto sm:w-auto">
@@ -27,7 +27,7 @@ export function SiteHeader() {
               <li key={n.href}>
                 <Link
                   href={n.href}
-                  className="inline-block rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="text-muted-foreground hover:bg-muted hover:text-foreground inline-block rounded-md px-2 py-2 text-sm"
                 >
                   {n.label}
                 </Link>

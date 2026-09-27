@@ -19,7 +19,11 @@ export default function TeamPage() {
       if (nodes.has(s.label)) continue;
       const prof = s.professionId ? getProfession(s.professionId) : undefined;
       const listed = prof && listedProfessions.includes(prof);
-      nodes.set(s.label, { label: s.label, slug: listed ? prof.slug : null, professionId: prof?.id ?? null });
+      nodes.set(s.label, {
+        label: s.label,
+        slug: listed ? prof.slug : null,
+        professionId: prof?.id ?? null,
+      });
     }
   }
 
@@ -40,8 +44,10 @@ export default function TeamPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10">
       <header className="grid gap-2">
-        <h1 className="text-3xl font-semibold tracking-tight">How health care teams work together</h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          How health care teams work together
+        </h1>
+        <p className="text-muted-foreground max-w-2xl text-lg">
           Patients are cared for by teams. Pick a journey to see who helps at each step.
         </p>
       </header>

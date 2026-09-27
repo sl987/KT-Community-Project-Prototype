@@ -1,6 +1,12 @@
 {
   "weights": { "interest": 0.35, "workStyle": 0.3, "preferences": 0.2, "academic": 0.15 },
-  "academicFitScores": { "likely": 1, "possible": 0.75, "reach": 0.4, "unknown": 0.5, "unlikely": 0.15 },
+  "academicFitScores": {
+    "likely": 1,
+    "possible": 0.75,
+    "reach": 0.4,
+    "unknown": 0.5,
+    "unlikely": 0.15
+  },
   "riasecRankWeights": [1, 0.67, 0.33],
   "hardMismatchMultiplier": 0.5,
   "topProfessions": 5,
