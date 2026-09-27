@@ -8,7 +8,15 @@ import { z } from "zod";
 import { isEligible } from "./eligibility";
 import {
   CoursesFileSchema,
+  GuideSchema,
   InstitutionsFileSchema,
+  JourneysFileSchema,
+  QuizConfigSchema,
+  RiasecSchema,
+  WorkStyleKeySchema,
+  type Guide,
+  type Journey,
+  type QuizConfig,
   ProfessionsFileSchema,
   ProgramsFileSchema,
   RegulatorsFileSchema,
@@ -29,6 +37,10 @@ export interface RawData {
   professions: unknown;
   programs: unknown;
   courses: unknown;
+  /** Optional content files; validated when provided. */
+  quiz?: unknown;
+  guide?: unknown;
+  journeys?: unknown;
 }
 
 export interface ParsedData {
@@ -154,10 +166,13 @@ export function validateData(raw: RawData, today: Date = new Date()): Validation
     "professions.json": [ProfessionsFileSchema, raw.professions],
     "programs.json": [ProgramsFileSchema, raw.programs],
     "courses.json": [CoursesFileSchema, raw.courses],
+    ...(raw.quiz !== undefined && { "quiz.json": [QuizConfigSchema, raw.quiz] }),
+    ...(raw.guide !== undefined && { "guide.json": [GuideSchema, raw.guide] }),
+    ...(raw.journeys !== undefined && { "journeys.json": [JourneysFileSchema, raw.journeys] }),
   } as const;
   const parsed: Record<string, unknown> = {};
-  for (const [file, [schema, value]] of Object.entries(files)) {
-    const r = (schema as z.ZodType).safeParse(value);
+  for (const [file, [schema, value]] of Object.entries(files) as [string, [z.ZodType, unknown]][]) {
+    const r = schema.safeParse(value);
     if (r.success) parsed[file] = r.data;
     else errors.push(`${file} failed schema validation:\n${z.prettifyError(r.error)}`);
   }
@@ -237,13 +252,45 @@ export function validateData(raw: RawData, today: Date = new Date()): Validation
     }
   }
 
-  // 7. Provenance: facts need sources; nulls must be flagged; report unverified + stale.
+  // 7. Content files.
+  const quiz = parsed["quiz.json"] as QuizConfig | undefined;
+  if (quiz) {
+    const w = quiz.weights;
+    const sum = w.interest + w.workStyle + w.preferences + w.academic;
+    if (Math.abs(sum - 1) > 0.001) warnings.push(`quiz.json: weights sum to ${sum}, not 1`);
+    for (const code of RiasecSchema.options) {
+      if (!quiz.interestItems.some((i) => i.code === code)) {
+        errors.push(`quiz.json: no interest item for Holland code "${code}"`);
+      }
+    }
+    for (const dup of duplicates(quiz.interestItems.map((i) => i.id))) {
+      errors.push(`quiz.json: duplicate interest item id "${dup}"`);
+    }
+    const keys = quiz.workStyleQuestions.map((q) => q.key);
+    for (const key of WorkStyleKeySchema.options) {
+      const n = keys.filter((k) => k === key).length;
+      if (n !== 1) errors.push(`quiz.json: work-style "${key}" must have exactly one question (has ${n})`);
+    }
+  }
+
+  const journeys = parsed["journeys.json"] as Journey[] | undefined;
+  for (const j of journeys ?? []) {
+    for (const step of j.steps) {
+      if (step.professionId && !professionsById.has(step.professionId)) {
+        errors.push(`journeys.json "${j.id}": unknown profession "${step.professionId}"`);
+      }
+    }
+  }
+
+  // 8. Provenance: facts need sources; nulls must be flagged; report unverified + stale.
+  const guide = parsed["guide.json"] as Guide | undefined;
   const records: [string, { provenance: Provenance }][] = [
     ...regulators.map((r) => [`regulator:${r.id}`, r] as [string, RegulatoryBody]),
     ...institutions.map((i) => [`institution:${i.id}`, i] as [string, Institution]),
     ...professions.map((p) => [`profession:${p.id}`, p] as [string, Profession]),
     ...programs.map((p) => [`program:${p.id}`, p] as [string, Program]),
     ["courses.json", courses],
+    ...(guide ? [["guide.json", guide] as [string, Guide]] : []),
   ];
 
   const needsVerification: VerificationItem[] = [];

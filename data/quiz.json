@@ -1,0 +1,102 @@
+{
+  "weights": { "interest": 0.35, "workStyle": 0.3, "preferences": 0.2, "academic": 0.15 },
+  "academicFitScores": { "likely": 1, "possible": 0.75, "reach": 0.4, "unknown": 0.5, "unlikely": 0.15 },
+  "riasecRankWeights": [1, 0.67, 0.33],
+  "hardMismatchMultiplier": 0.5,
+  "topProfessions": 5,
+  "programsPerProfession": 3,
+  "interestItems": [
+    { "id": "r1", "code": "R", "text": "Set up or fix equipment and machines" },
+    { "id": "r2", "code": "R", "text": "Do careful, precise work with your hands" },
+    { "id": "r3", "code": "R", "text": "Be active and on your feet for most of the day" },
+    { "id": "i1", "code": "I", "text": "Figure out why something in the body isn't working" },
+    { "id": "i2", "code": "I", "text": "Read about how illnesses are diagnosed" },
+    { "id": "i3", "code": "I", "text": "Run tests and make sense of the results" },
+    { "id": "a1", "code": "A", "text": "Make a poster or video that teaches people about health" },
+    { "id": "a2", "code": "A", "text": "Come up with new ways to explain an idea" },
+    { "id": "a3", "code": "A", "text": "Write, draw, design, or make music" },
+    { "id": "s1", "code": "S", "text": "Help someone feel calm when they are scared" },
+    { "id": "s2", "code": "S", "text": "Teach someone a new skill" },
+    { "id": "s3", "code": "S", "text": "Take care of people who are sick or hurt" },
+    { "id": "e1", "code": "E", "text": "Lead a group project and make the final call" },
+    { "id": "e2", "code": "E", "text": "Convince people to try a healthier habit" },
+    { "id": "e3", "code": "E", "text": "Organize an event and be in charge of it" },
+    { "id": "c1", "code": "C", "text": "Keep careful, accurate records" },
+    { "id": "c2", "code": "C", "text": "Follow a detailed checklist step by step" },
+    { "id": "c3", "code": "C", "text": "Organize supplies so everything is easy to find" }
+  ],
+  "workStyleQuestions": [
+    {
+      "key": "bloodAndBodyFluids",
+      "kind": "comfort",
+      "text": "How comfortable are you around blood and other body fluids?",
+      "lowLabel": "Very uncomfortable",
+      "highLabel": "Very comfortable",
+      "matchPhrase": "You're comfortable around blood and body fluids",
+      "watchOutPhrase": "Involves regular contact with blood and body fluids"
+    },
+    {
+      "key": "needles",
+      "kind": "comfort",
+      "text": "How comfortable are you with needles?",
+      "lowLabel": "Very uncomfortable",
+      "highLabel": "Very comfortable",
+      "matchPhrase": "You're comfortable with needles",
+      "watchOutPhrase": "Involves working with needles"
+    },
+    {
+      "key": "physicalDemand",
+      "kind": "comfort",
+      "text": "How do you feel about physically demanding work, like lifting or standing for long periods?",
+      "lowLabel": "Would rather avoid it",
+      "highLabel": "Happy to do it",
+      "matchPhrase": "You're fine with physically active work",
+      "watchOutPhrase": "Can be physically demanding"
+    },
+    {
+      "key": "shiftWork",
+      "kind": "comfort",
+      "text": "How do you feel about working nights, weekends, or holidays?",
+      "lowLabel": "Would rather avoid it",
+      "highLabel": "Totally fine",
+      "matchPhrase": "You're open to shift work",
+      "watchOutPhrase": "Involves shift work (nights, weekends, holidays)"
+    },
+    {
+      "key": "acuteEmergency",
+      "kind": "comfort",
+      "text": "How do you feel about fast-paced emergencies where you have to act quickly?",
+      "lowLabel": "Very stressful for me",
+      "highLabel": "I'd thrive",
+      "matchPhrase": "You're comfortable in fast-paced emergencies",
+      "watchOutPhrase": "Can involve fast-paced emergencies"
+    },
+    {
+      "key": "techEquipment",
+      "kind": "comfort",
+      "text": "How much do you enjoy working with technology and equipment?",
+      "lowLabel": "Not at all",
+      "highLabel": "A lot",
+      "matchPhrase": "You enjoy working with technology and equipment",
+      "watchOutPhrase": "Uses a lot of technical equipment"
+    },
+    {
+      "key": "patientInteraction",
+      "kind": "preference",
+      "text": "Would you rather work directly with patients or behind the scenes?",
+      "lowLabel": "Behind the scenes",
+      "highLabel": "Lots of patient contact",
+      "matchPhrase": "The amount of patient contact fits what you want",
+      "watchOutPhrase": "The amount of patient contact is different from what you prefer"
+    },
+    {
+      "key": "independence",
+      "kind": "preference",
+      "text": "Would you rather work within a tight team or more on your own?",
+      "lowLabel": "Tight team",
+      "highLabel": "On my own",
+      "matchPhrase": "The way this job balances teamwork and independence fits you",
+      "watchOutPhrase": "The balance of teamwork and independence is different from what you prefer"
+    }
+  ]
+}

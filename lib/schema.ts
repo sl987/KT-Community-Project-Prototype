@@ -231,25 +231,43 @@ export const ProgramStepSchema = z.object({
   sourceUrl: NullableUrl.optional(),
 });
 
+export const SupplementaryTypeSchema = z.enum([
+  "casper",
+  "kira",
+  "personal_statement",
+  "interview",
+  "questionnaire",
+  "admission_test",
+  "info_session",
+  "other",
+]);
+
+export const NonAcademicTypeSchema = z.enum([
+  "vulnerable_sector_check",
+  "immunizations",
+  "tb_test",
+  "n95_fit_test",
+  "cpr_bls",
+  "first_aid",
+  "whmis",
+  "mask_fit",
+  "health_form",
+  "medical_exam",
+  "uniform_equipment",
+  "drivers_licence",
+  "other",
+]);
+
 export const NonAcademicRequirementSchema = z.object({
-  type: z.enum([
-    "vulnerable_sector_check",
-    "immunizations",
-    "tb_test",
-    "n95_fit_test",
-    "cpr_bls",
-    "first_aid",
-    "whmis",
-    "mask_fit",
-    "health_form",
-    "medical_exam",
-    "uniform_equipment",
-    "drivers_licence",
-    "other",
-  ]),
+  type: NonAcademicTypeSchema,
   label: z.string().min(1),
   details: z.string().optional(),
   timing: z.string().optional(),
+  /**
+   * Checklist grouping on the program page (§6.6). Not in the original §5 model;
+   * added so requirements can be grouped. Defaults to "before_placement".
+   */
+  stage: z.enum(["before_start", "before_placement", "ongoing"]).optional(),
   estimatedCostCAD: z.number().nonnegative().nullable().optional(),
   sourceUrl: NullableUrl,
 });
@@ -295,16 +313,7 @@ export const ProgramSchema = z.object({
       }),
     supplementary: z.array(
       z.object({
-        type: z.enum([
-          "casper",
-          "kira",
-          "personal_statement",
-          "interview",
-          "questionnaire",
-          "admission_test",
-          "info_session",
-          "other",
-        ]),
+        type: SupplementaryTypeSchema,
         label: z.string().min(1),
         required: z.boolean(),
         sourceUrl: NullableUrl,
@@ -348,6 +357,129 @@ export const ProgramSchema = z.object({
   provenance: ProvenanceSchema,
 });
 
+// ---------- Quiz (§8) ----------
+
+export const WorkStyleKeySchema = WorkStyleProfileSchema.keyof();
+export const AcademicFitSchema = z.enum(["likely", "possible", "reach", "unlikely", "unknown"]);
+export const MarkSubjectSchema = z.enum(["biology", "chemistry", "physics", "math", "english"]);
+
+export const QuizConfigSchema = z.object({
+  /** Final score = Σ weight × component. Tunable here, not in code. */
+  weights: z.object({
+    interest: z.number().min(0),
+    workStyle: z.number().min(0),
+    preferences: z.number().min(0),
+    academic: z.number().min(0),
+  }),
+  academicFitScores: z.record(AcademicFitSchema, z.number().min(0).max(1)),
+  /** Weight of a profession's 1st, 2nd, 3rd Holland code when building its interest vector. */
+  riasecRankWeights: z.array(z.number().min(0).max(1)).min(1).max(3),
+  /** Work-style score multiplier applied per hard mismatch (e.g. very uncomfortable vs frequent). */
+  hardMismatchMultiplier: z.number().min(0).max(1),
+  topProfessions: z.number().int().positive(),
+  programsPerProfession: z.number().int().min(1).max(3),
+  interestItems: z
+    .array(z.object({ id: Id, text: z.string().min(1), code: RiasecSchema }))
+    .min(12)
+    .max(18),
+  workStyleQuestions: z.array(
+    z.object({
+      key: WorkStyleKeySchema,
+      /** comfort: 1 = very uncomfortable … 5 = very comfortable. preference: a 1–5 spectrum. */
+      kind: z.enum(["comfort", "preference"]),
+      text: z.string().min(1),
+      lowLabel: z.string().min(1),
+      highLabel: z.string().min(1),
+      /** Plain-language phrases used in "why this matches" / "watch-outs". */
+      matchPhrase: z.string().min(1),
+      watchOutPhrase: z.string().min(1),
+    }),
+  ),
+});
+
+const Likert = z.number().int().min(1).max(5);
+
+/** Survey answers. Encoded into the results URL fragment; never sent to a server. */
+export const QuizAnswersSchema = z.object({
+  v: z.literal(1),
+  grade: z.union([z.literal(11), z.literal(12)]).nullable(),
+  average: z.number().min(0).max(100).nullable(),
+  averageIsGrade11: z.boolean(),
+  courses: z.array(CourseCodeSchema),
+  marks: z.partialRecord(MarkSubjectSchema, z.number().min(0).max(100)),
+  interests: z.record(z.string(), Likert),
+  workStyle: z.partialRecord(WorkStyleKeySchema, Likert),
+  length: z.enum(["short", "long", "any"]),
+  institutionType: z.enum(["college", "university", "any"]),
+  regions: z.array(RegionSchema),
+  french: z.boolean(),
+  salaryImportance: Likert,
+  demandImportance: Likert,
+});
+
+// ---------- Guide (§9) ----------
+
+export const GuideSchema = z.object({
+  cycle: z.string().nullable(),
+  timeline: z.array(
+    z.object({
+      id: Id,
+      grade: z.union([z.literal(11), z.literal(12)]),
+      title: z.string().min(1),
+      description: z.string().min(1),
+      portal: z.enum(["OUAC", "OCAS", "both"]).optional(),
+      date: sourced(z.string().min(1)),
+    }),
+  ),
+  supplementary: z.array(
+    z.object({
+      type: SupplementaryTypeSchema,
+      title: z.string().min(1),
+      what: z.string().min(1),
+      tips: z.array(z.string().min(1)),
+    }),
+  ),
+  readiness: z.array(
+    z.object({
+      type: NonAcademicTypeSchema,
+      title: z.string().min(1),
+      what: z.string().min(1),
+      when: z.string().min(1),
+      howLong: z.string().nullable(),
+    }),
+  ),
+  costs: z.array(
+    z.object({
+      id: Id,
+      label: z.string().min(1),
+      description: z.string().min(1),
+      amountCAD: sourced(z.number().nonnegative()),
+    }),
+  ),
+  osapUrl: NullableUrl,
+  provenance: ProvenanceSchema,
+});
+
+// ---------- Team journeys (§10) ----------
+
+export const JourneysFileSchema = z.array(
+  z.object({
+    id: Id,
+    title: z.string().min(1),
+    summary: z.string().min(1),
+    steps: z
+      .array(
+        z.object({
+          /** null when the profession is not in the directory yet. */
+          professionId: Id.nullable(),
+          label: z.string().min(1),
+          role: z.string().min(1),
+        }),
+      )
+      .min(2),
+  }),
+);
+
 // ---------- Files ----------
 
 export const RegulatorsFileSchema = z.array(RegulatoryBodySchema);
@@ -379,3 +511,12 @@ export type StepPhase = z.infer<typeof StepPhaseSchema>;
 export type ProgramStep = z.infer<typeof ProgramStepSchema>;
 export type NonAcademicRequirement = z.infer<typeof NonAcademicRequirementSchema>;
 export type Program = z.infer<typeof ProgramSchema>;
+export type SupplementaryType = z.infer<typeof SupplementaryTypeSchema>;
+export type NonAcademicType = z.infer<typeof NonAcademicTypeSchema>;
+export type WorkStyleKey = z.infer<typeof WorkStyleKeySchema>;
+export type AcademicFit = z.infer<typeof AcademicFitSchema>;
+export type MarkSubject = z.infer<typeof MarkSubjectSchema>;
+export type QuizConfig = z.infer<typeof QuizConfigSchema>;
+export type QuizAnswers = z.infer<typeof QuizAnswersSchema>;
+export type Guide = z.infer<typeof GuideSchema>;
+export type Journey = z.infer<typeof JourneysFileSchema>[number];

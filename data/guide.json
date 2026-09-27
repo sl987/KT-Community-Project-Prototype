@@ -1,0 +1,188 @@
+{
+  "cycle": null,
+  "timeline": [
+    {
+      "id": "g11-course-selection",
+      "grade": 11,
+      "title": "Choose your Grade 12 courses",
+      "description": "Check the prerequisites for every program you're interested in and make sure your Grade 12 timetable includes them.",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g11-summer",
+      "grade": 11,
+      "title": "Summer: catch up on a missing course (optional)",
+      "description": "If you are missing a prerequisite, summer school, night school, or e-learning through your school board may help. Ask your guidance counsellor.",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g12-portals-open",
+      "grade": 12,
+      "title": "Application portals open",
+      "description": "OUAC (universities) and ontariocolleges.ca (colleges) open for the new application cycle.",
+      "portal": "both",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g12-ouac-equal-consideration",
+      "grade": 12,
+      "title": "University equal consideration date",
+      "description": "Applications received by this date get equal consideration at Ontario universities.",
+      "portal": "OUAC",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g12-ocas-equal-consideration",
+      "grade": 12,
+      "title": "College equal consideration date",
+      "description": "Applications received by this date get equal consideration at Ontario colleges.",
+      "portal": "OCAS",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g12-midterm-marks",
+      "grade": 12,
+      "title": "Mid-term marks sent to schools",
+      "description": "Your school sends your marks to the programs you applied to. Keep your marks up all year.",
+      "portal": "both",
+      "date": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "g12-offers",
+      "grade": 12,
+      "title": "Offers of admission",
+      "description": "Programs send offers. Check each portal for the date you must respond by.",
+      "portal": "both",
+      "date": { "value": null, "sourceUrl": null }
+    }
+  ],
+  "supplementary": [
+    {
+      "type": "casper",
+      "title": "CASPer (situational judgment test)",
+      "what": "An online test that shows you everyday situations and asks how you would respond. It looks at things like communication, ethics, and empathy rather than school knowledge.",
+      "tips": [
+        "Book your test date early; seats and dates are limited.",
+        "Practise explaining your reasoning, not just your answer.",
+        "Check the official site for the current format and fee."
+      ]
+    },
+    {
+      "type": "kira",
+      "title": "Video assessment (Kira-style)",
+      "what": "An online assessment where you record short video or written answers to questions within a time limit.",
+      "tips": [
+        "Test your camera, microphone, and internet before you start.",
+        "Find a quiet, well-lit place.",
+        "Answer the question asked, clearly and briefly."
+      ]
+    },
+    {
+      "type": "personal_statement",
+      "title": "Personal statement",
+      "what": "A short piece of writing about why you want to join the program and what experiences prepared you.",
+      "tips": [
+        "Use real examples from volunteering, jobs, or school.",
+        "Answer every prompt the program gives.",
+        "Ask a teacher or counsellor to read a draft."
+      ]
+    },
+    {
+      "type": "interview",
+      "title": "Interview",
+      "what": "A conversation, in person or online, where the program learns more about you. Some programs use several short interviews in a row.",
+      "tips": [
+        "Learn about the profession and what the job involves.",
+        "Practise with a friend, family member, or counsellor.",
+        "Have a question or two ready to ask them."
+      ]
+    },
+    {
+      "type": "info_session",
+      "title": "Information session",
+      "what": "Some programs ask applicants to attend a session that explains the program and its requirements.",
+      "tips": ["Check whether attendance is required and how to register."]
+    }
+  ],
+  "readiness": [
+    {
+      "type": "vulnerable_sector_check",
+      "title": "Vulnerable sector check",
+      "what": "A police background check needed to work with patients and other vulnerable people.",
+      "when": "Usually before your first clinical placement.",
+      "howLong": null
+    },
+    {
+      "type": "immunizations",
+      "title": "Immunization records",
+      "what": "Proof of vaccinations your program requires. Programs list the exact vaccines.",
+      "when": "Usually before your first clinical placement. Some vaccines take several doses over weeks or months, so start early.",
+      "howLong": null
+    },
+    {
+      "type": "tb_test",
+      "title": "Tuberculosis (TB) test",
+      "what": "A skin or blood test showing you do not have active tuberculosis.",
+      "when": "Usually before your first clinical placement.",
+      "howLong": null
+    },
+    {
+      "type": "n95_fit_test",
+      "title": "N95 mask fit test",
+      "what": "A test to find an N95 respirator mask that seals properly on your face.",
+      "when": "Usually before your first clinical placement.",
+      "howLong": null
+    },
+    {
+      "type": "cpr_bls",
+      "title": "CPR / Basic Life Support (BLS)",
+      "what": "A certificate showing you can do CPR. Programs often require a specific level, such as BLS for health care providers.",
+      "when": "Usually before your first clinical placement. Certificates expire, so check the dates.",
+      "howLong": null
+    }
+  ],
+  "costs": [
+    {
+      "id": "tuition",
+      "label": "Tuition",
+      "description": "Set by each school and program. Listed on each program page when verified.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "ouac-fee",
+      "label": "University application fee (OUAC)",
+      "description": "Paid when you apply through OUAC.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "ocas-fee",
+      "label": "College application fee (ontariocolleges.ca)",
+      "description": "Paid when you apply through ontariocolleges.ca.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "supplementary-fees",
+      "label": "Supplementary test fees",
+      "description": "Some programs require tests like CASPer, which charge a fee.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "placement-readiness",
+      "label": "Placement readiness costs",
+      "description": "Police checks, vaccinations, CPR courses, and uniforms can cost money.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    },
+    {
+      "id": "exam-registration",
+      "label": "Licensing exam and registration fees",
+      "description": "Paid after you graduate. Listed on each profession's page when verified.",
+      "amountCAD": { "value": null, "sourceUrl": null }
+    }
+  ],
+  "osapUrl": null,
+  "provenance": {
+    "lastVerified": null,
+    "verifiedBy": "agent",
+    "needsVerification": ["cycle", "timeline", "costs", "osapUrl", "supplementary", "readiness"]
+  }
+}

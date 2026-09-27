@@ -1,27 +1,38 @@
-import { getInstitution, getProfession, programs } from "@/lib/data";
+import { ArrowRight, ListChecks } from "lucide-react";
+import Link from "next/link";
+import { Suspense } from "react";
+import { DiscoveryHub } from "@/components/hub/DiscoveryHub";
+import { buttonVariants } from "@/components/ui/button";
+import { courseOptions, programSummaries } from "@/lib/data";
 
-/** Phase 0 placeholder. The discovery hub replaces this in Phase 1. */
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-12">
-      <h1 className="text-3xl font-semibold tracking-tight">Ontario Healthcare Pathways</h1>
-      <p className="text-muted-foreground mt-2">
-        Foundation build. {programs.length} programs pass the eligibility gate. All seed data is
-        unverified placeholder content.
-      </p>
-      <ul className="mt-8 space-y-3" aria-label="Eligible programs">
-        {programs.map((p) => (
-          <li key={p.id} className="rounded-lg border p-4">
-            <p className="font-medium">
-              {getProfession(p.professionId)?.title} · {p.name}
-            </p>
-            <p className="text-muted-foreground text-sm">
-              {p.institutionIds.map((id) => getInstitution(id)?.name).join(", ")} ·{" "}
-              {p.durationYears} years · Not yet verified
-            </p>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10">
+      <section className="grid gap-4">
+        <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          Find a health care career you can start right after high school
+        </h1>
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          Every program here takes you from Grade 12 to a regulated health career with one
+          diploma or degree, then licensing. No med school, no master&apos;s.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/quiz" className={buttonVariants({ size: "lg", className: "h-11 px-4" })}>
+            <ListChecks aria-hidden />
+            Take the 5-minute quiz
+          </Link>
+          <Link
+            href="#programs"
+            className={buttonVariants({ size: "lg", variant: "outline", className: "h-11 px-4" })}
+          >
+            Browse all programs
+            <ArrowRight aria-hidden />
+          </Link>
+        </div>
+      </section>
+      <Suspense fallback={<p className="text-muted-foreground">Loading programs…</p>}>
+        <DiscoveryHub programs={programSummaries} courses={courseOptions} />
+      </Suspense>
+    </div>
   );
 }

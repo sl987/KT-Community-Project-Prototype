@@ -10,7 +10,8 @@ const dataDir = join(__dirname, "..", "data");
 const load = (file: string): unknown => {
   try {
     // Strip a UTF-8 BOM: some Windows editors add one, and JSON.parse rejects it.
-    return JSON.parse(readFileSync(join(dataDir, file), "utf8").replace(/^﻿/, ""));
+    const text = readFileSync(join(dataDir, file), "utf8");
+    return JSON.parse(text.charCodeAt(0) === 0xfeff ? text.slice(1) : text);
   } catch (err) {
     console.error(`✖ Could not read data/${file}: ${(err as Error).message}`);
     process.exit(1);
@@ -23,6 +24,9 @@ const result = validateData({
   professions: load("professions.json"),
   programs: load("programs.json"),
   courses: load("courses.json"),
+  quiz: load("quiz.json"),
+  guide: load("guide.json"),
+  journeys: load("journeys.json"),
 });
 
 const section = (title: string) =>

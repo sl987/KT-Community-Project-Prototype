@@ -1,0 +1,35 @@
+[
+  {
+    "id": "car-accident",
+    "title": "Car accident trauma",
+    "summary": "A person is badly hurt in a car crash. Many professionals help them from the roadside to recovery.",
+    "steps": [
+      { "professionId": null, "label": "Paramedic", "role": "Gives emergency care at the scene and on the way to hospital." },
+      { "professionId": null, "label": "Medical Radiation Technologist (CT)", "role": "Takes CT scans so the team can see injuries inside the body." },
+      { "professionId": null, "label": "Medical Laboratory Technologist", "role": "Tests blood samples to help guide treatment." },
+      { "professionId": "respiratory-therapist", "label": "Respiratory Therapist", "role": "Helps the patient breathe, including managing a ventilator if needed." },
+      { "professionId": "registered-practical-nurse", "label": "Registered Practical Nurse", "role": "Provides nursing care as the patient recovers on the hospital unit." },
+      { "professionId": null, "label": "Registered Kinesiologist", "role": "Helps the patient rebuild strength and movement during rehab." }
+    ]
+  },
+  {
+    "id": "pregnancy-birth",
+    "title": "Pregnancy and birth",
+    "summary": "A family is expecting a baby. Several professionals support the parent and newborn.",
+    "steps": [
+      { "professionId": null, "label": "Midwife", "role": "Provides care during pregnancy, birth, and after the baby is born." },
+      { "professionId": null, "label": "Diagnostic Medical Sonographer", "role": "Uses ultrasound to check on the baby's growth." },
+      { "professionId": null, "label": "Medical Laboratory Technologist", "role": "Runs routine blood tests during pregnancy." },
+      { "professionId": "respiratory-therapist", "label": "Respiratory Therapist", "role": "Supports a newborn's breathing if they need help after birth." }
+    ]
+  },
+  {
+    "id": "oral-health",
+    "title": "Dental and oral health",
+    "summary": "An older adult needs help keeping their mouth healthy and getting new dentures.",
+    "steps": [
+      { "professionId": null, "label": "Dental Hygienist", "role": "Cleans teeth and gums and teaches how to prevent problems." },
+      { "professionId": null, "label": "Denturist", "role": "Makes and fits dentures." }
+    ]
+  }
+]
