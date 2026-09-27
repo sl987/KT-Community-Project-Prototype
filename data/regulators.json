@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cno",
+    "name": "College of Nurses of Ontario",
+    "acronym": "CNO",
+    "url": "https://www.cno.org",
+    "underRHPA": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["url", "underRHPA"]
+    }
+  },
+  {
+    "id": "crto",
+    "name": "College of Respiratory Therapists of Ontario",
+    "acronym": "CRTO",
+    "url": "https://www.crto.on.ca",
+    "underRHPA": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["url", "underRHPA"]
+    }
+  }
+]

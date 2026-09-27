@@ -1,0 +1,47 @@
+[
+  {
+    "id": "humber-north",
+    "name": "Humber Polytechnic",
+    "type": "college",
+    "campus": "North",
+    "city": "Toronto",
+    "region": "GTA",
+    "url": "https://humber.ca",
+    "language": ["en"],
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["name", "campus", "url", "language"]
+    }
+  },
+  {
+    "id": "algonquin-ottawa",
+    "name": "Algonquin College",
+    "type": "college",
+    "campus": "Ottawa",
+    "city": "Ottawa",
+    "region": "Eastern",
+    "url": "https://www.algonquincollege.com",
+    "language": ["en"],
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["campus", "url", "language"]
+    }
+  },
+  {
+    "id": "fanshawe-london",
+    "name": "Fanshawe College",
+    "type": "college",
+    "campus": "London",
+    "city": "London",
+    "region": "Southwestern",
+    "url": "https://www.fanshawec.ca",
+    "language": ["en"],
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": ["campus", "url", "language"]
+    }
+  }
+]

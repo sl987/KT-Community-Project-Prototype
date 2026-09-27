@@ -1,0 +1,538 @@
+[
+  {
+    "id": "humber-practical-nursing",
+    "slug": "humber-practical-nursing",
+    "professionId": "registered-practical-nurse",
+    "institutionIds": ["humber-north"],
+    "name": "Practical Nursing",
+    "credential": "diploma",
+    "credentialName": "Ontario College Diploma",
+    "durationYears": 2,
+    "coop": false,
+    "accredited": { "byBody": null, "sourceUrl": null },
+    "application": {
+      "portal": "OCAS",
+      "programCode": { "value": null, "sourceUrl": null },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [],
+      "admissionAverage": {
+        "low": null,
+        "high": null,
+        "type": "competitive",
+        "cycle": null,
+        "sourceUrl": null
+      },
+      "supplementary": [],
+      "programRequirements": []
+    },
+    "nonAcademic": [],
+    "clinicalPlacements": {
+      "description": "Clinical placements are part of this program. Details are not yet verified.",
+      "totalHours": null,
+      "sourceUrl": null
+    },
+    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 11 and 12 prerequisites",
+        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 11–12",
+        "sourceUrl": null
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Submit your application to the program. Deadlines and program code are not yet verified.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": null
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "First year of the Practical Nursing program.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "placement",
+        "title": "Clinical placements",
+        "description": "Supervised practice in health care settings. Timing and hours are not yet verified.",
+        "prereqsForStep": ["Non-academic requirements complete (checks, immunizations, etc.)"]
+      },
+      {
+        "order": 5,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Second year of the Practical Nursing program.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 6,
+        "phase": "exam",
+        "title": "Write the REx-PN",
+        "description": "The entry-to-practice exam for practical nurses. Details are not yet verified; check the College of Nurses of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 7,
+        "phase": "exam",
+        "title": "Write the jurisprudence exam",
+        "description": "An exam on the laws and rules nurses in Ontario must follow. Details are not yet verified.",
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "registration",
+        "title": "Register with the College of Nurses of Ontario",
+        "description": "Apply for registration so you can legally use the title Registered Practical Nurse.",
+        "prereqsForStep": ["Exams passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 9,
+        "phase": "work",
+        "title": "Start working as an RPN",
+        "description": "You can now work as a Registered Practical Nurse in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Agent assumption, pending owner verification: an Ontario college diploma open to high school applicants that leads to RPN registration.",
+      "sourceUrl": null
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "name",
+        "credentialName",
+        "durationYears",
+        "coop",
+        "accredited",
+        "application",
+        "academic",
+        "nonAcademic",
+        "clinicalPlacements",
+        "costs",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "algonquin-practical-nursing",
+    "slug": "algonquin-practical-nursing",
+    "professionId": "registered-practical-nurse",
+    "institutionIds": ["algonquin-ottawa"],
+    "name": "Practical Nursing",
+    "credential": "diploma",
+    "credentialName": "Ontario College Diploma",
+    "durationYears": 2,
+    "coop": false,
+    "accredited": { "byBody": null, "sourceUrl": null },
+    "application": {
+      "portal": "OCAS",
+      "programCode": { "value": null, "sourceUrl": null },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [],
+      "admissionAverage": {
+        "low": null,
+        "high": null,
+        "type": "competitive",
+        "cycle": null,
+        "sourceUrl": null
+      },
+      "supplementary": [],
+      "programRequirements": []
+    },
+    "nonAcademic": [],
+    "clinicalPlacements": {
+      "description": "Clinical placements are part of this program. Details are not yet verified.",
+      "totalHours": null,
+      "sourceUrl": null
+    },
+    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 11 and 12 prerequisites",
+        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 11–12",
+        "sourceUrl": null
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Submit your application to the program. Deadlines and program code are not yet verified.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": null
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "First year of the Practical Nursing program.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "placement",
+        "title": "Clinical placements",
+        "description": "Supervised practice in health care settings. Timing and hours are not yet verified.",
+        "prereqsForStep": ["Non-academic requirements complete (checks, immunizations, etc.)"]
+      },
+      {
+        "order": 5,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Second year of the Practical Nursing program.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 6,
+        "phase": "exam",
+        "title": "Write the REx-PN",
+        "description": "The entry-to-practice exam for practical nurses. Details are not yet verified; check the College of Nurses of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 7,
+        "phase": "exam",
+        "title": "Write the jurisprudence exam",
+        "description": "An exam on the laws and rules nurses in Ontario must follow. Details are not yet verified.",
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "registration",
+        "title": "Register with the College of Nurses of Ontario",
+        "description": "Apply for registration so you can legally use the title Registered Practical Nurse.",
+        "prereqsForStep": ["Exams passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 9,
+        "phase": "work",
+        "title": "Start working as an RPN",
+        "description": "You can now work as a Registered Practical Nurse in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Agent assumption, pending owner verification: an Ontario college diploma open to high school applicants that leads to RPN registration.",
+      "sourceUrl": null
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "name",
+        "credentialName",
+        "durationYears",
+        "coop",
+        "accredited",
+        "application",
+        "academic",
+        "nonAcademic",
+        "clinicalPlacements",
+        "costs",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "fanshawe-respiratory-therapy",
+    "slug": "fanshawe-respiratory-therapy",
+    "professionId": "respiratory-therapist",
+    "institutionIds": ["fanshawe-london"],
+    "name": "Respiratory Therapy",
+    "credential": "advanced_diploma",
+    "credentialName": "Ontario College Advanced Diploma",
+    "durationYears": 3,
+    "coop": false,
+    "accredited": { "byBody": null, "sourceUrl": null },
+    "application": {
+      "portal": "OCAS",
+      "programCode": { "value": null, "sourceUrl": null },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [],
+      "admissionAverage": {
+        "low": null,
+        "high": null,
+        "type": "competitive",
+        "cycle": null,
+        "sourceUrl": null
+      },
+      "supplementary": [],
+      "programRequirements": []
+    },
+    "nonAcademic": [],
+    "clinicalPlacements": {
+      "description": "Clinical placements are part of this program. Details are not yet verified.",
+      "totalHours": null,
+      "sourceUrl": null
+    },
+    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 11 and 12 prerequisites",
+        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 11–12",
+        "sourceUrl": null
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Submit your application to the program. Deadlines and program code are not yet verified.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": null
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "First year of the Respiratory Therapy program.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Second year of the Respiratory Therapy program.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 5,
+        "phase": "placement",
+        "title": "Clinical placements",
+        "description": "Supervised practice in hospitals. Timing and hours are not yet verified.",
+        "prereqsForStep": ["Non-academic requirements complete (checks, immunizations, etc.)"]
+      },
+      {
+        "order": 6,
+        "phase": "program",
+        "title": "Year 3",
+        "description": "Third year of the Respiratory Therapy program.",
+        "durationLabel": "Year 3"
+      },
+      {
+        "order": 7,
+        "phase": "exam",
+        "title": "Write the CBRC exam",
+        "description": "The national certification exam for respiratory therapists. Details are not yet verified; check the College of Respiratory Therapists of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "registration",
+        "title": "Register with the College of Respiratory Therapists of Ontario",
+        "description": "Apply for registration so you can legally work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Exam passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 9,
+        "phase": "work",
+        "title": "Start working as a Respiratory Therapist",
+        "description": "You can now work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Agent assumption, pending owner verification: an Ontario college advanced diploma open to high school applicants that leads to RT registration.",
+      "sourceUrl": null
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "name",
+        "credentialName",
+        "durationYears",
+        "coop",
+        "accredited",
+        "application",
+        "academic",
+        "nonAcademic",
+        "clinicalPlacements",
+        "costs",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  },
+  {
+    "id": "algonquin-respiratory-therapy",
+    "slug": "algonquin-respiratory-therapy",
+    "professionId": "respiratory-therapist",
+    "institutionIds": ["algonquin-ottawa"],
+    "name": "Respiratory Therapy",
+    "credential": "advanced_diploma",
+    "credentialName": "Ontario College Advanced Diploma",
+    "durationYears": 3,
+    "coop": false,
+    "accredited": { "byBody": null, "sourceUrl": null },
+    "application": {
+      "portal": "OCAS",
+      "programCode": { "value": null, "sourceUrl": null },
+      "equalConsiderationDate": null,
+      "intakes": ["fall"]
+    },
+    "academic": {
+      "prerequisites": [],
+      "admissionAverage": {
+        "low": null,
+        "high": null,
+        "type": "competitive",
+        "cycle": null,
+        "sourceUrl": null
+      },
+      "supplementary": [],
+      "programRequirements": []
+    },
+    "nonAcademic": [],
+    "clinicalPlacements": {
+      "description": "Clinical placements are part of this program. Details are not yet verified.",
+      "totalHours": null,
+      "sourceUrl": null
+    },
+    "costs": { "tuitionDomesticPerYear": { "value": null, "sourceUrl": null } },
+    "timeline": [
+      {
+        "order": 1,
+        "phase": "high_school",
+        "title": "Complete Grade 11 and 12 prerequisites",
+        "description": "Take the high school courses this program requires. The course list is not yet verified; check the official program page.",
+        "durationLabel": "Grade 11–12",
+        "sourceUrl": null
+      },
+      {
+        "order": 2,
+        "phase": "application",
+        "title": "Apply through ontariocolleges.ca",
+        "description": "Submit your application to the program. Deadlines and program code are not yet verified.",
+        "durationLabel": "Grade 12",
+        "prereqsForStep": ["Grade 12 prerequisite courses completed or in progress"],
+        "sourceUrl": null
+      },
+      {
+        "order": 3,
+        "phase": "program",
+        "title": "Year 1",
+        "description": "First year of the Respiratory Therapy program.",
+        "durationLabel": "Year 1",
+        "prereqsForStep": ["Offer of admission accepted"]
+      },
+      {
+        "order": 4,
+        "phase": "program",
+        "title": "Year 2",
+        "description": "Second year of the Respiratory Therapy program.",
+        "durationLabel": "Year 2"
+      },
+      {
+        "order": 5,
+        "phase": "placement",
+        "title": "Clinical placements",
+        "description": "Supervised practice in hospitals. Timing and hours are not yet verified.",
+        "prereqsForStep": ["Non-academic requirements complete (checks, immunizations, etc.)"]
+      },
+      {
+        "order": 6,
+        "phase": "program",
+        "title": "Year 3",
+        "description": "Third year of the Respiratory Therapy program.",
+        "durationLabel": "Year 3"
+      },
+      {
+        "order": 7,
+        "phase": "exam",
+        "title": "Write the CBRC exam",
+        "description": "The national certification exam for respiratory therapists. Details are not yet verified; check the College of Respiratory Therapists of Ontario.",
+        "prereqsForStep": ["Graduate from the program"],
+        "sourceUrl": null
+      },
+      {
+        "order": 8,
+        "phase": "registration",
+        "title": "Register with the College of Respiratory Therapists of Ontario",
+        "description": "Apply for registration so you can legally work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Exam passed"],
+        "sourceUrl": null
+      },
+      {
+        "order": 9,
+        "phase": "work",
+        "title": "Start working as a Respiratory Therapist",
+        "description": "You can now work as a Respiratory Therapist in Ontario.",
+        "prereqsForStep": ["Registration complete"]
+      }
+    ],
+    "eligibility": {
+      "directEntryFromHighSchool": true,
+      "singleCredentialToPractice": true,
+      "requiresFurtherEducation": false,
+      "rationale": "Agent assumption, pending owner verification: an Ontario college advanced diploma open to high school applicants that leads to RT registration.",
+      "sourceUrl": null
+    },
+    "published": true,
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "name",
+        "credentialName",
+        "durationYears",
+        "coop",
+        "accredited",
+        "application",
+        "academic",
+        "nonAcademic",
+        "clinicalPlacements",
+        "costs",
+        "timeline",
+        "eligibility"
+      ]
+    }
+  }
+]

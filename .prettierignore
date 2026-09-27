@@ -1,0 +1,8 @@
+.next
+node_modules
+package-lock.json
+test-results
+playwright-report
+components/ui
+BUILD_PLAN.md
+AGENTS.md

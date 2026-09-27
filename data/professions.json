@@ -1,0 +1,159 @@
+[
+  {
+    "id": "registered-practical-nurse",
+    "slug": "registered-practical-nurse",
+    "title": "Registered Practical Nurse",
+    "regulatorId": "cno",
+    "protectedTitles": ["Registered Practical Nurse", "RPN"],
+    "domain": "nursing",
+    "contactLevel": "high",
+    "summary": "Registered Practical Nurses give hands-on nursing care to patients, often working alongside Registered Nurses and other health professionals.",
+    "scopeOfPractice": {
+      "description": "Not yet verified. The official scope of practice will be summarized here from the College of Nurses of Ontario.",
+      "sourceUrl": null
+    },
+    "typicalDuties": [
+      "Check and record patients' health status",
+      "Give medications and treatments",
+      "Help patients with daily care and comfort",
+      "Teach patients and families about their care"
+    ],
+    "workSettings": ["hospital", "long_term_care", "community"],
+    "teamConnections": [
+      {
+        "professionId": "respiratory-therapist",
+        "how": "Work together on hospital units caring for patients who have trouble breathing."
+      }
+    ],
+    "riasec": ["S", "R", "I"],
+    "workStyle": {
+      "bloodAndBodyFluids": 2,
+      "needles": 2,
+      "physicalDemand": 2,
+      "shiftWork": 2,
+      "acuteEmergency": 1,
+      "techEquipment": 1,
+      "patientInteraction": 2,
+      "independence": 1
+    },
+    "licensing": {
+      "exams": [
+        {
+          "name": "REx-PN",
+          "administeredBy": "Not yet verified",
+          "eligibilityPrereqs": ["Graduate of an approved practical nursing program"],
+          "sourceUrl": null
+        }
+      ],
+      "jurisprudenceExam": { "required": true, "sourceUrl": null },
+      "registration": {
+        "steps": [
+          "Apply to the College of Nurses of Ontario",
+          "Pass the required exams",
+          "Pay registration fees"
+        ],
+        "sourceUrl": null
+      }
+    },
+    "labourMarket": {
+      "nocCode": { "value": null, "sourceUrl": null },
+      "wageOntario": { "low": null, "median": null, "high": null, "year": null, "sourceUrl": null },
+      "workerCount": { "value": null, "asOf": null, "basis": null, "sourceUrl": null },
+      "outlook": { "rating": null, "period": null, "sourceUrl": null }
+    },
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "protectedTitles",
+        "summary",
+        "scopeOfPractice",
+        "typicalDuties",
+        "workSettings",
+        "teamConnections",
+        "riasec",
+        "workStyle",
+        "licensing",
+        "labourMarket"
+      ]
+    }
+  },
+  {
+    "id": "respiratory-therapist",
+    "slug": "respiratory-therapist",
+    "title": "Respiratory Therapist",
+    "regulatorId": "crto",
+    "protectedTitles": ["Respiratory Therapist", "RRT"],
+    "domain": "cardiopulmonary_critical",
+    "contactLevel": "high",
+    "summary": "Respiratory Therapists help people who have trouble breathing, from newborns to older adults, often in hospitals and critical care.",
+    "scopeOfPractice": {
+      "description": "Not yet verified. The official scope of practice will be summarized here from the College of Respiratory Therapists of Ontario.",
+      "sourceUrl": null
+    },
+    "typicalDuties": [
+      "Assess patients' breathing and lung function",
+      "Set up and manage breathing equipment such as ventilators",
+      "Respond to breathing emergencies",
+      "Teach patients how to manage lung conditions"
+    ],
+    "workSettings": ["hospital", "community"],
+    "teamConnections": [
+      {
+        "professionId": "registered-practical-nurse",
+        "how": "Work together on hospital units caring for patients who have trouble breathing."
+      }
+    ],
+    "riasec": ["I", "R", "S"],
+    "workStyle": {
+      "bloodAndBodyFluids": 1,
+      "needles": 2,
+      "physicalDemand": 1,
+      "shiftWork": 2,
+      "acuteEmergency": 2,
+      "techEquipment": 2,
+      "patientInteraction": 2,
+      "independence": 1
+    },
+    "licensing": {
+      "exams": [
+        {
+          "name": "CBRC exam",
+          "administeredBy": "Canadian Board for Respiratory Care",
+          "eligibilityPrereqs": ["Graduate of an accredited respiratory therapy program"],
+          "sourceUrl": null
+        }
+      ],
+      "registration": {
+        "steps": [
+          "Apply to the College of Respiratory Therapists of Ontario",
+          "Pass the required exam",
+          "Pay registration fees"
+        ],
+        "sourceUrl": null
+      }
+    },
+    "labourMarket": {
+      "nocCode": { "value": null, "sourceUrl": null },
+      "wageOntario": { "low": null, "median": null, "high": null, "year": null, "sourceUrl": null },
+      "workerCount": { "value": null, "asOf": null, "basis": null, "sourceUrl": null },
+      "outlook": { "rating": null, "period": null, "sourceUrl": null }
+    },
+    "provenance": {
+      "lastVerified": null,
+      "verifiedBy": "agent",
+      "needsVerification": [
+        "protectedTitles",
+        "summary",
+        "scopeOfPractice",
+        "typicalDuties",
+        "workSettings",
+        "teamConnections",
+        "riasec",
+        "workStyle",
+        "licensing",
+        "labourMarket"
+      ]
+    }
+  }
+]
