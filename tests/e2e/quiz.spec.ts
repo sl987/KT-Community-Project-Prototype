@@ -79,8 +79,11 @@ test("after finishing, you can start a new quiz with cleared answers", async ({ 
   await expect(page.getByText(/You finished this quiz before/)).toBeVisible();
   await page.getByRole("button", { name: /Start a new quiz/ }).click();
   await expect(page.getByRole("radio", { name: "Grade 12" })).not.toBeChecked();
+  // The old finished answers are gone; only the new, empty attempt is saved.
   await page.reload();
-  await expect(page.getByRole("button", { name: /Start the quiz/ })).toBeVisible();
+  await expect(page.getByText(/You finished this quiz before/)).toBeHidden();
+  await page.getByRole("button", { name: /Resume/ }).click();
+  await expect(page.getByRole("radio", { name: "Grade 12" })).not.toBeChecked();
 });
 
 test("results page without answers asks you to take the quiz", async ({ page }) => {
