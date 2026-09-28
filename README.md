@@ -58,6 +58,18 @@ Allowed source domains are in `scripts/allowed-domains.ts`.
 Copy `.env.example`. `NEXT_PUBLIC_SITE_URL` (sitemap/OG URLs) and `NEXT_PUBLIC_REPORT_ERROR_URL`
 (a `mailto:` or form URL for "Report an error") should be set on Vercel.
 
+## Deploying to Vercel
+
+1. Import the GitHub repo at vercel.com/new. The Next.js preset needs no overrides: build command
+   `npm run build` (runs `npm run validate` first, so invalid data fails the deploy), Node 24.
+2. Under Settings → Environment Variables (Production), set `NEXT_PUBLIC_SITE_URL` to the custom
+   domain and optionally `NEXT_PUBLIC_REPORT_ERROR_URL`. Without `NEXT_PUBLIC_SITE_URL`, the
+   site uses Vercel's production domain.
+3. Enable Web Analytics in the project dashboard (the app uses `@vercel/analytics`).
+4. Preview deployments serve a `Disallow: /` robots.txt, so only production is indexed.
+5. The Sheet pipeline secrets (`GOOGLE_SERVICE_ACCOUNT_JSON`, `SHEET_ID`) belong in GitHub
+   Actions, not Vercel.
+
 ## Before launch (BUILD_PLAN.md §13 Phase 6, §15)
 
 1. Research and fill 8–12 professions and their eligible programs from official sources only.
