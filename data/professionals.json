@@ -1,0 +1,56 @@
+{
+  "fields": [
+    { "slug": "radiation-therapist", "title": "Radiation Therapist", "professionId": null },
+    { "slug": "sonographer", "title": "Sonographer", "professionId": null },
+    { "slug": "paramedic", "title": "Paramedic", "professionId": null },
+    { "slug": "registered-nurse", "title": "Registered Nurse", "professionId": null },
+    { "slug": "mri-technologist", "title": "MRI Technologist", "professionId": "mri-technologist" }
+  ],
+  "professionals": [
+    {
+      "id": "shanawar-gill",
+      "name": "Shanawar Gill",
+      "jobType": "Radiation Therapist & Assistant Professor in Radiation Therapy",
+      "field": "radiation-therapist",
+      "almaMater": "The Michener Institute - University of Toronto Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/shanawar-gill-uoft/",
+      "description": null
+    },
+    {
+      "id": "atiya-siddiqui",
+      "name": "Atiya Siddiqui",
+      "jobType": "Sonographer",
+      "field": "sonographer",
+      "almaMater": "Mohawk College - McMaster University Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/atiya-siddiqui-a65465444/",
+      "description": null
+    },
+    {
+      "id": "june-cao",
+      "name": "June Cao",
+      "jobType": "Paramedic Student (Year 4)",
+      "field": "paramedic",
+      "almaMater": "Centennial College - University of Toronto Scarborough Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/jcpp1678/",
+      "description": null
+    },
+    {
+      "id": "jane-cao",
+      "name": "Jane Cao",
+      "jobType": "Registered Nurse",
+      "field": "registered-nurse",
+      "almaMater": "Toronto Metropolitan University",
+      "linkedinUrl": "https://www.linkedin.com/in/jane-c-59bb971b2/",
+      "description": null
+    },
+    {
+      "id": "dorna-hashemi",
+      "name": "Dorna Hashemi",
+      "jobType": "MRI Technologist",
+      "field": "mri-technologist",
+      "almaMater": "The Michener Institute - University of Toronto Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/dorna-h-28a5b3274/",
+      "description": null
+    }
+  ]
+}

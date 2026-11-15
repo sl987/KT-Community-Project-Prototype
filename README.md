@@ -1,4 +1,6 @@
-# Ontario Healthcare Pathways
+# PAHSSION
+
+_Professional Allied Health and Secondary Students in Ontario Network — Every career has a story. Ask the people living it._
 
 Helps Ontario Grade 11–12 students find regulated healthcare careers they can enter straight
 from high school with a single English-language Ontario program. Prerequisites are tracked as

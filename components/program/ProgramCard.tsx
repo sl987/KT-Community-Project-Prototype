@@ -14,7 +14,7 @@ export function PrereqIndicator({
   const m = matchPrereqs(program.prerequisites, courses ?? []);
   if (m.unknown || !program.prereqsVerified) {
     return (
-      <span className="inline-flex items-center gap-1 text-amber-800 dark:text-amber-300">
+      <span className="inline-flex items-center gap-1 text-warning">
         <CircleHelp className="size-4" aria-hidden />
         Prerequisites not yet verified
       </span>
@@ -32,7 +32,7 @@ export function PrereqIndicator({
     <span
       className={
         all
-          ? "inline-flex items-center gap-1 text-emerald-800 dark:text-emerald-300"
+          ? "inline-flex items-center gap-1 text-success"
           : "inline-flex items-center gap-1"
       }
     >
@@ -60,13 +60,13 @@ export function ProgramCard({
   const inst = p.institutions.map((i) => i.name).join(" & ");
   const where = [...new Set(p.institutions.map((i) => i.city))].join(", ");
   return (
-    <article className="bg-card text-card-foreground focus-within:ring-ring relative flex flex-col gap-3 rounded-xl border p-4 shadow-xs transition-shadow focus-within:ring-2 hover:shadow-md">
+    <article className="group/card bg-card text-card-foreground focus-within:ring-ring border-t-primary relative flex flex-col gap-3 rounded-lg border border-t-4 p-4 shadow-xs transition-[box-shadow,border-color] focus-within:ring-2 hover:border-t-(--uoft-boundless) hover:shadow-md dark:border-t-(--uoft-sky)">
       <div>
         <p className="text-muted-foreground text-sm">{p.profession.title}</p>
         <h3 className="text-lg leading-snug font-semibold">
           <Link
             href={href ?? `/programs/${p.slug}`}
-            className="outline-none after:absolute after:inset-0 after:rounded-xl"
+            className="group-hover/card:text-link outline-none transition-colors after:absolute after:inset-0 after:rounded-lg"
           >
             {p.name}
           </Link>

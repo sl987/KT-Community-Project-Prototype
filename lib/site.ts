@@ -1,5 +1,13 @@
 /** Site-wide settings from environment variables. */
 
+/** Brand. */
+export const siteName = "PAHSSION";
+export const siteLongName = "Professional Allied Health and Secondary Students in Ontario Network";
+export const siteSlogan = "Every career has a story. Ask the people living it.";
+
+/** The PAHSSION LinkedIn community page. Unset shows a "coming soon" state. */
+export const communityUrl = process.env.NEXT_PUBLIC_LINKEDIN_COMMUNITY_URL || null;
+
 /**
  * Public base URL, used for sitemap, robots, and OG image URLs. No trailing slash.
  * Falls back to Vercel's production domain, then the deployment URL, then localhost.

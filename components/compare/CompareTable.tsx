@@ -16,7 +16,7 @@ import {
 import { describePrereq } from "@/lib/prereqs";
 
 const MAX = 3;
-const NV = <span className="text-amber-800 dark:text-amber-300">Not yet verified</span>;
+const NV = <span className="text-warning">Not yet verified</span>;
 
 export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
   const [ids, setIds] = useQueryState(

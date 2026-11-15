@@ -3,7 +3,7 @@ import { lastDataUpdate, listedProfessions, programs } from "@/lib/data";
 import { siteUrl } from "@/lib/site";
 
 /** Static routes only; /quiz/results is personal and excluded. */
-export const STATIC_ROUTES = ["/", "/quiz", "/compare", "/guide", "/team", "/about"];
+export const STATIC_ROUTES = ["/", "/quiz", "/compare", "/guide", "/team", "/about", "/connect", "/connect/directory"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = lastDataUpdate ? new Date(lastDataUpdate) : undefined;

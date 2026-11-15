@@ -20,7 +20,7 @@ export function QuickFacts({ facts }: { facts: QuickFact[] }) {
                 className={
                   f.value
                     ? "block font-semibold"
-                    : "block text-sm font-medium text-amber-800 dark:text-amber-300"
+                    : "block text-sm font-medium text-warning"
                 }
               >
                 {f.value ?? "Not yet verified"}

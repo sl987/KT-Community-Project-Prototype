@@ -17,7 +17,7 @@ export function UnverifiedField({
   return (
     <span
       className={cn(
-        "inline-flex flex-wrap items-center gap-1 text-sm text-amber-800 dark:text-amber-300",
+        "inline-flex flex-wrap items-center gap-1 text-sm text-warning",
         className,
       )}
     >

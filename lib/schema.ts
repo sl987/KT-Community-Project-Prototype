@@ -529,3 +529,46 @@ export type QuizConfig = z.infer<typeof QuizConfigSchema>;
 export type QuizAnswers = z.infer<typeof QuizAnswersSchema>;
 export type Guide = z.infer<typeof GuideSchema>;
 export type Journey = z.infer<typeof JourneysFileSchema>[number];
+
+// ---------- Professional network (LinkedIn directory) ----------
+
+/** A field professionals are grouped under. `professionId` links it to a listed profession. */
+export const NetworkFieldSchema = z.object({
+  slug: Id,
+  title: z.string().min(1),
+  professionId: Id.nullable(),
+});
+
+/** A partner who agreed to be listed and contacted by students. */
+export const ProfessionalSchema = z.object({
+  id: Id,
+  name: z.string().min(1),
+  jobType: z.string().min(1),
+  field: Id,
+  almaMater: z.string().min(1),
+  linkedinUrl: Url.refine(
+    (u) => /^https:\/\/(www\.)?linkedin\.com\//.test(u),
+    "must be a linkedin.com URL",
+  ),
+  description: z.string().min(1).nullable(),
+});
+
+export const ProfessionalsFileSchema = z
+  .object({
+    fields: z.array(NetworkFieldSchema),
+    professionals: z.array(ProfessionalSchema),
+  })
+  .superRefine((file, ctx) => {
+    const slugs = new Set(file.fields.map((f) => f.slug));
+    file.professionals.forEach((p, i) => {
+      if (!slugs.has(p.field))
+        ctx.addIssue({
+          code: "custom",
+          path: ["professionals", i, "field"],
+          message: `unknown field "${p.field}"`,
+        });
+    });
+  });
+
+export type NetworkField = z.infer<typeof NetworkFieldSchema>;
+export type Professional = z.infer<typeof ProfessionalSchema>;

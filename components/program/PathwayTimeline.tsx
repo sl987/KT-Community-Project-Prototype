@@ -5,13 +5,13 @@ import type { PathwayStep } from "@/lib/pathway";
 import { cn } from "@/lib/utils";
 
 const PHASE_DOT: Record<PathwayStep["phase"], string> = {
-  high_school: "bg-sky-600",
-  application: "bg-violet-600",
+  high_school: "bg-(--uoft-boundless)",
+  application: "bg-(--uoft-purple)",
   program: "bg-primary",
-  placement: "bg-teal-600",
-  exam: "bg-amber-600",
-  registration: "bg-rose-600",
-  work: "bg-emerald-600",
+  placement: "bg-(--uoft-teal)",
+  exam: "bg-(--uoft-yellow)",
+  registration: "bg-(--uoft-red)",
+  work: "bg-(--uoft-dark-green)",
 };
 
 /** Vertical stepper from Grade 12 to working professional (§6.4). */

@@ -29,12 +29,12 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 72,
-        background: "#0f3d3e",
-        color: "#f4fbfa",
+        background: "#1E3765",
+        color: "#FFFFFF",
         fontFamily: "sans-serif",
       }}
     >
-      <div style={{ fontSize: 30, opacity: 0.85 }}>Ontario Healthcare Pathways</div>
+      <div style={{ fontSize: 30, opacity: 0.85 }}>PAHSSION · Every career has a story. Ask the people living it.</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <div style={{ fontSize: 40, opacity: 0.9 }}>{profession?.title ?? ""}</div>
         <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.05 }}>{program?.name ?? ""}</div>

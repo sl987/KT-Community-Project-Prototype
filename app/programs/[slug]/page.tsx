@@ -8,6 +8,7 @@ import { Disclaimer } from "@/components/common/Disclaimer";
 import { SourceLink } from "@/components/common/SourceLink";
 import { UnverifiedField } from "@/components/common/UnverifiedField";
 import { VerifiedBadge } from "@/components/common/VerifiedBadge";
+import { ContactButton, ProgramContacts } from "@/components/connect/ProgramContacts";
 import { DemandPanel } from "@/components/program/DemandPanel";
 import { NonAcademicChecklist } from "@/components/program/NonAcademicChecklist";
 import { PathwayTimeline } from "@/components/program/PathwayTimeline";
@@ -17,11 +18,13 @@ import { RequirementsChecklist } from "@/components/program/RequirementsChecklis
 import { SalaryPanel } from "@/components/program/SalaryPanel";
 import { ScopeTabs } from "@/components/program/ScopeTabs";
 import {
+  fieldForProfession,
   getProfession,
   getProgram,
   getRegulator,
   programInstitutions,
   programs,
+  professionalsInField,
   programsForProfession,
   summarizeProgram,
 } from "@/lib/data";
@@ -97,6 +100,8 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
     .filter((p) => p.id !== program.id)
     .map(summarizeProgram);
   const sources = collectSourceUrls(program, profession, regulator);
+  const field = fieldForProfession(profession.id);
+  const contacts = field ? professionalsInField(field.slug) : [];
   const official = [
     ...institutions.map((i) => ({ label: i.name, url: i.url })),
     ...(regulator ? [{ label: regulator.name, url: regulator.url }] : []),
@@ -156,6 +161,17 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
             </dd>
           </div>
         </dl>
+        <div className="mt-2 flex flex-wrap items-center gap-3">
+          <ContactButton field={field} count={contacts.length} />
+          {contacts.length > 0 && (
+            <a
+              href="#contacts"
+              className="text-muted-foreground text-sm underline underline-offset-4"
+            >
+              Who can I talk to?
+            </a>
+          )}
+        </div>
       </header>
 
       {/* 2. Quick facts */}
@@ -192,6 +208,9 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           },
         ]}
       />
+
+      {/* 2b. Networking: people in this field */}
+      <ProgramContacts field={field} people={contacts} professionTitle={profession.title} />
 
       {/* 3. Job and scope */}
       <Section id="job" title={`What a ${profession.title} does`}>

@@ -10,6 +10,7 @@ import coursesJson from "@/data/courses.json";
 import guideJson from "@/data/guide.json";
 import institutionsJson from "@/data/institutions.json";
 import journeysJson from "@/data/journeys.json";
+import professionalsJson from "@/data/professionals.json";
 import professionsJson from "@/data/professions.json";
 import programsJson from "@/data/programs.json";
 import quizJson from "@/data/quiz.json";
@@ -21,6 +22,7 @@ import {
   GuideSchema,
   InstitutionsFileSchema,
   JourneysFileSchema,
+  ProfessionalsFileSchema,
   ProfessionsFileSchema,
   ProgramsFileSchema,
   QuizConfigSchema,
@@ -48,6 +50,17 @@ export const journeys = JourneysFileSchema.parse(journeysJson);
 
 /** Only published programs that pass isEligible(). Never read programs.json directly. */
 export const programs = shownPrograms(ProgramsFileSchema.parse(programsJson));
+
+const network = ProfessionalsFileSchema.parse(professionalsJson);
+/** Fields in the LinkedIn directory, in data-file order. */
+export const networkFields = network.fields;
+/** Partner professionals who agreed to be listed and contacted. */
+export const professionals = network.professionals;
+/** The directory field for a listed profession, if one exists. */
+export const fieldForProfession = (professionId: string) =>
+  networkFields.find((f) => f.professionId === professionId);
+export const professionalsInField = (fieldSlug: string) =>
+  professionals.filter((p) => p.field === fieldSlug);
 
 export const getProgram = (slug: string) => programs.find((p) => p.slug === slug);
 export const getProfession = (id: string) => professions.find((p) => p.id === id);

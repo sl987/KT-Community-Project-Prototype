@@ -6,17 +6,17 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { PrivacyAnalytics } from "@/components/common/PrivacyAnalytics";
 import { SiteFooter } from "@/components/common/SiteFooter";
 import { SiteHeader } from "@/components/common/SiteHeader";
-import { siteUrl } from "@/lib/site";
+import { siteName, siteSlogan, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ontario Healthcare Pathways",
-    template: "%s · Ontario Healthcare Pathways",
+    default: `${siteName} · ${siteSlogan}`,
+    template: `%s · ${siteName}`,
   },
   description:
-    "Find regulated healthcare careers in Ontario you can enter straight from high school with a single program.",
+    "PAHSSION connects Ontario high school students with allied health professionals, and the programs that lead to their careers.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

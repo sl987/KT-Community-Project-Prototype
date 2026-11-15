@@ -1,42 +1,30 @@
 import { HeartPulse } from "lucide-react";
 import Link from "next/link";
+import { MainNav } from "./MainNav";
+import { siteLongName, siteName } from "@/lib/site";
 import { ThemeToggle } from "./ThemeToggle";
-
-const NAV = [
-  { href: "/", label: "Programs" },
-  { href: "/quiz", label: "Quiz" },
-  { href: "/guide", label: "Guide" },
-  { href: "/team", label: "Team" },
-  { href: "/about", label: "About" },
-];
 
 export function SiteHeader() {
   return (
-    <header className="border-b print:hidden">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2">
+    <header className="bg-brand text-brand-foreground border-b-4 border-(--uoft-boundless) print:hidden">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-0 px-4 py-1">
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-md py-2 font-semibold tracking-tight"
+          className="focus-visible:ring-brand-accent flex items-center gap-2.5 rounded-sm py-3 outline-none focus-visible:ring-2"
         >
-          <HeartPulse className="text-primary size-5" aria-hidden />
-          Ontario Healthcare Pathways
+          <span className="bg-brand-foreground text-brand grid size-8 place-items-center rounded-sm">
+            <HeartPulse className="size-5" aria-hidden />
+          </span>
+          <span className="leading-tight">
+            <span className="block text-lg font-bold tracking-wider">{siteName}</span>
+            <span className="text-brand-muted hidden max-w-72 text-[0.7rem] leading-snug md:block">
+              {siteLongName}
+            </span>
+          </span>
         </Link>
-        <nav aria-label="Main" className="order-last w-full sm:order-none sm:ml-auto sm:w-auto">
-          <ul className="-mx-2 flex flex-wrap">
-            {NAV.map((n) => (
-              <li key={n.href}>
-                <Link
-                  href={n.href}
-                  className="text-muted-foreground hover:bg-muted hover:text-foreground inline-block rounded-md px-2 py-2 text-sm"
-                >
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <MainNav />
         <div className="ml-auto sm:ml-0">
-          <ThemeToggle />
+          <ThemeToggle className="text-brand-foreground hover:text-brand-foreground focus-visible:ring-brand-accent/60 hover:bg-white/10 dark:hover:bg-white/10" />
         </div>
       </div>
     </header>

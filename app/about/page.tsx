@@ -15,8 +15,10 @@ export default function AboutPage() {
       <header className="grid gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">About this site</h1>
         <p className="text-muted-foreground text-lg">
-          Ontario Healthcare Pathways helps Grade 11 and 12 students, and the adults helping them,
-          find regulated health care careers you can start straight from high school.
+          PAHSSION (Professional Allied Health and Secondary Students in Ontario Network) helps
+          Grade 11 and 12 students, and the adults helping them, find regulated health care careers
+          you can start straight from high school, and connect with the professionals already
+          working in them.
         </p>
       </header>
 

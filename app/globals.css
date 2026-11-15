@@ -27,6 +27,10 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-success-soft: var(--success-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -39,6 +43,11 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-accent: var(--brand-accent);
+  --color-link: var(--link);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,72 +58,113 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.47 0.09 195);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.49 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.55 0.1 195);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.55 0.1 195);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /*
+   * University of Toronto brand palette (brand.utoronto.ca):
+   *   U of T Blue  #1E3765 (PMS 655)   Boundless Blue #007FA3
+   *   Light Grey   #F2F4F7             Cool Grey      #D0D1C9
+   *   Black #000000 · White #FFFFFF
+   *   Accents: #6FC7EA (2985) #00A189 (3285) #0D534D (7722) #8DBF2E (376)
+   *            #F1C500 (7406) #DC4633 (Warm Red) #AB1368 (227) #6D247A (2613)
+   * Mixed values below are tints/shades of those colours where contrast needs it.
+   */
+  --uoft-blue: #1e3765;
+  --uoft-boundless: #007fa3;
+  --uoft-light-grey: #f2f4f7;
+  --uoft-cool-grey: #d0d1c9;
+  --uoft-sky: #6fc7ea;
+  --uoft-teal: #00a189;
+  --uoft-dark-green: #0d534d;
+  --uoft-green: #8dbf2e;
+  --uoft-yellow: #f1c500;
+  --uoft-red: #dc4633;
+  --uoft-pink: #ab1368;
+  --uoft-purple: #6d247a;
+
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: var(--uoft-blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--uoft-light-grey);
+  --secondary-foreground: var(--uoft-blue);
+  --muted: var(--uoft-light-grey);
+  --muted-foreground: color-mix(in srgb, var(--uoft-blue) 80%, #ffffff);
+  --accent: var(--uoft-light-grey);
+  --accent-foreground: var(--uoft-blue);
+  --destructive: var(--uoft-red);
+  --success: var(--uoft-dark-green);
+  --success-soft: color-mix(in srgb, var(--uoft-teal) 12%, #ffffff);
+  --warning: color-mix(in srgb, var(--uoft-red) 80%, #000000);
+  --warning-soft: color-mix(in srgb, var(--uoft-yellow) 18%, #ffffff);
+  --border: var(--uoft-cool-grey);
+  --input: var(--uoft-cool-grey);
+  --ring: var(--uoft-boundless);
+  --chart-1: var(--uoft-blue);
+  --chart-2: var(--uoft-boundless);
+  --chart-3: var(--uoft-sky);
+  --chart-4: var(--uoft-teal);
+  --chart-5: var(--uoft-yellow);
+  --radius: 0.375rem;
+  /* Signature U of T surfaces: navy bands (header, hero, footer) in both themes. */
+  --brand: var(--uoft-blue);
+  --brand-foreground: #ffffff;
+  --brand-muted: color-mix(in srgb, #ffffff 78%, var(--uoft-blue));
+  --brand-accent: var(--uoft-sky);
+  --link: var(--uoft-boundless);
+  --sidebar: var(--uoft-light-grey);
+  --sidebar-foreground: #000000;
+  --sidebar-primary: var(--uoft-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffffff;
+  --sidebar-accent-foreground: var(--uoft-blue);
+  --sidebar-border: var(--uoft-cool-grey);
+  --sidebar-ring: var(--uoft-boundless);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.78 0.11 190);
-  --primary-foreground: oklch(0.18 0.02 195);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.75 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.7 0.1 190);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.72 0.11 190);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: color-mix(in srgb, var(--uoft-blue) 35%, #000000);
+  --foreground: #ffffff;
+  --card: color-mix(in srgb, var(--uoft-blue) 55%, #000000);
+  --card-foreground: #ffffff;
+  --popover: color-mix(in srgb, var(--uoft-blue) 55%, #000000);
+  --popover-foreground: #ffffff;
+  --primary: var(--uoft-sky);
+  --primary-foreground: var(--uoft-blue);
+  --secondary: var(--uoft-blue);
+  --secondary-foreground: #ffffff;
+  --muted: var(--uoft-blue);
+  --muted-foreground: var(--uoft-cool-grey);
+  --accent: var(--uoft-blue);
+  --accent-foreground: #ffffff;
+  --destructive: color-mix(in srgb, var(--uoft-red) 75%, #ffffff);
+  --success: var(--uoft-teal);
+  --success-soft: color-mix(in srgb, var(--uoft-dark-green) 45%, #000000);
+  --warning: var(--uoft-yellow);
+  --warning-soft: color-mix(in srgb, var(--uoft-yellow) 15%, #000000);
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 18%);
+  --ring: var(--uoft-sky);
+  --chart-1: var(--uoft-sky);
+  --chart-2: var(--uoft-boundless);
+  --chart-3: var(--uoft-teal);
+  --chart-4: var(--uoft-yellow);
+  --chart-5: var(--uoft-cool-grey);
+  --brand: color-mix(in srgb, var(--uoft-blue) 80%, #000000);
+  --brand-foreground: #ffffff;
+  --brand-muted: var(--uoft-cool-grey);
+  --brand-accent: var(--uoft-sky);
+  --link: var(--uoft-sky);
+  --sidebar: color-mix(in srgb, var(--uoft-blue) 55%, #000000);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: var(--uoft-sky);
+  --sidebar-primary-foreground: var(--uoft-blue);
+  --sidebar-accent: var(--uoft-blue);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: var(--uoft-sky);
 }
 
 @layer base {
@@ -126,6 +176,23 @@
   }
   html {
     @apply font-sans;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-primary dark:text-foreground;
+  }
+  /* Inline text links take Boundless Blue underlines, U of T style. */
+  :where(main) a:where(.underline) {
+    text-decoration-color: color-mix(in srgb, var(--link) 70%, transparent);
+    text-underline-offset: 3px;
+  }
+  :where(main) a:where(.underline):hover {
+    color: var(--link);
+    text-decoration-color: var(--link);
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--uoft-sky) 45%, transparent);
   }
 }
 
