@@ -176,6 +176,8 @@
   }
   html {
     @apply font-sans;
+    /* 17px base: body text reads larger against the navy header and hero. */
+    font-size: 106.25%;
   }
   h1,
   h2,

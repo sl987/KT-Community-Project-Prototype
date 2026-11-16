@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { ProjectCredit } from "@/components/common/ProjectCredit";
 import { PrivacyAnalytics } from "@/components/common/PrivacyAnalytics";
 import { SiteFooter } from "@/components/common/SiteFooter";
 import { SiteHeader } from "@/components/common/SiteHeader";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <main id="main" className="flex-1">
               {children}
             </main>
+            <ProjectCredit />
             <SiteFooter />
           </NuqsAdapter>
         </ThemeProvider>

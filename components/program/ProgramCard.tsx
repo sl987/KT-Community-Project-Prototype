@@ -14,7 +14,7 @@ export function PrereqIndicator({
   const m = matchPrereqs(program.prerequisites, courses ?? []);
   if (m.unknown || !program.prereqsVerified) {
     return (
-      <span className="inline-flex items-center gap-1 text-warning">
+      <span className="text-warning inline-flex items-center gap-1">
         <CircleHelp className="size-4" aria-hidden />
         Prerequisites not yet verified
       </span>
@@ -31,9 +31,7 @@ export function PrereqIndicator({
   return (
     <span
       className={
-        all
-          ? "inline-flex items-center gap-1 text-success"
-          : "inline-flex items-center gap-1"
+        all ? "text-success inline-flex items-center gap-1" : "inline-flex items-center gap-1"
       }
     >
       {all ? (
@@ -66,7 +64,7 @@ export function ProgramCard({
         <h3 className="text-lg leading-snug font-semibold">
           <Link
             href={href ?? `/programs/${p.slug}`}
-            className="group-hover/card:text-link outline-none transition-colors after:absolute after:inset-0 after:rounded-lg"
+            className="group-hover/card:text-link transition-colors outline-none after:absolute after:inset-0 after:rounded-lg"
           >
             {p.name}
           </Link>

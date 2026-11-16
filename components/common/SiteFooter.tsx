@@ -5,7 +5,7 @@ import { siteLongName, siteName } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand text-brand-muted mt-16 border-t-4 border-(--uoft-boundless) print:hidden">
+    <footer className="bg-brand text-brand-muted border-t-4 border-(--uoft-boundless) print:hidden">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-3xl">
           <abbr title={siteLongName} className="text-brand-foreground font-semibold no-underline">

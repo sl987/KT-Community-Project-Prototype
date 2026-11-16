@@ -572,3 +572,36 @@ export const ProfessionalsFileSchema = z
 
 export type NetworkField = z.infer<typeof NetworkFieldSchema>;
 export type Professional = z.infer<typeof ProfessionalSchema>;
+
+/** Institutions offering a program for a partner field (Programs tab). */
+export const PartnerProgramSchema = z.object({
+  institution: z.string().min(1),
+  city: z.string().min(1),
+  program: z.string().min(1),
+  credential: z.string().min(1),
+  years: z.number().positive().max(6).optional(),
+  portal: PortalSchema,
+  url: Url,
+  /** A detailed program page on this site, when one exists. */
+  programSlug: Id.optional(),
+  /** A PAHSSION partner professional studied here. */
+  partnerAlumni: z.boolean().optional(),
+  detail: z.string().min(1).optional(),
+});
+
+export const PartnerFieldProgramsSchema = z.object({
+  field: Id,
+  summary: z.string().min(1),
+  note: z.string().min(1).optional(),
+  noteUrl: Url.optional(),
+  moreUrl: Url.optional(),
+  moreLabel: z.string().min(1).optional(),
+  programs: z.array(PartnerProgramSchema).min(1),
+});
+
+export const PartnerProgramsFileSchema = z.object({
+  fields: z.array(PartnerFieldProgramsSchema),
+});
+
+export type PartnerProgram = z.infer<typeof PartnerProgramSchema>;
+export type PartnerFieldPrograms = z.infer<typeof PartnerFieldProgramsSchema>;

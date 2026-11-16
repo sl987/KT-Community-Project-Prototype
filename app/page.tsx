@@ -1,23 +1,25 @@
 import { ListChecks, MessageCircle, Search } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
-import { DiscoveryHub } from "@/components/hub/DiscoveryHub";
+import { PartnerPrograms } from "@/components/programs/PartnerPrograms";
 import { buttonVariants } from "@/components/ui/button";
-import { courseOptions, programSummaries } from "@/lib/data";
+import { partnerFieldPrograms, professionalsInField } from "@/lib/data";
 import { siteLongName, siteSlogan } from "@/lib/site";
 
 export default function Home() {
+  const partnerCounts = Object.fromEntries(
+    partnerFieldPrograms.map((f) => [f.field, professionalsInField(f.field).length]),
+  );
   return (
     <>
       <section className="bg-brand text-brand-foreground">
-        <div className="mx-auto grid max-w-6xl gap-5 px-4 pt-12 pb-14 sm:pt-16 sm:pb-20">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 pt-8 pb-10 sm:pt-10 sm:pb-12">
           <p className="text-brand-accent text-sm font-semibold tracking-widest uppercase">
             {siteLongName}
           </p>
-          <h1 className="text-brand-foreground dark:text-brand-foreground max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl sm:leading-[1.1]">
+          <h1 className="text-brand-foreground dark:text-brand-foreground max-w-3xl text-2xl font-semibold tracking-tight text-balance sm:text-4xl sm:leading-[1.15]">
             {siteSlogan}
           </h1>
-          <p className="text-brand-muted max-w-2xl text-lg">
+          <p className="text-brand-muted max-w-2xl text-base sm:text-lg">
             Guidance counsellors can tell you which courses you need. The professionals here can
             tell you what the job is really like. Find a program that takes you from Grade 12 to a
             regulated allied health career, then talk to the people already doing it.
@@ -56,10 +58,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10">
-        <Suspense fallback={<p className="text-muted-foreground">Loading programs…</p>}>
-          <DiscoveryHub programs={programSummaries} courses={courseOptions} />
-        </Suspense>
+      <div id="programs" className="mx-auto grid max-w-6xl scroll-mt-4 gap-6 px-4 py-10">
+        <header className="grid max-w-3xl gap-2">
+          <h2 className="text-3xl font-semibold tracking-tight">Programs by profession</h2>
+          <p className="text-muted-foreground text-lg">
+            These are the professions our partner professionals work in. Under each one are the
+            Ontario schools where you can study it, starting straight from high school. Always check
+            the official program page for current admission requirements.
+          </p>
+        </header>
+        <PartnerPrograms fields={partnerFieldPrograms} partnerCounts={partnerCounts} />
       </div>
     </>
   );

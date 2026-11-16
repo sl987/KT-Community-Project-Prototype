@@ -16,10 +16,7 @@ export function UnverifiedField({
 }) {
   return (
     <span
-      className={cn(
-        "inline-flex flex-wrap items-center gap-1 text-sm text-warning",
-        className,
-      )}
+      className={cn("text-warning inline-flex flex-wrap items-center gap-1 text-sm", className)}
     >
       <CircleHelp className="size-3.5 shrink-0" aria-hidden />
       <span>

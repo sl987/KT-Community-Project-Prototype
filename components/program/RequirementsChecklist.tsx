@@ -58,12 +58,12 @@ export function RequirementsChecklist({
               {courses ? (
                 met ? (
                   <CircleCheck
-                    className="mt-0.5 size-4 shrink-0 text-success"
+                    className="text-success mt-0.5 size-4 shrink-0"
                     aria-label="You have this"
                   />
                 ) : (
                   <CircleX
-                    className="mt-0.5 size-4 shrink-0 text-destructive"
+                    className="text-destructive mt-0.5 size-4 shrink-0"
                     aria-label="Missing"
                   />
                 )

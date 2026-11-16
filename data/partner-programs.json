@@ -1,0 +1,294 @@
+{
+  "fields": [
+    {
+      "field": "radiation-therapist",
+      "summary": "Plans and delivers radiation treatment for people with cancer, and supports them through every session.",
+      "note": "The Michener–University of Toronto Radiation Therapy program is second-entry: you need at least one year of university before you apply.",
+      "noteUrl": "https://michener.ca/program/radiation-therapy-university-toronto",
+      "programs": [
+        {
+          "institution": "Mohawk College & McMaster University",
+          "city": "Hamilton",
+          "program": "Medical Radiation Sciences (Radiation Therapy stream)",
+          "credential": "Joint degree and advanced diploma",
+          "portal": "OUAC",
+          "url": "https://www.mohawkcollege.ca/729",
+          "detail": "Common first year, then you apply to specialize in radiation therapy."
+        }
+      ]
+    },
+    {
+      "field": "sonographer",
+      "summary": "Uses ultrasound to make images of organs, blood vessels, and babies before birth.",
+      "programs": [
+        {
+          "institution": "Mohawk College & McMaster University",
+          "city": "Hamilton",
+          "program": "Medical Radiation Sciences (Ultrasonography stream)",
+          "credential": "Joint degree and advanced diploma",
+          "portal": "OUAC",
+          "url": "https://www.mohawkcollege.ca/729",
+          "partnerAlumni": true,
+          "detail": "Common first year, then you apply to specialize in ultrasonography."
+        },
+        {
+          "institution": "Conestoga College",
+          "city": "Kitchener",
+          "program": "Diagnostic Medical Sonography",
+          "credential": "Advanced diploma",
+          "portal": "OCAS",
+          "url": "https://www.conestogac.on.ca/fulltime/diagnostic-medical-sonography"
+        },
+        {
+          "institution": "Georgian College",
+          "city": "Barrie",
+          "program": "Diagnostic Medical Sonography",
+          "credential": "Advanced diploma",
+          "years": 3,
+          "portal": "OCAS",
+          "url": "https://www.georgiancollege.ca/SONO"
+        },
+        {
+          "institution": "St. Clair College",
+          "city": "Windsor",
+          "program": "Diagnostic Medical Sonography",
+          "credential": "Advanced diploma",
+          "years": 3,
+          "portal": "OCAS",
+          "url": "https://www.stclaircollege.ca/programs/diagnostic-medical-sonography"
+        }
+      ]
+    },
+    {
+      "field": "paramedic",
+      "summary": "Gives emergency care at the scene and on the way to hospital.",
+      "moreUrl": "https://www.ontariocolleges.ca/en/programs/health-food-and-medical/paramedic",
+      "moreLabel": "See every Ontario paramedic program on ontariocolleges.ca",
+      "programs": [
+        {
+          "institution": "University of Toronto Scarborough & Centennial College",
+          "city": "Toronto",
+          "program": "Paramedicine (Joint Program)",
+          "credential": "Honours BSc and paramedic diploma",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.utsc.utoronto.ca/jtprogs/paramedicine",
+          "partnerAlumni": true
+        },
+        {
+          "institution": "Centennial College",
+          "city": "Toronto",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.centennialcollege.ca/programs-courses/full-time/paramedic"
+        },
+        {
+          "institution": "Humber Polytechnic",
+          "city": "Toronto",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://humber.ca"
+        },
+        {
+          "institution": "Algonquin College",
+          "city": "Ottawa",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.algonquincollege.com"
+        },
+        {
+          "institution": "Conestoga College",
+          "city": "Kitchener",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.conestogac.on.ca"
+        },
+        {
+          "institution": "St. Clair College",
+          "city": "Windsor",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.stclaircollege.ca/programs/paramedic"
+        },
+        {
+          "institution": "Niagara College",
+          "city": "Welland",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.niagaracollege.ca"
+        },
+        {
+          "institution": "Confederation College",
+          "city": "Thunder Bay",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.confederationcollege.ca"
+        },
+        {
+          "institution": "Loyalist College",
+          "city": "Belleville",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://loyalistcollege.com"
+        },
+        {
+          "institution": "Cambrian College",
+          "city": "Sudbury",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://cambriancollege.ca"
+        },
+        {
+          "institution": "St. Lawrence College",
+          "city": "Kingston",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.stlawrencecollege.ca"
+        },
+        {
+          "institution": "Northern College",
+          "city": "Timmins",
+          "program": "Paramedic",
+          "credential": "Diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://www.northerncollege.ca"
+        }
+      ]
+    },
+    {
+      "field": "registered-nurse",
+      "summary": "Assesses patients, gives treatments and medications, and coordinates care with the rest of the team.",
+      "moreUrl": "https://www.ouac.on.ca",
+      "moreLabel": "Search every Ontario BScN program on OUAC",
+      "programs": [
+        {
+          "institution": "Toronto Metropolitan University, Centennial College & George Brown College",
+          "city": "Toronto",
+          "program": "Nursing (Collaborative BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.torontomu.ca/programs/undergraduate/nursing-collaborative/",
+          "partnerAlumni": true
+        },
+        {
+          "institution": "York University",
+          "city": "Toronto",
+          "program": "Nursing (4-Year Direct Entry)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.yorku.ca/health/nursing-future-student/direct-entry-nursing/"
+        },
+        {
+          "institution": "McMaster University, Mohawk College & Conestoga College",
+          "city": "Hamilton and Kitchener",
+          "program": "Nursing (BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://nursing.mcmaster.ca"
+        },
+        {
+          "institution": "University of Ottawa & Algonquin College",
+          "city": "Ottawa",
+          "program": "Nursing (Collaborative BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.algonquincollege.com"
+        },
+        {
+          "institution": "Western University & Fanshawe College",
+          "city": "London",
+          "program": "Nursing (BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "portal": "OUAC",
+          "url": "https://uwo.ca/fhs/nursing/undergrad/bscn/admission.html"
+        },
+        {
+          "institution": "Queen's University",
+          "city": "Kingston",
+          "program": "Nursing (BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://nursing.queensu.ca"
+        },
+        {
+          "institution": "Trent University",
+          "city": "Peterborough",
+          "program": "Nursing (Collaborative BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.trentu.ca/nursing"
+        },
+        {
+          "institution": "University of Windsor & St. Clair College",
+          "city": "Windsor",
+          "program": "Nursing (BScN)",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OUAC",
+          "url": "https://www.uwindsor.ca/nursing"
+        },
+        {
+          "institution": "Georgian College",
+          "city": "Barrie",
+          "program": "Honours Bachelor of Science in Nursing",
+          "credential": "Bachelor of Science in Nursing",
+          "years": 4,
+          "portal": "OCAS",
+          "url": "https://www.georgiancollege.ca/HBSN"
+        }
+      ]
+    },
+    {
+      "field": "mri-technologist",
+      "summary": "Uses magnetic resonance imaging (MRI) to make detailed pictures of the inside of the body.",
+      "programs": [
+        {
+          "institution": "The Michener Institute of Education at UHN",
+          "city": "Toronto",
+          "program": "Magnetic Resonance Imaging (MRI)",
+          "credential": "Advanced diploma",
+          "years": 2,
+          "portal": "OCAS",
+          "url": "https://michener.ca/programs-courses/magnetic-resonance-imaging-mri/",
+          "programSlug": "michener-mri",
+          "partnerAlumni": true
+        },
+        {
+          "institution": "Mohawk College",
+          "city": "Hamilton",
+          "program": "Magnetic Resonance Imaging (1st Discipline)",
+          "credential": "Diploma",
+          "portal": "OCAS",
+          "url": "https://www.mohawkcollege.ca/767"
+        }
+      ]
+    }
+  ]
+}

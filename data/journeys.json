@@ -25,9 +25,9 @@
         "role": "Helps the patient breathe, including managing a ventilator if needed."
       },
       {
-        "professionId": "registered-practical-nurse",
-        "label": "Registered Practical Nurse",
-        "role": "Provides nursing care as the patient recovers on the hospital unit."
+        "professionId": null,
+        "label": "Registered Nurse",
+        "role": "Assesses the patient, gives medications, and coordinates their care as they recover on the hospital unit."
       },
       {
         "professionId": null,

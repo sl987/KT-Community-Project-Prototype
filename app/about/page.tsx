@@ -22,6 +22,18 @@ export default function AboutPage() {
         </p>
       </header>
 
+      <section aria-labelledby="who">
+        <h2 id="who">Who built this</h2>
+        <p>
+          PAHSSION is a project developed by students of the{" "}
+          <a href="https://trp.utoronto.ca" className="underline">
+            Translational Research Program
+          </a>{" "}
+          at the University of Toronto, in partnership with allied health professionals who
+          volunteer to talk with students.
+        </p>
+      </section>
+
       <section aria-labelledby="rules">
         <h2 id="rules">Which programs are listed</h2>
         <p>A program is listed only if all three of these are true:</p>

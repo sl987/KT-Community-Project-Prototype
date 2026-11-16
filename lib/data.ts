@@ -10,6 +10,7 @@ import coursesJson from "@/data/courses.json";
 import guideJson from "@/data/guide.json";
 import institutionsJson from "@/data/institutions.json";
 import journeysJson from "@/data/journeys.json";
+import partnerProgramsJson from "@/data/partner-programs.json";
 import professionalsJson from "@/data/professionals.json";
 import professionsJson from "@/data/professions.json";
 import programsJson from "@/data/programs.json";
@@ -22,6 +23,7 @@ import {
   GuideSchema,
   InstitutionsFileSchema,
   JourneysFileSchema,
+  PartnerProgramsFileSchema,
   ProfessionalsFileSchema,
   ProfessionsFileSchema,
   ProgramsFileSchema,
@@ -61,6 +63,16 @@ export const fieldForProfession = (professionId: string) =>
   networkFields.find((f) => f.professionId === professionId);
 export const professionalsInField = (fieldSlug: string) =>
   professionals.filter((p) => p.field === fieldSlug);
+
+const partnerProgramsFile = PartnerProgramsFileSchema.parse(partnerProgramsJson);
+/**
+ * Programs tab: each partner field with the institutions that offer it, in
+ * directory order. Fields without an entry in partner-programs.json are skipped.
+ */
+export const partnerFieldPrograms = networkFields.flatMap((f) => {
+  const entry = partnerProgramsFile.fields.find((e) => e.field === f.slug);
+  return entry ? [{ ...entry, title: f.title, professionId: f.professionId }] : [];
+});
 
 export const getProgram = (slug: string) => programs.find((p) => p.slug === slug);
 export const getProfession = (id: string) => professions.find((p) => p.id === id);

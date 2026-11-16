@@ -23,10 +23,8 @@ export function Badge({ tone, children }: { tone: "good" | "warn" | "neutral"; c
     <span
       className={cn(
         "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium",
-        tone === "good" &&
-          "border-success/40 bg-success-soft text-success",
-        tone === "warn" &&
-          "border-warning/40 bg-warning-soft text-warning",
+        tone === "good" && "border-success/40 bg-success-soft text-success",
+        tone === "warn" && "border-warning/40 bg-warning-soft text-warning",
         tone === "neutral" && "bg-muted text-foreground",
       )}
     >
@@ -76,10 +74,7 @@ export function ResultCard({ result, rank }: { result: ProfessionResult; rank: n
             <ul className="grid gap-1 text-sm">
               {result.why.map((w) => (
                 <li key={w} className="flex gap-2">
-                  <CircleCheck
-                    className="mt-0.5 size-4 shrink-0 text-success"
-                    aria-hidden
-                  />
+                  <CircleCheck className="text-success mt-0.5 size-4 shrink-0" aria-hidden />
                   {w}
                 </li>
               ))}
@@ -94,10 +89,7 @@ export function ResultCard({ result, rank }: { result: ProfessionResult; rank: n
             <ul className="grid gap-1 text-sm">
               {result.watchOuts.map((w) => (
                 <li key={w} className="flex gap-2">
-                  <CircleAlert
-                    className="mt-0.5 size-4 shrink-0 text-warning"
-                    aria-hidden
-                  />
+                  <CircleAlert className="text-warning mt-0.5 size-4 shrink-0" aria-hidden />
                   {w}
                 </li>
               ))}

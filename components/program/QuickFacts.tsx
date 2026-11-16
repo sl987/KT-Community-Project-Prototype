@@ -18,9 +18,7 @@ export function QuickFacts({ facts }: { facts: QuickFact[] }) {
               <span className="text-muted-foreground block text-xs">{f.label}</span>
               <span
                 className={
-                  f.value
-                    ? "block font-semibold"
-                    : "block text-sm font-medium text-warning"
+                  f.value ? "block font-semibold" : "text-warning block text-sm font-medium"
                 }
               >
                 {f.value ?? "Not yet verified"}

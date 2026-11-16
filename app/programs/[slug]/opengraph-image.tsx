@@ -34,7 +34,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         fontFamily: "sans-serif",
       }}
     >
-      <div style={{ fontSize: 30, opacity: 0.85 }}>PAHSSION · Every career has a story. Ask the people living it.</div>
+      <div style={{ fontSize: 30, opacity: 0.85 }}>
+        PAHSSION · Every career has a story. Ask the people living it.
+      </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <div style={{ fontSize: 40, opacity: 0.9 }}>{profession?.title ?? ""}</div>
         <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.05 }}>{program?.name ?? ""}</div>
