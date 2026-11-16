@@ -17,6 +17,15 @@
       "description": null
     },
     {
+      "id": "sonia-liang",
+      "name": "Sonia Liang",
+      "jobType": "Radiation Therapist",
+      "field": "radiation-therapist",
+      "almaMater": "Mohawk College - McMaster University Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/sonia-liang/",
+      "description": null
+    },
+    {
       "id": "atiya-siddiqui",
       "name": "Atiya Siddiqui",
       "jobType": "Sonographer",
