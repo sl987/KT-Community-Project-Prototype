@@ -35,6 +35,15 @@
       "description": null
     },
     {
+      "id": "phyllis-wai",
+      "name": "Phyllis Wai",
+      "jobType": "Sonographer",
+      "field": "sonographer",
+      "almaMater": "Mohawk College - McMaster University Joint Program",
+      "linkedinUrl": "https://www.linkedin.com/in/phylliswai/",
+      "description": null
+    },
+    {
       "id": "june-cao",
       "name": "June Cao",
       "jobType": "Paramedic Student (Year 4)",
