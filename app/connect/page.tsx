@@ -5,6 +5,11 @@ import type { ReactNode } from "react";
 import { CommunityPanel } from "@/components/connect/CommunityPanel";
 import { buttonVariants } from "@/components/ui/button";
 import { professionals } from "@/lib/data";
+import {
+  linkedinCommunityPoliciesUrl,
+  linkedinUserAgreementUrl,
+  partnerVerificationText,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Connect with professionals",
@@ -34,8 +39,38 @@ const GROUND_RULES: { title: string; body: ReactNode }[] = [
     body: "Use a clear profile photo, proper spelling and a polite tone. Treat every message as if a future employer could read it.",
   },
   {
+    title: "Follow LinkedIn's rules",
+    body: (
+      <>
+        When you use LinkedIn, you must follow its{" "}
+        <a
+          href={linkedinUserAgreementUrl}
+          className="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          User Agreement
+        </a>{" "}
+        and{" "}
+        <a
+          href={linkedinCommunityPoliciesUrl}
+          className="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Professional Community Policies
+        </a>
+        . PAHSSION is not part of LinkedIn.
+      </>
+    ),
+  },
+  {
+    title: "Keep everything on LinkedIn",
+    body: "All communication, including coffee chats, must happen on LinkedIn. Don't exchange personal emails, phone numbers, social media accounts or any other personal information, and don't move the conversation to another app.",
+  },
+  {
     title: "Stay safe",
-    body: "Keep conversations on LinkedIn or in a public video call. Never share your home address or passwords, and never send money. If anything feels wrong, stop replying and tell a trusted adult.",
+    body: "Never share your home address or passwords, and never send money. If a partner asks to talk somewhere other than LinkedIn, or anything feels wrong, stop replying, tell a trusted adult, and report it to us.",
   },
 ];
 
@@ -178,13 +213,23 @@ export default function ConnectPage() {
               </li>
             ))}
           </ol>
+          <p className="border-l-link bg-muted flex max-w-3xl items-start gap-2 rounded-md border-l-4 p-3 text-sm">
+            <ShieldCheck className="text-link mt-0.5 size-4 shrink-0" aria-hidden />
+            <span>
+              {partnerVerificationText} Something go wrong?{" "}
+              <Link href="/about#report" className="font-medium underline">
+                Report a concern about a partner
+              </Link>
+              .
+            </span>
+          </p>
         </Section>
 
         <Section
           id="coffee-chats"
           icon={<Coffee className="size-5" aria-hidden />}
           title="Introduction to coffee chats"
-          intro="A coffee chat is a short, informal conversation (often a 15–20 minute video call) where you ask someone about their career. No coffee required."
+          intro="A coffee chat is a short, informal conversation where you ask someone about their career. No coffee required. Every coffee chat happens on LinkedIn, through its messages or a call you set up there."
         >
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="grid content-start gap-3">
@@ -200,8 +245,8 @@ export default function ConnectPage() {
               </blockquote>
               <h3 className="mt-3 text-lg font-semibold">2. Prepare and show up</h3>
               <p className="text-muted-foreground text-sm">
-                Read their profile and the program page first. Join on time, have your questions
-                ready, and end when you said you would.
+                Read their profile and the program page first. Have your questions ready, keep the
+                chat on LinkedIn, and end when you said you would.
               </p>
               <h3 className="mt-3 text-lg font-semibold">3. Say thank you</h3>
               <p className="text-muted-foreground text-sm">

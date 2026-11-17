@@ -20,12 +20,20 @@ export function SiteFooter() {
           )}
           . This site is a starting point, not advice. Always confirm on official program pages.
         </p>
-        <Link
-          href="/about"
-          className="text-brand-foreground decoration-brand-accent focus-visible:ring-brand-accent shrink-0 rounded-sm underline underline-offset-4 outline-none hover:decoration-2 focus-visible:ring-2"
-        >
-          About, sources &amp; methodology
-        </Link>
+        <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-1">
+          <Link
+            href="/about#terms"
+            className="text-brand-foreground decoration-brand-accent focus-visible:ring-brand-accent shrink-0 rounded-sm underline underline-offset-4 outline-none hover:decoration-2 focus-visible:ring-2"
+          >
+            Terms of use
+          </Link>
+          <Link
+            href="/about"
+            className="text-brand-foreground decoration-brand-accent focus-visible:ring-brand-accent shrink-0 rounded-sm underline underline-offset-4 outline-none hover:decoration-2 focus-visible:ring-2"
+          >
+            About, sources &amp; methodology
+          </Link>
+        </div>
       </div>
     </footer>
   );

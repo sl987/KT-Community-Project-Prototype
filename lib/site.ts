@@ -5,6 +5,15 @@ export const siteName = "PAHSSION";
 export const siteLongName = "Professional Allied Health and Secondary Students in Ontario Network";
 export const siteSlogan = "Every career has a story. Ask the people living it.";
 
+/** LinkedIn's own terms, which everyone using the Connect features must follow. */
+export const linkedinUserAgreementUrl = "https://www.linkedin.com/legal/user-agreement";
+export const linkedinCommunityPoliciesUrl =
+  "https://www.linkedin.com/legal/professional-community-policies";
+
+/** How partners are checked before being listed (Connect, directory, About). */
+export const partnerVerificationText =
+  "Every partner is verified before being listed: working professionals are registered members of their Ontario regulatory college, and student partners are confirmed as current students of their program.";
+
 /** The PAHSSION LinkedIn community page. Unset shows a "coming soon" state. */
 export const communityUrl = process.env.NEXT_PUBLIC_LINKEDIN_COMMUNITY_URL || null;
 
@@ -29,11 +38,11 @@ export const isIndexable = !process.env.VERCEL_ENV || process.env.VERCEL_ENV ===
  */
 export const reportErrorTarget = process.env.NEXT_PUBLIC_REPORT_ERROR_URL || null;
 
-export function reportErrorHref(context: string) {
+export function reportErrorHref(context: string, subject = `Data error: ${context}`) {
   if (!reportErrorTarget) return "/about#report";
   if (reportErrorTarget.startsWith("mailto:")) {
     const sep = reportErrorTarget.includes("?") ? "&" : "?";
-    return `${reportErrorTarget}${sep}subject=${encodeURIComponent(`Data error: ${context}`)}`;
+    return `${reportErrorTarget}${sep}subject=${encodeURIComponent(subject)}`;
   }
   return reportErrorTarget;
 }

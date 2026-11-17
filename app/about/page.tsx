@@ -2,11 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { lastDataUpdate } from "@/lib/data";
 import { formatDate } from "@/lib/format";
-import { reportErrorHref, reportErrorTarget } from "@/lib/site";
+import {
+  linkedinCommunityPoliciesUrl,
+  linkedinUserAgreementUrl,
+  partnerVerificationText,
+  reportErrorHref,
+  reportErrorTarget,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About, sources & methodology",
-  description: "How programs are chosen, where the data comes from, and how to report an error.",
+  description:
+    "How programs are chosen, where the data comes from, terms of use, and how to report a problem.",
 };
 
 export default function AboutPage() {
@@ -120,21 +127,86 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section aria-labelledby="terms-h" id="terms" className="scroll-mt-4">
+        <h2 id="terms-h">Terms of use</h2>
+        <p>By using this site, you agree to these terms.</p>
+        <ol className="grid list-decimal gap-2 pl-5">
+          <li>
+            <strong>Information, not advice.</strong> Program details are a general guide. They are
+            not academic, career, or medical advice. Always confirm with the school and your
+            guidance counsellor.
+          </li>
+          <li>
+            <strong>LinkedIn is a separate service.</strong> PAHSSION is not affiliated with or
+            endorsed by LinkedIn. If you use LinkedIn to contact a partner, you must follow
+            LinkedIn&apos;s{" "}
+            <a href={linkedinUserAgreementUrl} className="underline">
+              User Agreement
+            </a>{" "}
+            and{" "}
+            <a href={linkedinCommunityPoliciesUrl} className="underline">
+              Professional Community Policies
+            </a>
+            , including its minimum age of 16.
+          </li>
+          <li>
+            <strong>Verified, volunteer partners.</strong> {partnerVerificationText} Partners
+            volunteer their time, don&apos;t have to reply, and share their own views, not those of
+            PAHSSION or the University of Toronto.
+          </li>
+          <li>
+            <strong>All communication stays on LinkedIn.</strong> Every conversation with a partner,
+            including coffee chats, must happen on LinkedIn. Students and partners must not exchange
+            personal emails, phone numbers, or any other personal information. We don&apos;t host or
+            monitor messages, and we aren&apos;t responsible for conversations on LinkedIn or
+            elsewhere. Follow the{" "}
+            <Link href="/connect#ground-rules" className="underline">
+              ground rules
+            </Link>{" "}
+            and report anything that feels wrong.
+          </li>
+          <li>
+            <strong>Use the directory respectfully.</strong> Don&apos;t use it to spam, harass,
+            recruit, sell, or collect partners&apos; information.
+          </li>
+          <li>
+            <strong>Changes.</strong> We may remove a listing, or update the site and these terms,
+            at any time. Links to other websites are provided for convenience, and we aren&apos;t
+            responsible for their content.
+          </li>
+        </ol>
+      </section>
+
       <section aria-labelledby="report-h" id="report" className="scroll-mt-4">
-        <h2 id="report-h">How to report an error</h2>
+        <h2 id="report-h">Report a problem</h2>
+        <h3 className="text-lg font-semibold">An error on the site</h3>
         <p>
           Found something wrong or out of date? Tell us which page, what&apos;s wrong, and a link to
           the official source if you have one.
         </p>
+        <h3 className="mt-2 text-lg font-semibold">A concern about a professional partner</h3>
+        <p>
+          If a partner made you uncomfortable, asked for personal information or money, asked to
+          talk outside LinkedIn, or acted unprofessionally, tell us their name and what happened. We
+          take every report seriously, and we may remove a partner from the directory while we look
+          into it. You can also report the message or profile directly on LinkedIn. If you are ever
+          in danger, call 911, and talk to a parent, guardian, or teacher you trust.
+        </p>
         {reportErrorTarget ? (
-          <p>
+          <p className="flex flex-wrap gap-x-6 gap-y-1">
             <a href={reportErrorHref("general")} className="underline">
               Report an error
+            </a>
+            <a
+              href={reportErrorHref("partner", "Concern about a professional partner")}
+              className="underline"
+            >
+              Report a concern about a partner
             </a>
           </p>
         ) : (
           <p className="text-muted-foreground">
-            The error reporting address hasn&apos;t been set up yet.
+            The reporting address hasn&apos;t been set up yet.
           </p>
         )}
         <p>
