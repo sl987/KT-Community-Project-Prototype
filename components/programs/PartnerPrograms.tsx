@@ -1,9 +1,16 @@
-import { ArrowUpRight, GraduationCap, MapPin, MessageCircle, Star } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  GraduationCap,
+  MapPin,
+  MessageCircle,
+  Star,
+} from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import type { PartnerFieldPrograms } from "@/lib/schema";
+import type { CareerFacts as Facts, PartnerFieldPrograms } from "@/lib/schema";
 
-type Field = PartnerFieldPrograms & { title: string };
+type Field = PartnerFieldPrograms & { title: string; career: Facts | null };
 
 const PORTAL = { OUAC: "Apply on OUAC", OCAS: "Apply on ontariocolleges.ca" } as const;
 
@@ -43,9 +50,27 @@ export function PartnerPrograms({
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div className="grid max-w-3xl gap-1.5">
                 <h2 id={`${f.field}-heading`} className="text-2xl font-semibold tracking-tight">
-                  {f.title}
+                  {f.career ? (
+                    <Link
+                      href={`/careers/${f.field}`}
+                      className="decoration-link underline decoration-2 underline-offset-4 hover:decoration-4"
+                    >
+                      {f.title}
+                    </Link>
+                  ) : (
+                    f.title
+                  )}
                 </h2>
                 <p className="text-muted-foreground text-lg">{f.summary}</p>
+                {f.career && (
+                  <Link
+                    href={`/careers/${f.field}`}
+                    className="text-link inline-flex w-fit items-center gap-1 text-sm font-medium underline underline-offset-2"
+                  >
+                    Scope of practice, licensing, pay and career path
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                )}
               </div>
               {partners > 0 && (
                 <Link
@@ -88,11 +113,6 @@ export function PartnerPrograms({
                     </p>
                   )}
                   <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1 text-sm font-medium">
-                    {p.programSlug && (
-                      <Link href={`/programs/${p.programSlug}`} className="underline">
-                        Full program details
-                      </Link>
-                    )}
                     <a
                       href={p.url}
                       target="_blank"

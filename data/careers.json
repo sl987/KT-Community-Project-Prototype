@@ -1,0 +1,340 @@
+{
+  "careers": [
+    {
+      "field": "radiation-therapist",
+      "lastVerified": "2026-11-16",
+      "regulator": {
+        "name": "College of Medical Radiation and Imaging Technologists of Ontario",
+        "acronym": "CMRITO",
+        "url": "https://www.cmrito.org"
+      },
+      "protectedTitles": {
+        "titles": ["Radiation therapist", "Medical radiation and imaging technologist"],
+        "designation": "MRT(T)",
+        "designationSourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "scope": {
+        "quote": "The practice of medical radiation and imaging technology is the use of ionizing radiation, electromagnetism, soundwaves and other prescribed forms of energy for the purposes of diagnostic or therapeutic procedures, the evaluation of images and data relating to the procedures and the assessment of an individual before, during and after the procedures.",
+        "quoteSource": "Medical Radiation and Imaging Technology Act, 2017, section 3",
+        "plain": "Radiation therapists use the therapeutic side of this: they plan and give radiation treatment, and check on the patient before, during and after each session. Treatments must be ordered by a physician.",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "exams": [
+        {
+          "name": "CAMRT certification exam (radiation therapy)",
+          "by": "Canadian Association of Medical Radiation Technologists",
+          "note": "National exam. Open to graduates of an accredited radiation therapy program.",
+          "sourceUrl": "https://www.camrt.ca/certification-4/"
+        },
+        {
+          "name": "Jurisprudence course and quiz",
+          "by": "CMRITO",
+          "note": "Covers Ontario's laws and rules for the profession. Done as part of your registration application.",
+          "sourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/"
+        }
+      ],
+      "wage": {
+        "low": 35.0,
+        "median": 45.0,
+        "high": 52.04,
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "updated": "2025-11-19",
+        "note": "Job Bank groups radiation therapists with radiographers and MRI technologists, so this figure covers all of them.",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/18254/ON"
+      },
+      "path": [
+        {
+          "step": "Grade 12 university-prep courses",
+          "detail": "Each program lists its own required courses. Check the program cards."
+        },
+        {
+          "step": "Accredited radiation therapy program",
+          "detail": "About 3 to 4 years. Some programs, like Michener–U of T, need a year of university first."
+        },
+        {
+          "step": "Pass the CAMRT certification exam"
+        },
+        {
+          "step": "Register with CMRITO",
+          "detail": "Complete the jurisprudence course, then start work as an MRT(T)."
+        }
+      ],
+      "specializations": [
+        {
+          "title": "Advanced practice radiation therapist — APRT(T)",
+          "detail": "A CAMRT certification for experienced therapists who take on advanced clinical roles.",
+          "sourceUrl": "https://camrt.ca/mrt-profession/advanced-practice/aprtt-certification/"
+        },
+        {
+          "title": "Clinical Specialist Radiation Therapist (CSRT)",
+          "detail": "An Ontario advanced role for radiation therapists, first introduced in 2006.",
+          "sourceUrl": "https://www.cancercareontario.ca/en/node/33181"
+        }
+      ]
+    },
+    {
+      "field": "sonographer",
+      "lastVerified": "2026-11-16",
+      "regulator": {
+        "name": "College of Medical Radiation and Imaging Technologists of Ontario",
+        "acronym": "CMRITO",
+        "url": "https://www.cmrito.org"
+      },
+      "protectedTitles": {
+        "titles": ["Diagnostic medical sonographer", "Medical radiation and imaging technologist"],
+        "designation": "DMS",
+        "designationSourceUrl": "https://sonographycanada.ca/news/important-information-about-the-regulation-of-sonographers-in-ontario",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "scope": {
+        "quote": "The practice of medical radiation and imaging technology is the use of ionizing radiation, electromagnetism, soundwaves and other prescribed forms of energy for the purposes of diagnostic or therapeutic procedures, the evaluation of images and data relating to the procedures and the assessment of an individual before, during and after the procedures.",
+        "quoteSource": "Medical Radiation and Imaging Technology Act, 2017, section 3",
+        "plain": "Sonographers use the soundwave part of this. They use ultrasound to make images of organs, blood vessels and babies before birth, check that the images answer the doctor's question, and look after the patient during the scan.",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "exams": [
+        {
+          "name": "Sonography Canada credentialing exams",
+          "by": "Sonography Canada",
+          "note": "National exams for graduates of an accredited sonography program, in generalist, cardiac or vascular sonography.",
+          "sourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/"
+        },
+        {
+          "name": "Jurisprudence course and quiz",
+          "by": "CMRITO",
+          "note": "Covers Ontario's laws and rules for the profession. Done as part of your registration application.",
+          "sourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/"
+        }
+      ],
+      "wage": {
+        "low": 35.0,
+        "median": 41.0,
+        "high": 48.08,
+        "nocCode": "32122",
+        "nocTitle": "Medical sonographers",
+        "updated": "2025-11-19",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/4262/ON"
+      },
+      "path": [
+        {
+          "step": "Grade 12 university-prep courses",
+          "detail": "Each program lists its own required courses. Check the program cards."
+        },
+        {
+          "step": "Accredited sonography program",
+          "detail": "A college advanced diploma or a joint university–college degree."
+        },
+        {
+          "step": "Pass the Sonography Canada exams"
+        },
+        {
+          "step": "Register with CMRITO",
+          "detail": "Complete the jurisprudence course, then start work as a DMS."
+        }
+      ],
+      "specializations": [
+        {
+          "title": "Cardiac or vascular sonography",
+          "detail": "Sonography Canada offers separate credentials for generalist (CRGS), cardiac (CRCS) and vascular (CRVS) sonographers.",
+          "sourceUrl": "https://sonographycanada.ca/app/uploads/2019/04/Candidate-Guide-updated-2018-12-04-Final.pdf"
+        }
+      ]
+    },
+    {
+      "field": "paramedic",
+      "lastVerified": "2026-11-16",
+      "regulator": {
+        "name": "Ontario Ministry of Health",
+        "acronym": "MOH",
+        "url": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+      },
+      "oversight": {
+        "text": "Paramedics in Ontario don't have a regulatory college. The Ministry of Health certifies them, and the medical director of a regional base hospital program authorizes the medical procedures each paramedic can do.",
+        "sourceUrl": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+      },
+      "scope": {
+        "quote": "In Ontario, to be considered a paramedic who can perform controlled acts and other advanced medical procedures, an individual must: have the appropriate certificate from the Ministry of Health, be employed by a certified ambulance service, be authorized by the medical director of an Ontario regional base hospital program.",
+        "quoteSource": "Ontario Ministry of Health, Certification and patient care standards",
+        "plain": "What a paramedic can do depends on their level: primary care, advanced care or critical care. The exact procedures for each level are listed in Ontario Regulation 257/00 under the Ambulance Act.",
+        "sourceUrl": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+      },
+      "exams": [
+        {
+          "name": "AEMCA exam (Advanced Emergency Medical Care Assistant)",
+          "by": "Ontario Ministry of Health",
+          "note": "The provincial entry-to-practice exam for primary care paramedics. Open to graduates of an approved PCP program.",
+          "sourceUrl": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+        }
+      ],
+      "wage": {
+        "low": 30.75,
+        "median": 42.17,
+        "high": 50.81,
+        "nocCode": "32102",
+        "nocTitle": "Paramedical occupations",
+        "updated": "2025-11-19",
+        "note": "Figure shown is for primary care paramedics.",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/4425/ON"
+      },
+      "path": [
+        {
+          "step": "Grade 12 courses",
+          "detail": "Each program lists its own required courses. Check the program cards."
+        },
+        {
+          "step": "Primary Care Paramedic program",
+          "detail": "Usually a 2-year college diploma, or a joint university–college degree."
+        },
+        {
+          "step": "Pass the provincial AEMCA exam"
+        },
+        {
+          "step": "Get hired and authorized",
+          "detail": "Join a certified ambulance service and be authorized by a regional base hospital."
+        }
+      ],
+      "specializations": [
+        {
+          "title": "Advanced Care Paramedic (ACP)",
+          "detail": "Further training that adds advanced procedures. You need an AEMCA certificate to apply for the ACP exam.",
+          "sourceUrl": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+        },
+        {
+          "title": "Critical care and flight paramedic",
+          "detail": "Critical Care Paramedic and flight paramedic (aerophysiology) training is offered by Ornge, Ontario's air ambulance service.",
+          "sourceUrl": "https://www.ontario.ca/page/certification-and-patient-care-standards"
+        }
+      ]
+    },
+    {
+      "field": "registered-nurse",
+      "lastVerified": "2026-11-16",
+      "regulator": {
+        "name": "College of Nurses of Ontario",
+        "acronym": "CNO",
+        "url": "https://www.cno.org"
+      },
+      "protectedTitles": {
+        "titles": ["Nurse", "Registered nurse", "Nurse practitioner"],
+        "sourceUrl": "https://www.ontario.ca/laws/statute/91n32"
+      },
+      "scope": {
+        "quote": "The practice of nursing is the promotion of health and the assessment of, the provision of care for and the treatment of health conditions by supportive, preventive, therapeutic, palliative and rehabilitative means in order to attain or maintain optimal function.",
+        "quoteSource": "Nursing Act, 1991, section 3",
+        "plain": "Registered nurses assess patients, give treatments and medications, teach patients and families, and coordinate care with the rest of the team, from preventing illness to end-of-life care.",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/91n32"
+      },
+      "exams": [
+        {
+          "name": "NCLEX-RN",
+          "by": "College of Nurses of Ontario",
+          "note": "The registration exam for registered nurses.",
+          "sourceUrl": "https://cno.org/become-a-nurse/registration-requirements/registration-examination"
+        },
+        {
+          "name": "Jurisprudence exam",
+          "by": "College of Nurses of Ontario",
+          "note": "Multiple-choice exam on the laws, rules and standards for nurses in Ontario.",
+          "sourceUrl": "https://www.cno.org/become-a-nurse/registration-requirements/jurisprudence-examination"
+        }
+      ],
+      "wage": {
+        "low": 29.0,
+        "median": 42.0,
+        "high": 55.0,
+        "nocCode": "31301",
+        "nocTitle": "Registered nurses and registered psychiatric nurses",
+        "updated": "2025-11-19",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/993/ON"
+      },
+      "path": [
+        {
+          "step": "Grade 12 university-prep courses",
+          "detail": "Each program lists its own required courses. Check the program cards."
+        },
+        {
+          "step": "4-year Bachelor of Science in Nursing (BScN)"
+        },
+        {
+          "step": "Pass the NCLEX-RN"
+        },
+        {
+          "step": "Register with CNO",
+          "detail": "Pass the jurisprudence exam, then start work as an RN."
+        }
+      ],
+      "specializations": [
+        {
+          "title": "Nurse practitioner",
+          "detail": "A protected title in Ontario. RNs reach it through further graduate education and registration in CNO's Extended Class.",
+          "sourceUrl": "https://www.ontario.ca/laws/statute/91n32"
+        }
+      ]
+    },
+    {
+      "field": "mri-technologist",
+      "lastVerified": "2026-11-16",
+      "regulator": {
+        "name": "College of Medical Radiation and Imaging Technologists of Ontario",
+        "acronym": "CMRITO",
+        "url": "https://www.cmrito.org"
+      },
+      "protectedTitles": {
+        "titles": ["Magnetic resonance technologist", "Medical radiation and imaging technologist"],
+        "designation": "MRT(MR)",
+        "designationSourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "scope": {
+        "quote": "The practice of medical radiation and imaging technology is the use of ionizing radiation, electromagnetism, soundwaves and other prescribed forms of energy for the purposes of diagnostic or therapeutic procedures, the evaluation of images and data relating to the procedures and the assessment of an individual before, during and after the procedures.",
+        "quoteSource": "Medical Radiation and Imaging Technology Act, 2017, section 3",
+        "plain": "MRI technologists use the electromagnetism part of this. They screen patients for safety, run MRI scans, check image quality, and can give contrast dye by injection when a physician orders it.",
+        "sourceUrl": "https://www.ontario.ca/laws/statute/17m25"
+      },
+      "exams": [
+        {
+          "name": "CAMRT certification exam (magnetic resonance)",
+          "by": "Canadian Association of Medical Radiation Technologists",
+          "note": "National exam. Open to graduates of an accredited MRI program.",
+          "sourceUrl": "https://www.camrt.ca/certification-4/"
+        },
+        {
+          "name": "Jurisprudence course and quiz",
+          "by": "CMRITO",
+          "note": "Covers Ontario's laws and rules for the profession. Done as part of your registration application.",
+          "sourceUrl": "https://www.cmrito.org/applicants/ontario-graduates/"
+        }
+      ],
+      "wage": {
+        "low": 35.0,
+        "median": 45.0,
+        "high": 52.04,
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "updated": "2025-11-19",
+        "note": "Job Bank groups MRI technologists with radiographers and radiation therapists, so this figure covers all of them.",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/18254/ON"
+      },
+      "path": [
+        {
+          "step": "Grade 12 courses",
+          "detail": "Each program lists its own required courses. Check the program cards."
+        },
+        {
+          "step": "Accredited MRI program",
+          "detail": "A college diploma or advanced diploma."
+        },
+        {
+          "step": "Pass the CAMRT certification exam"
+        },
+        {
+          "step": "Register with CMRITO",
+          "detail": "Complete the jurisprudence course, then start work as an MRT(MR)."
+        }
+      ],
+      "specializations": []
+    }
+  ]
+}

@@ -6,6 +6,7 @@
  * Server-only in practice: client components receive the serializable
  * summaries below as props instead of importing this module.
  */
+import careersJson from "@/data/careers.json";
 import coursesJson from "@/data/courses.json";
 import guideJson from "@/data/guide.json";
 import institutionsJson from "@/data/institutions.json";
@@ -19,6 +20,7 @@ import regulatorsJson from "@/data/regulators.json";
 import { shownPrograms } from "./eligibility";
 import { isFlagged, latestVerified } from "./provenance";
 import {
+  CareersFileSchema,
   CoursesFileSchema,
   GuideSchema,
   InstitutionsFileSchema,
@@ -69,10 +71,17 @@ const partnerProgramsFile = PartnerProgramsFileSchema.parse(partnerProgramsJson)
  * Programs tab: each partner field with the institutions that offer it, in
  * directory order. Fields without an entry in partner-programs.json are skipped.
  */
+const careers = CareersFileSchema.parse(careersJson).careers;
+
 export const partnerFieldPrograms = networkFields.flatMap((f) => {
   const entry = partnerProgramsFile.fields.find((e) => e.field === f.slug);
-  return entry ? [{ ...entry, title: f.title, professionId: f.professionId }] : [];
+  const career = careers.find((c) => c.field === f.slug) ?? null;
+  return entry ? [{ ...entry, title: f.title, professionId: f.professionId, career }] : [];
 });
+
+/** Partner fields that have a career page (sourced profession-level facts). */
+export const careerFields = partnerFieldPrograms.filter((f) => f.career !== null);
+export const getCareerField = (slug: string) => careerFields.find((f) => f.field === slug);
 
 export const getProgram = (slug: string) => programs.find((p) => p.slug === slug);
 export const getProfession = (id: string) => professions.find((p) => p.id === id);

@@ -14,7 +14,7 @@ test("programs tab lists partner professions with their institutions", async ({ 
   }
   await expect(page.getByText("Practical Nursing")).toHaveCount(0);
 
-  // Jump to a profession, then open a detailed program page from its institution card.
+  // Jump to a profession, then open its career page from the heading.
   await page
     .getByRole("navigation", { name: "Professions" })
     .getByRole("link", { name: /MRI/ })
@@ -22,9 +22,10 @@ test("programs tab lists partner professions with their institutions", async ({ 
   await expect(page).toHaveURL(/#mri-technologist/);
   const mri = page.locator("#mri-technologist");
   await expect(mri.getByRole("heading", { level: 3, name: /Michener/ })).toBeVisible();
-  await mri.getByRole("link", { name: "Full program details" }).click();
-  await expect(page).toHaveURL(/\/programs\/michener-mri/);
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await mri.getByRole("heading", { level: 2 }).getByRole("link").click();
+  await expect(page).toHaveURL(/\/careers\/mri-technologist/);
+  await expect(page.getByRole("heading", { level: 1, name: "MRI Technologist" })).toBeVisible();
+  await expect(page.getByText("Pay in Ontario")).toBeVisible();
 });
 
 test("program page has every required section and shows unverified fields", async ({ page }) => {

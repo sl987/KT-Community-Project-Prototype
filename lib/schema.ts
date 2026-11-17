@@ -603,5 +603,63 @@ export const PartnerProgramsFileSchema = z.object({
   fields: z.array(PartnerFieldProgramsSchema),
 });
 
+/**
+ * Profession-level facts shown with each partner field on the Programs tab.
+ * Every fact carries the official source it was taken from.
+ */
+export const CareerFactsSchema = z.object({
+  field: Id,
+  lastVerified: IsoDate,
+  regulator: z.object({ name: z.string().min(1), acronym: z.string().min(1), url: Url }),
+  /** Titles restricted to registered members. Omit for professions without a college. */
+  protectedTitles: z
+    .object({
+      titles: z.array(z.string().min(1)).min(1),
+      /** Letters a registered member uses after their name, e.g. MRT(T). */
+      designation: z.string().min(1).optional(),
+      /** Where the designation is confirmed, when that differs from sourceUrl. */
+      designationSourceUrl: Url.optional(),
+      sourceUrl: Url,
+    })
+    .optional(),
+  /** Who oversees the profession, when it has no regulatory college (e.g. paramedics). */
+  oversight: z.object({ text: z.string().min(1), sourceUrl: Url }).optional(),
+  scope: z.object({
+    /** The regulator's or statute's own wording. */
+    quote: z.string().min(1),
+    quoteSource: z.string().min(1),
+    /** Plain-language explanation for students. */
+    plain: z.string().min(1),
+    sourceUrl: Url,
+  }),
+  exams: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        by: z.string().min(1),
+        note: z.string().min(1).optional(),
+        sourceUrl: Url,
+      }),
+    )
+    .min(1),
+  wage: z.object({
+    low: z.number().positive(),
+    median: z.number().positive(),
+    high: z.number().positive(),
+    nocCode: z.string().regex(/^\d{5}$/),
+    nocTitle: z.string().min(1),
+    updated: IsoDate,
+    note: z.string().min(1).optional(),
+    sourceUrl: Url,
+  }),
+  path: z.array(z.object({ step: z.string().min(1), detail: z.string().min(1).optional() })).min(2),
+  specializations: z.array(
+    z.object({ title: z.string().min(1), detail: z.string().min(1), sourceUrl: Url }),
+  ),
+});
+
+export const CareersFileSchema = z.object({ careers: z.array(CareerFactsSchema) });
+
+export type CareerFacts = z.infer<typeof CareerFactsSchema>;
 export type PartnerProgram = z.infer<typeof PartnerProgramSchema>;
 export type PartnerFieldPrograms = z.infer<typeof PartnerFieldProgramsSchema>;
