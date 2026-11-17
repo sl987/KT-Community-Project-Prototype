@@ -1,7 +1,6 @@
-import { HeartPulse } from "lucide-react";
 import Link from "next/link";
+import { LogoLongName, LogoMark, LogoWordmark } from "./Logo";
 import { MainNav } from "./MainNav";
-import { siteLongName, siteName } from "@/lib/site";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
@@ -12,14 +11,13 @@ export function SiteHeader() {
           href="/"
           className="focus-visible:ring-brand-accent flex items-center gap-2.5 rounded-sm py-3 outline-none focus-visible:ring-2"
         >
-          <span className="bg-brand-foreground text-brand grid size-8 place-items-center rounded-sm">
-            <HeartPulse className="size-5" aria-hidden />
-          </span>
+          <LogoMark className="h-10 w-auto shrink-0" accent="var(--uoft-sky)" />
           <span className="leading-tight">
-            <span className="block text-lg font-bold tracking-wider">{siteName}</span>
-            <span className="text-brand-muted hidden max-w-72 text-[0.7rem] leading-snug md:block">
-              {siteLongName}
-            </span>
+            <LogoWordmark className="block text-xl font-extrabold tracking-wide" heart="#f28b7d" />
+            <LogoLongName
+              className="text-brand-muted hidden max-w-72 text-[0.7rem] leading-snug md:block"
+              letterClassName="text-brand-foreground font-bold"
+            />
           </span>
         </Link>
         <MainNav />
