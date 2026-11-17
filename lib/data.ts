@@ -15,10 +15,12 @@ import partnerProgramsJson from "@/data/partner-programs.json";
 import professionalsJson from "@/data/professionals.json";
 import professionsJson from "@/data/professions.json";
 import programsJson from "@/data/programs.json";
+import quizProfessionsJson from "@/data/quiz-professions.json";
 import quizJson from "@/data/quiz.json";
 import regulatorsJson from "@/data/regulators.json";
 import { shownPrograms } from "./eligibility";
 import { isFlagged, latestVerified } from "./provenance";
+import type { QuizCandidate } from "./recommend";
 import {
   CareersFileSchema,
   CoursesFileSchema,
@@ -30,6 +32,7 @@ import {
   ProfessionsFileSchema,
   ProgramsFileSchema,
   QuizConfigSchema,
+  QuizProfessionsFileSchema,
   RegulatorsFileSchema,
   type Credential,
   type Domain,
@@ -82,6 +85,56 @@ export const partnerFieldPrograms = networkFields.flatMap((f) => {
 /** Partner fields that have a career page (sourced profession-level facts). */
 export const careerFields = partnerFieldPrograms.filter((f) => f.career !== null);
 export const getCareerField = (slug: string) => careerFields.find((f) => f.field === slug);
+
+/**
+ * Every profession the quiz can suggest. Featured ones (partner fields with a
+ * career page) link there; the rest point to province-wide program searches.
+ */
+export const quizCandidates: QuizCandidate[] = QuizProfessionsFileSchema.parse(
+  quizProfessionsJson,
+).professions.map((p) => {
+  const field = p.careerField ? getCareerField(p.careerField) : undefined;
+  if (p.careerField && !field) {
+    throw new Error(
+      `quiz-professions: ${p.id} names careerField "${p.careerField}" with no career page`,
+    );
+  }
+  // Neither site supports pre-filled search links, so these open their program search.
+  const search = [
+    ...(p.entry !== "university"
+      ? [
+          {
+            label: "Search college programs (ontariocolleges.ca)",
+            url: "https://www.ontariocolleges.ca/en/programs",
+          },
+        ]
+      : []),
+    ...(p.entry !== "college"
+      ? [{ label: "Search university programs (OUInfo)", url: "https://www.ouinfo.ca/" }]
+      : []),
+  ];
+  return {
+    id: p.id,
+    title: p.title,
+    summary: field?.summary ?? p.summary ?? "",
+    riasec: p.riasec,
+    workStyle: p.workStyle,
+    entry: p.entry,
+    typicalYears: p.typicalYears,
+    medianWage: p.labour.median,
+    outlook: p.labour.outlook,
+    labourSourceUrl: p.labour.sourceUrl,
+    nocCode: p.labour.nocCode,
+    featured: field
+      ? {
+          href: `/careers/${field.field}`,
+          directoryHref: `/connect/directory?field=${field.field}`,
+          partners: professionalsInField(field.field).length,
+        }
+      : null,
+    search,
+  };
+});
 
 export const getProgram = (slug: string) => programs.find((p) => p.slug === slug);
 export const getProfession = (id: string) => professions.find((p) => p.id === id);

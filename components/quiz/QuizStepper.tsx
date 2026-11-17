@@ -4,19 +4,10 @@ import { ArrowLeft, ArrowRight, Lock } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { CourseMatcher } from "@/components/filters/CourseMatcher";
-import { toggle } from "@/components/filters/useFilters";
 import { buttonVariants } from "@/components/ui/button";
 import type { CourseOption } from "@/lib/data";
-import { REGION_LABELS } from "@/lib/format";
 import { DEFAULT_ANSWERS, QUIZ_STORAGE_KEY, resultsPath } from "@/lib/quiz-encoding";
-import {
-  MarkSubjectSchema,
-  QuizAnswersSchema,
-  RegionSchema,
-  type MarkSubject,
-  type QuizAnswers,
-  type QuizConfig,
-} from "@/lib/schema";
+import { QuizAnswersSchema, type QuizAnswers, type QuizConfig } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 
 type Section = "Academics" | "Interests" | "Work style" | "Preferences";
@@ -27,14 +18,6 @@ interface Screen {
   hint?: string;
   render: () => ReactNode;
 }
-
-const MARK_LABELS: Record<MarkSubject, string> = {
-  biology: "Biology",
-  chemistry: "Chemistry",
-  physics: "Physics",
-  math: "Math",
-  english: "English",
-};
 
 const LIKERT = ["Not at all", "Not really", "Maybe", "Probably", "Definitely"];
 const IMPORTANCE = ["Not important", "A little", "Somewhat", "Important", "Very important"];
@@ -215,38 +198,6 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
         />
       ),
     },
-    {
-      id: "marks",
-      section: "Academics",
-      title: "Marks in key subjects (optional)",
-      hint:
-        answers.grade === 11
-          ? "Some programs need a minimum mark in a Grade 12 course. Enter the marks you expect, or leave blank."
-          : "Some programs need a minimum mark in a Grade 12 course. Leave blank if you're not sure.",
-      render: () => (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-          {MarkSubjectSchema.options.map((s) => (
-            <label key={s} className="grid gap-1 text-sm">
-              {MARK_LABELS[s]} (%)
-              <input
-                type="number"
-                inputMode="decimal"
-                min={0}
-                max={100}
-                value={answers.marks[s] ?? ""}
-                onChange={(e) => {
-                  const marks = { ...answers.marks };
-                  if (e.target.value === "") delete marks[s];
-                  else marks[s] = Math.min(100, Math.max(0, Number(e.target.value)));
-                  set({ marks });
-                }}
-                className="bg-background h-11 rounded-md border px-3 text-base"
-              />
-            </label>
-          ))}
-        </div>
-      ),
-    },
     ...config.interestItems.map((item, i): Screen => ({
       id: `interest-${item.id}`,
       section: "Interests",
@@ -299,7 +250,7 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
     {
       id: "type",
       section: "Preferences",
-      title: "Which programs do you want to see?",
+      title: "Which kinds of programs are you open to?",
       hint: "Joint university–college programs count as university programs.",
       render: () => (
         <Radios
@@ -312,30 +263,6 @@ export function QuizStepper({ config, courses }: { config: QuizConfig; courses: 
             { value: "any", label: "Both" },
           ]}
         />
-      ),
-    },
-    {
-      id: "regions",
-      section: "Preferences",
-      title: "Where would you be willing to study?",
-      hint: "Pick all that apply. Leave blank if anywhere in Ontario works.",
-      render: () => (
-        <div className="grid gap-2">
-          {RegionSchema.options.map((r) => (
-            <label
-              key={r}
-              className="has-checked:border-primary has-checked:bg-primary/10 flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 text-sm"
-            >
-              <input
-                type="checkbox"
-                checked={answers.regions.includes(r)}
-                onChange={() => set({ regions: toggle(answers.regions, r) })}
-                className="accent-primary size-4"
-              />
-              {REGION_LABELS[r]}
-            </label>
-          ))}
-        </div>
       ),
     },
     {

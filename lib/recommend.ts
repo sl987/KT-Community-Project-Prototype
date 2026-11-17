@@ -16,6 +16,7 @@ import {
   RiasecSchema,
   type AcademicFit,
   type MarkSubject,
+  type OutlookRating,
   type Program,
   type QuizAnswers,
   type QuizConfig,
@@ -358,6 +359,152 @@ export function explainWatchOuts(
         ? prof.workStyle[q.key] === 2 && a <= 2
         : Math.abs(prof.workStyle[q.key] / 2 - likertTo01(a)) >= 0.75;
     if (mismatch) out.push(q.watchOutPhrase);
+  }
+  return out;
+}
+
+// ---------- Career-level ranking (all quiz professions) ----------
+
+/** A profession the quiz can suggest. Built server-side from data/quiz-professions.json. */
+export interface QuizCandidate {
+  id: string;
+  title: string;
+  summary: string;
+  riasec: Riasec[];
+  workStyle: WorkStyleProfile;
+  entry: "college" | "university" | "either";
+  typicalYears: number;
+  medianWage: number | null;
+  outlook: OutlookRating | null;
+  labourSourceUrl: string;
+  nocCode: string;
+  /** Present for featured professions (partner fields with a career page). */
+  featured: { href: string; directoryHref: string; partners: number } | null;
+  /** Province-wide program searches. */
+  search: { label: string; url: string }[];
+}
+
+export interface CareerResult {
+  candidate: QuizCandidate;
+  why: string[];
+  watchOuts: string[];
+  scores: { interest: number; workStyle: number; preferences: number; total: number };
+}
+
+function careerPreferenceFit(
+  answers: Pick<QuizAnswers, "length" | "salaryImportance" | "demandImportance">,
+  c: QuizCandidate,
+  wageRange: { min: number; max: number } | null,
+): number {
+  const parts: [weight: number, value: number][] = [];
+  if (answers.length !== "any") {
+    const short = c.typicalYears <= 3;
+    parts.push([1, (answers.length === "short") === short ? 1 : 0]);
+  }
+  const wage =
+    c.medianWage === null || wageRange === null
+      ? 0.5
+      : wageRange.max === wageRange.min
+        ? 1
+        : (c.medianWage - wageRange.min) / (wageRange.max - wageRange.min);
+  parts.push([likertTo01(answers.salaryImportance), wage]);
+  parts.push([likertTo01(answers.demandImportance), c.outlook ? OUTLOOK_SCORE[c.outlook] : 0.5]);
+  const total = parts.reduce((s, [w]) => s + w, 0);
+  return total === 0 ? 1 : parts.reduce((s, [w, v]) => s + w * v, 0) / total;
+}
+
+/**
+ * Ranks every quiz profession by interests, work style and practical preferences.
+ * Courses and average are not scored here: programs set their own requirements,
+ * so results remind students to check them instead (no program data is assumed).
+ * Returns all matching professions in order; the UI decides how many to feature.
+ */
+export function recommendCareers(
+  answers: QuizAnswers,
+  candidates: readonly QuizCandidate[],
+  config: QuizConfig,
+): CareerResult[] {
+  const pool = candidates.filter(
+    (c) => answers.programType === "any" || c.entry === "either" || c.entry === answers.programType,
+  );
+  const wages = candidates.map((c) => c.medianWage).filter((w): w is number => w !== null);
+  const wageRange = wages.length ? { min: Math.min(...wages), max: Math.max(...wages) } : null;
+  const student = studentRiasec(answers, config);
+  const w = config.weights;
+  const wSum = w.interest + w.workStyle + w.preferences || 1;
+
+  return pool
+    .map((c): CareerResult => {
+      const ws = workStyleFit(answers, c.workStyle, config);
+      const scores = {
+        interest: interestFit(student, c.riasec, config.riasecRankWeights),
+        workStyle: ws.score,
+        preferences: careerPreferenceFit(answers, c, wageRange),
+        total: 0,
+      };
+      scores.total =
+        (w.interest * scores.interest +
+          w.workStyle * scores.workStyle +
+          w.preferences * scores.preferences) /
+        wSum;
+      return {
+        candidate: c,
+        scores,
+        why: explainCareerWhy(c, scores, answers, config, student),
+        watchOuts: explainCareerWatchOuts(c, answers, config),
+      };
+    })
+    .sort(
+      (a, b) =>
+        b.scores.total - a.scores.total || a.candidate.title.localeCompare(b.candidate.title),
+    );
+}
+
+function explainCareerWhy(
+  c: QuizCandidate,
+  scores: CareerResult["scores"],
+  answers: QuizAnswers,
+  config: QuizConfig,
+  student: Record<Riasec, number> | null,
+): string[] {
+  const why: string[] = [];
+  if (student) {
+    const shared = c.riasec.filter((code) => student[code] >= 0.6).slice(0, 2);
+    if (shared.length) {
+      why.push(`Strong ${shared.map((code) => RIASEC_NAMES[code]).join(" + ")} interests`);
+    }
+  }
+  const matches = config.workStyleQuestions.filter((q) => {
+    const a = answers.workStyle[q.key];
+    if (a === undefined) return false;
+    if (q.kind === "comfort") return c.workStyle[q.key] === 2 && a >= 4;
+    return Math.abs(c.workStyle[q.key] / 2 - likertTo01(a)) <= 0.25;
+  });
+  for (const q of matches.slice(0, 2)) why.push(q.matchPhrase);
+  if (answers.length === "short" && c.typicalYears <= 3) why.push("A shorter path into work");
+  if (why.length < 2 && scores.preferences >= 0.75) {
+    why.push("Fits your practical preferences (length, pay, demand)");
+  }
+  return why.slice(0, 4);
+}
+
+function explainCareerWatchOuts(
+  c: QuizCandidate,
+  answers: QuizAnswers,
+  config: QuizConfig,
+): string[] {
+  const out: string[] = [];
+  for (const q of config.workStyleQuestions) {
+    const a = answers.workStyle[q.key];
+    if (a === undefined) continue;
+    const mismatch =
+      q.kind === "comfort"
+        ? c.workStyle[q.key] === 2 && a <= 2
+        : Math.abs(c.workStyle[q.key] / 2 - likertTo01(a)) >= 0.75;
+    if (mismatch) out.push(q.watchOutPhrase);
+  }
+  if (answers.length === "short" && c.typicalYears > 3) {
+    out.push("Usually more than 3 years of school");
   }
   return out;
 }

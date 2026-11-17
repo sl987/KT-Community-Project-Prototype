@@ -1,18 +1,16 @@
 "use client";
 
-import { Check, Link2, Printer, RotateCcw, Scale } from "lucide-react";
+import { BookOpenCheck, Check, Link2, Printer, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { Disclaimer } from "@/components/common/Disclaimer";
 import { buttonVariants } from "@/components/ui/button";
-import type { CourseOption, ProgramSummary } from "@/lib/data";
-import { REGION_LABELS } from "@/lib/format";
-import { describePrereq } from "@/lib/prereqs";
+import type { CourseOption } from "@/lib/data";
 import { answersFromHash, QUIZ_STORAGE_KEY } from "@/lib/quiz-encoding";
-import { recommend, studentRiasec } from "@/lib/recommend";
+import { recommendCareers, studentRiasec, type QuizCandidate } from "@/lib/recommend";
 import type { QuizAnswers, QuizConfig } from "@/lib/schema";
-import { Badge, FIT_BADGE, PREREQ_BADGE, ResultCard, fitTone } from "./ResultCard";
+import { ResultCard } from "./ResultCard";
 
 const subscribeHash = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
@@ -29,11 +27,11 @@ const RIASEC_NAMES = {
 } as const;
 
 export function QuizResults({
-  programs,
+  candidates,
   config,
   courses,
 }: {
-  programs: ProgramSummary[];
+  candidates: QuizCandidate[];
   config: QuizConfig;
   courses: CourseOption[];
 }) {
@@ -58,8 +56,9 @@ export function QuizResults({
     );
   }
 
-  const { top, extraCourses } = recommend(answers, programs, config);
-  const compareIds = top.slice(0, 3).map((t) => t.programs[0].program.slug);
+  const ranked = recommendCareers(answers, candidates, config);
+  const top = ranked.slice(0, config.topProfessions);
+  const more = ranked.slice(config.topProfessions);
 
   const share = async () => {
     try {
@@ -85,12 +84,6 @@ export function QuizResults({
   return (
     <div className="grid gap-8">
       <div className="flex flex-wrap gap-2 print:hidden">
-        {compareIds.length >= 2 && (
-          <Link href={`/compare?ids=${compareIds.join(",")}`} className={btn}>
-            <Scale aria-hidden />
-            Compare the first three
-          </Link>
-        )}
         <button type="button" onClick={share} className={btn}>
           {copied ? <Check aria-hidden /> : <Link2 aria-hidden />}
           {copied ? "Link copied" : "Copy share link"}
@@ -110,6 +103,8 @@ export function QuizResults({
 
       <CounsellorSummary answers={answers} config={config} courses={courses} />
 
+      <CourseReminder answers={answers} />
+
       <section aria-labelledby="top-h" className="grid gap-4">
         <div className="grid gap-1">
           <h2 id="top-h" className="text-xl font-semibold">
@@ -122,14 +117,12 @@ export function QuizResults({
         </div>
         {top.length === 0 ? (
           <p className="text-muted-foreground">
-            No programs matched your program type, region, and prerequisite answers. Try choosing
-            both university and college programs or more regions, or look at the programs you could
-            reach with extra courses below.
+            No careers matched your program type. Try choosing both university and college programs.
           </p>
         ) : (
           <ol className="grid gap-4">
             {top.map((r, i) => (
-              <li key={r.professionId}>
+              <li key={r.candidate.id}>
                 <ResultCard result={r} rank={i + 1} />
               </li>
             ))}
@@ -137,30 +130,30 @@ export function QuizResults({
         )}
       </section>
 
-      {extraCourses.length > 0 && (
-        <section aria-labelledby="extra-h" className="grid gap-3">
-          <h2 id="extra-h" className="text-xl font-semibold">
-            Possible with extra courses
+      {more.length > 0 && (
+        <section aria-labelledby="more-h" className="grid gap-3">
+          <h2 id="more-h" className="text-xl font-semibold">
+            Also on your list
           </h2>
           <p className="text-muted-foreground text-sm">
-            You&apos;re missing more prerequisites for these than you can usually add in time. They
-            could still work with summer school, night school, e-learning, or upgrading.
+            Further down your list, still in order. Each one can be a great fit for someone.
           </p>
-          <ul className="grid gap-2">
-            {extraCourses.map((r) => (
-              <li key={r.program.id} className="grid gap-1 rounded-lg border p-3 text-sm">
-                <Link href={`/programs/${r.program.slug}`} className="font-medium underline">
-                  {r.program.profession.title}: {r.program.name} —{" "}
-                  {r.program.institutions.map((i) => i.name).join(" & ")}
-                </Link>
-                <span>Missing: {r.prereq.missing.map(describePrereq).join(", ")}</span>
-                <span className="flex gap-1">
-                  <Badge tone="warn">{PREREQ_BADGE.blocked}</Badge>
-                  <Badge tone={fitTone(r.academicFit)}>{FIT_BADGE[r.academicFit]}</Badge>
+          <ol start={top.length + 1} className="grid gap-2 sm:grid-cols-2">
+            {more.map((r) => (
+              <li key={r.candidate.id} className="grid gap-0.5 rounded-lg border p-3 text-sm">
+                {r.candidate.featured ? (
+                  <Link href={r.candidate.featured.href} className="font-medium underline">
+                    {r.candidate.title}
+                  </Link>
+                ) : (
+                  <span className="font-medium">{r.candidate.title}</span>
+                )}
+                <span className="text-muted-foreground">
+                  {r.candidate.featured ? "Featured" : "Not featured yet"}
                 </span>
               </li>
             ))}
-          </ul>
+          </ol>
         </section>
       )}
 
@@ -209,12 +202,6 @@ function CounsellorSummary({
         <dd>{courseNames.length ? courseNames.join(", ") : "None selected"}</dd>
         <dt>Top interests</dt>
         <dd>{topCodes.length ? topCodes.join(", ") : "Not answered"}</dd>
-        <dt>Regions</dt>
-        <dd>
-          {answers.regions.length
-            ? answers.regions.map((r) => REGION_LABELS[r]).join(", ")
-            : "Anywhere"}
-        </dd>
         <dt>Program type</dt>
         <dd>
           {
@@ -235,5 +222,26 @@ function CounsellorSummary({
         <li>Check application deadlines on OUAC or ontariocolleges.ca.</li>
       </ul>
     </section>
+  );
+}
+
+/** Courses and average don't change the ranking: programs set their own requirements. */
+function CourseReminder({ answers }: { answers: QuizAnswers }) {
+  const n = answers.courses.length;
+  const names = answers.courses.join(", ");
+  return (
+    <aside className="bg-muted/50 flex gap-3 rounded-xl border p-4 text-sm print:hidden">
+      <BookOpenCheck className="text-link mt-0.5 size-5 shrink-0" aria-hidden />
+      <p>
+        <strong>Check program requirements.</strong>{" "}
+        {n > 0
+          ? `You listed ${n} Grade 12 course${n === 1 ? "" : "s"} (${names})${
+              answers.average !== null ? ` and an average of ${answers.average}%` : ""
+            }. `
+          : ""}
+        These don&apos;t change your list, because every program sets its own required courses and
+        admission average. Before you apply, check them on each program&apos;s official page.
+      </p>
+    </aside>
   );
 }

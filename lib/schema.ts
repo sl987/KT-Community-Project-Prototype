@@ -660,6 +660,43 @@ export const CareerFactsSchema = z.object({
   ),
 });
 
+/** A profession the quiz can suggest, featured (partner field) or not. */
+export const QuizProfessionSchema = z.object({
+  id: Id,
+  title: z.string().min(1),
+  /** Featured partner field with a career page. Its summary comes from partner-programs.json. */
+  careerField: Id.optional(),
+  /** Required for professions that are not featured. */
+  summary: z.string().min(1).optional(),
+  riasec: z.array(RiasecSchema).min(1).max(3),
+  riasecSourceUrl: Url,
+  /** Drafted by the PAHSSION team: 0 rarely, 1 sometimes, 2 often. */
+  workStyle: WorkStyleProfileSchema,
+  /** How students usually enter: a college program, a university program, or either. */
+  entry: z.enum(["college", "university", "either"]),
+  typicalYears: z.number().positive().max(8),
+  labour: z.object({
+    median: z.number().positive().nullable(),
+    outlook: OutlookRatingSchema.nullable(),
+    nocCode: z.string().regex(/^\d{5}$/),
+    nocTitle: z.string().min(1),
+    sourceUrl: Url,
+    checked: IsoDate,
+  }),
+});
+
+export const QuizProfessionsFileSchema = z.object({
+  note: z.string().min(1),
+  professions: z
+    .array(QuizProfessionSchema)
+    .min(1)
+    .refine((ps) => ps.every((p) => p.careerField || p.summary), {
+      message: "professions without a careerField need a summary",
+    }),
+});
+
+export type QuizProfession = z.infer<typeof QuizProfessionSchema>;
+
 export const CareersFileSchema = z.object({ careers: z.array(CareerFactsSchema) });
 
 export type CareerFacts = z.infer<typeof CareerFactsSchema>;

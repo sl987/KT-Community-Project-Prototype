@@ -5,7 +5,7 @@ import { courseOptions, quizConfig } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Career match quiz",
   description:
-    "A 5-minute quiz that matches your interests, courses, and work style to health care programs.",
+    "A 5-minute quiz that matches your interests, work style, and preferences to allied health careers.",
 };
 
 export default function QuizPage() {

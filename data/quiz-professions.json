@@ -1,0 +1,437 @@
+{
+  "note": "Quiz profiles. Interest codes from O*NET; pay and prospects from Job Bank (Ontario). Work-style ratings (0 = rarely, 1 = sometimes, 2 = often) are drafted by the PAHSSION team.",
+  "professions": [
+    {
+      "id": "radiation-therapist",
+      "title": "Radiation Therapist",
+      "careerField": "radiation-therapist",
+      "riasec": ["R", "S", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1124.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 0,
+        "physicalDemand": 1,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 2,
+        "patientInteraction": 2,
+        "independence": 1
+      },
+      "entry": "university",
+      "typicalYears": 4,
+      "labour": {
+        "median": 45.0,
+        "outlook": "good",
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/18254/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "sonographer",
+      "title": "Sonographer",
+      "careerField": "sonographer",
+      "riasec": ["R", "C", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2032.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 0,
+        "physicalDemand": 1,
+        "shiftWork": 1,
+        "acuteEmergency": 1,
+        "techEquipment": 2,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "either",
+      "typicalYears": 3,
+      "labour": {
+        "median": 41.0,
+        "outlook": "good",
+        "nocCode": "32122",
+        "nocTitle": "Medical sonographers",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4262/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "paramedic",
+      "title": "Paramedic",
+      "careerField": "paramedic",
+      "riasec": ["S", "R", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2043.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 2,
+        "physicalDemand": 2,
+        "shiftWork": 2,
+        "acuteEmergency": 2,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "college",
+      "typicalYears": 2,
+      "labour": {
+        "median": 42.17,
+        "outlook": "good",
+        "nocCode": "32102",
+        "nocTitle": "Paramedical occupations",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4425/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "registered-nurse",
+      "title": "Registered Nurse",
+      "careerField": "registered-nurse",
+      "riasec": ["S", "C", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1141.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 2,
+        "physicalDemand": 2,
+        "shiftWork": 2,
+        "acuteEmergency": 1,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 1
+      },
+      "entry": "university",
+      "typicalYears": 4,
+      "labour": {
+        "median": 42.0,
+        "outlook": "very_good",
+        "nocCode": "31301",
+        "nocTitle": "Registered nurses and registered psychiatric nurses",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/993/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "mri-technologist",
+      "title": "MRI Technologist",
+      "careerField": "mri-technologist",
+      "riasec": ["R", "C", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2035.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 1,
+        "physicalDemand": 1,
+        "shiftWork": 1,
+        "acuteEmergency": 0,
+        "techEquipment": 2,
+        "patientInteraction": 1,
+        "independence": 1
+      },
+      "entry": "college",
+      "typicalYears": 3,
+      "labour": {
+        "median": 45.0,
+        "outlook": "good",
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/18254/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "radiological-technologist",
+      "title": "Radiological (X-ray and CT) Technologist",
+      "summary": "Takes X-ray and CT images that help doctors find injuries and illness.",
+      "riasec": ["R", "C", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2034.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 1,
+        "needles": 1,
+        "physicalDemand": 2,
+        "shiftWork": 2,
+        "acuteEmergency": 1,
+        "techEquipment": 2,
+        "patientInteraction": 1,
+        "independence": 1
+      },
+      "entry": "either",
+      "typicalYears": 3,
+      "labour": {
+        "median": 45.0,
+        "outlook": "good",
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/18270/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "nuclear-medicine-technologist",
+      "title": "Nuclear Medicine Technologist",
+      "summary": "Gives patients small amounts of radioactive tracers and takes scans that show how organs are working.",
+      "riasec": ["R", "I", "C"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2033.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 1,
+        "needles": 2,
+        "physicalDemand": 1,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 2,
+        "patientInteraction": 1,
+        "independence": 1
+      },
+      "entry": "either",
+      "typicalYears": 3,
+      "labour": {
+        "median": 45.0,
+        "outlook": "good",
+        "nocCode": "32121",
+        "nocTitle": "Medical radiation technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/18257/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "medical-laboratory-technologist",
+      "title": "Medical Laboratory Technologist",
+      "summary": "Tests blood, tissue and other samples in the lab to help diagnose and monitor disease.",
+      "riasec": ["I", "R", "C"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2011.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 1,
+        "physicalDemand": 1,
+        "shiftWork": 2,
+        "acuteEmergency": 0,
+        "techEquipment": 2,
+        "patientInteraction": 0,
+        "independence": 1
+      },
+      "entry": "either",
+      "typicalYears": 3,
+      "labour": {
+        "median": 42.0,
+        "outlook": "good",
+        "nocCode": "32120",
+        "nocTitle": "Medical laboratory technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4187/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "respiratory-therapist",
+      "title": "Respiratory Therapist",
+      "summary": "Helps people breathe, from managing ventilators in intensive care to treating lung disease.",
+      "riasec": ["R", "S", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1126.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 1,
+        "needles": 2,
+        "physicalDemand": 1,
+        "shiftWork": 2,
+        "acuteEmergency": 2,
+        "techEquipment": 2,
+        "patientInteraction": 2,
+        "independence": 1
+      },
+      "entry": "college",
+      "typicalYears": 3,
+      "labour": {
+        "median": 44.66,
+        "outlook": "good",
+        "nocCode": "32103",
+        "nocTitle": "Respiratory therapists, clinical perfusionists and cardiopulmonary technologists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/22786/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "registered-practical-nurse",
+      "title": "Registered Practical Nurse",
+      "summary": "Gives hands-on nursing care to patients, often alongside registered nurses.",
+      "riasec": ["S", "C", "R"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2061.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 2,
+        "physicalDemand": 2,
+        "shiftWork": 2,
+        "acuteEmergency": 1,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 1
+      },
+      "entry": "college",
+      "typicalYears": 2,
+      "labour": {
+        "median": 31.0,
+        "outlook": "good",
+        "nocCode": "32101",
+        "nocTitle": "Licensed practical nurses",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4383/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "dental-hygienist",
+      "title": "Dental Hygienist",
+      "summary": "Cleans teeth and gums, checks for problems, and teaches people how to keep their mouths healthy.",
+      "riasec": ["S", "R", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1292.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 1,
+        "physicalDemand": 1,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "college",
+      "typicalYears": 3,
+      "labour": {
+        "median": 44.0,
+        "outlook": "good",
+        "nocCode": "32111",
+        "nocTitle": "Dental hygienists and dental therapists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/18315/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "pharmacy-technician",
+      "title": "Pharmacy Technician",
+      "summary": "Prepares and checks medications and supports pharmacists in hospitals and community pharmacies.",
+      "riasec": ["C", "R"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-2052.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 0,
+        "physicalDemand": 1,
+        "shiftWork": 1,
+        "acuteEmergency": 0,
+        "techEquipment": 1,
+        "patientInteraction": 1,
+        "independence": 0
+      },
+      "entry": "college",
+      "typicalYears": 2,
+      "labour": {
+        "median": 26.45,
+        "outlook": "good",
+        "nocCode": "32124",
+        "nocTitle": "Pharmacy technicians",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/25660/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "midwife",
+      "title": "Midwife",
+      "summary": "Cares for people through pregnancy, birth and the first weeks with a new baby.",
+      "riasec": ["S", "R"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-9099.01",
+      "workStyle": {
+        "bloodAndBodyFluids": 2,
+        "needles": 2,
+        "physicalDemand": 2,
+        "shiftWork": 2,
+        "acuteEmergency": 2,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "university",
+      "typicalYears": 4,
+      "labour": {
+        "median": 43.93,
+        "outlook": "good",
+        "nocCode": "31303",
+        "nocTitle": "Physician assistants, midwives and allied health professionals",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/25500/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "dietitian",
+      "title": "Dietitian",
+      "summary": "Uses the science of food and nutrition to help people manage their health.",
+      "riasec": ["S", "I"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1031.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 0,
+        "physicalDemand": 0,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 0,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "university",
+      "typicalYears": 5,
+      "labour": {
+        "median": 42.0,
+        "outlook": "moderate",
+        "nocCode": "31121",
+        "nocTitle": "Dietitians and nutritionists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4146/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "kinesiologist",
+      "title": "Registered Kinesiologist",
+      "summary": "Uses movement and exercise to help people prevent injury, recover and stay healthy.",
+      "riasec": ["R", "I", "S"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/29-1128.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 0,
+        "needles": 0,
+        "physicalDemand": 2,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 1,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "university",
+      "typicalYears": 4,
+      "labour": {
+        "median": 30.1,
+        "outlook": "good",
+        "nocCode": "31204",
+        "nocTitle": "Kinesiologists and other professional occupations in therapy and assessment",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/25168/ON",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "id": "denturist",
+      "title": "Denturist",
+      "summary": "Designs, makes and fits dentures, working directly with patients.",
+      "riasec": ["R", "I", "C"],
+      "riasecSourceUrl": "https://www.onetonline.org/link/summary/51-9081.00",
+      "workStyle": {
+        "bloodAndBodyFluids": 1,
+        "needles": 0,
+        "physicalDemand": 1,
+        "shiftWork": 0,
+        "acuteEmergency": 0,
+        "techEquipment": 2,
+        "patientInteraction": 2,
+        "independence": 2
+      },
+      "entry": "college",
+      "typicalYears": 3,
+      "labour": {
+        "median": null,
+        "outlook": "good",
+        "nocCode": "32110",
+        "nocTitle": "Denturists",
+        "sourceUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/4332/ON",
+        "checked": "2026-11-17"
+      }
+    }
+  ]
+}
