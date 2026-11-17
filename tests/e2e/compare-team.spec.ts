@@ -56,17 +56,17 @@ test("team explorer is keyboard accessible", async ({ page }) => {
   await page.keyboard.press("Enter");
   await expect(page.getByText(/Step 2 of 6/)).toBeVisible();
 
-  // Jump straight to a step with the keyboard.
-  const rt = page.getByRole("button", { name: /4\. Respiratory Therapist/ });
-  await rt.focus();
+  // Jump straight to a featured profession's step with the keyboard.
+  const rn = page.getByRole("button", { name: /5\. Registered Nurse/ });
+  await rn.focus();
   await page.keyboard.press("Space");
-  await expect(rt).toHaveAttribute("aria-current", "step");
+  await expect(rn).toHaveAttribute("aria-current", "step");
   await expect(
-    page.getByRole("link", { name: "See Respiratory Therapist programs" }),
+    page.getByRole("link", { name: "Explore the Registered Nurse career" }),
   ).toBeVisible();
 
-  // Diagram nodes with pages are focusable links.
-  const node = page.getByRole("link", { name: "Respiratory Therapist (profession page)" });
+  // Featured professions are focusable links on the diagram.
+  const node = page.getByRole("link", { name: "Registered Nurse (featured: career page)" });
   await node.focus();
   await expect(node).toBeFocused();
 });

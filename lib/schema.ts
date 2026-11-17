@@ -480,6 +480,8 @@ export const JourneysFileSchema = z.array(
         z.object({
           /** null when the profession is not in the directory yet. */
           professionId: Id.nullable(),
+          /** Featured partner field with a career page, e.g. "sonographer". */
+          careerField: Id.optional(),
           label: z.string().min(1),
           role: z.string().min(1),
         }),

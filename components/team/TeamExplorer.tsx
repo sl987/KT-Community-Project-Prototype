@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 export interface TeamNode {
   label: string;
-  /** Present when the profession has a page in the directory. */
-  slug: string | null;
+  /** Career page for a featured profession; null when it isn't featured yet. */
+  href: string | null;
   professionId: string | null;
 }
 
@@ -55,7 +55,9 @@ export function TeamExplorer({
   const pos = new Map(
     nodes.map((n, i) => {
       const a = (i / nodes.length) * 2 * Math.PI - Math.PI / 2;
-      return [n.label, { x: C + RING * Math.cos(a), y: C + RING * Math.sin(a) }];
+      // Round so server and browser trig results match exactly (avoids hydration mismatches).
+      const r = (v: number) => Math.round(v * 100) / 100;
+      return [n.label, { x: r(C + RING * Math.cos(a)), y: r(C + RING * Math.sin(a)) }];
     }),
   );
   const path = journeyLabels.map((l) => pos.get(l)).filter((p) => p !== undefined);
@@ -167,7 +169,7 @@ export function TeamExplorer({
                         ? "fill-background stroke-primary"
                         : "fill-background stroke-muted-foreground",
                   )}
-                  strokeDasharray={n.slug ? undefined : "4 3"}
+                  strokeDasharray={n.href ? undefined : "4 3"}
                 />
                 {lines.map((l, i) => (
                   <text
@@ -185,25 +187,25 @@ export function TeamExplorer({
                 ))}
               </>
             );
-            return n.slug ? (
+            return n.href ? (
               <a
                 key={n.label}
-                href={`/professions/${n.slug}`}
-                aria-label={`${n.label} (profession page)`}
+                href={n.href}
+                aria-label={`${n.label} (featured: career page)`}
                 className="[&:focus-visible_circle]:stroke-ring outline-none [&:focus-visible_circle]:stroke-[4]"
               >
                 {body}
               </a>
             ) : (
-              <g key={n.label} aria-label={`${n.label} (not in the directory yet)`}>
+              <g key={n.label} aria-label={`${n.label} (not featured yet)`}>
                 {body}
               </g>
             );
           })}
         </svg>
         <figcaption className="text-muted-foreground text-center text-xs">
-          Solid circles have a profession page. Dashed circles aren&apos;t in the directory yet.
-          Grey lines show professions that often work together.
+          Solid circles are featured professions: select one to see its career page. Dashed circles
+          aren&apos;t featured yet. Grey lines show professions that often work together.
         </figcaption>
       </figure>
 
@@ -256,9 +258,9 @@ export function TeamExplorer({
                       </span>
                       <span className="text-muted-foreground block">{s.role}</span>
                     </button>
-                    {i === step && node?.slug && (
-                      <Link href={`/professions/${node.slug}`} className="ml-2 text-sm underline">
-                        See {s.label} programs
+                    {i === step && node?.href && (
+                      <Link href={node.href} className="ml-2 text-sm underline">
+                        Explore the {s.label} career
                       </Link>
                     )}
                   </li>

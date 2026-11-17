@@ -2,7 +2,7 @@ import { MessagesSquare, Route, UsersRound } from "lucide-react";
 import type { Metadata } from "next";
 import { Disclaimer } from "@/components/common/Disclaimer";
 import { TeamExplorer, type TeamEdge, type TeamNode } from "@/components/team/TeamExplorer";
-import { getProfession, journeys, listedProfessions } from "@/lib/data";
+import { careerFields, getProfession, journeys, listedProfessions } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Interdisciplinary health care teams",
@@ -33,21 +33,35 @@ const PRINCIPLES = [
 
 export default function TeamPage() {
   // Nodes: every listed profession plus every profession named in a journey.
+  // Featured professions (partner fields with a career page) are solid, linked circles.
+  const featured = new Set(careerFields.map((f) => f.field));
+  const fieldByProfession = new Map(
+    careerFields.flatMap((f) => (f.professionId ? [[f.professionId, f.field] as const] : [])),
+  );
+  const careerHref = (field: string | undefined) =>
+    field && featured.has(field) ? `/careers/${field}` : null;
+
   const nodes = new Map<string, TeamNode>();
   const teamProfessions = listedProfessions.filter((p) => !HIDDEN.has(p.id));
   for (const p of teamProfessions) {
-    nodes.set(p.title, { label: p.title, slug: p.slug, professionId: p.id });
+    nodes.set(p.title, {
+      label: p.title,
+      href: careerHref(fieldByProfession.get(p.id)),
+      professionId: p.id,
+    });
   }
   for (const j of journeys) {
     for (const s of j.steps) {
-      if (nodes.has(s.label)) continue;
+      const href = careerHref(
+        s.careerField ?? (s.professionId ? fieldByProfession.get(s.professionId) : undefined),
+      );
+      const existing = nodes.get(s.label);
+      if (existing) {
+        if (!existing.href && href) existing.href = href;
+        continue;
+      }
       const prof = s.professionId ? getProfession(s.professionId) : undefined;
-      const listed = prof && teamProfessions.includes(prof);
-      nodes.set(s.label, {
-        label: s.label,
-        slug: listed ? prof.slug : null,
-        professionId: prof?.id ?? null,
-      });
+      nodes.set(s.label, { label: s.label, href, professionId: prof?.id ?? null });
     }
   }
 
