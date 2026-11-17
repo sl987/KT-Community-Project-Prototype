@@ -24,6 +24,16 @@ const SIZE = 520;
 const C = SIZE / 2;
 const RING = 190;
 
+/** Shorter names for the diagram so labels stay readable on phones. Lists keep full names. */
+const SHORT: Record<string, string> = {
+  "Magnetic Resonance Imaging (MRI) Technologist": "MRI Technologist",
+  "Medical Radiation Technologist (CT)": "CT Technologist",
+  "Medical Laboratory Technologist": "Lab Technologist",
+  "Diagnostic Medical Sonographer": "Sonographer",
+  "Registered Kinesiologist": "Kinesiologist",
+};
+const mapLabel = (label: string) => SHORT[label] ?? label;
+
 /** Splits a label into at most two balanced lines for the SVG. */
 function twoLines(label: string): string[] {
   const words = label.split(" ");
@@ -72,7 +82,7 @@ export function TeamExplorer({
       <figure className="grid gap-2">
         <svg
           viewBox={`0 0 ${SIZE} ${SIZE}`}
-          className="mx-auto w-full max-w-xl"
+          className="mx-auto w-full max-w-xl overflow-visible"
           role="group"
           aria-label="Diagram of health professions working around a patient"
         >
@@ -154,7 +164,7 @@ export function TeamExplorer({
             const p = pos.get(n.label)!;
             const active = n.label === activeLabel;
             const inJourney = journeyLabels.includes(n.label);
-            const lines = twoLines(n.label);
+            const lines = twoLines(mapLabel(n.label));
             const body = (
               <>
                 <circle
@@ -171,20 +181,22 @@ export function TeamExplorer({
                   )}
                   strokeDasharray={n.href ? undefined : "4 3"}
                 />
-                {lines.map((l, i) => (
-                  <text
-                    key={l}
-                    x={p.x}
-                    y={p.y + 44 + i * 14}
-                    textAnchor="middle"
-                    className={cn(
-                      "text-[12px]",
-                      active ? "fill-foreground font-semibold" : "fill-foreground",
-                    )}
-                  >
-                    {l}
-                  </text>
-                ))}
+                {/* Larger type on phones, where the diagram is drawn at about 65% size. */}
+                <text
+                  x={p.x}
+                  y={p.y + 46}
+                  textAnchor="middle"
+                  className={cn(
+                    "fill-foreground text-[16px] sm:text-[12px]",
+                    active && "font-semibold",
+                  )}
+                >
+                  {lines.map((l, i) => (
+                    <tspan key={l} x={p.x} dy={i === 0 ? 0 : "1.1em"}>
+                      {l}
+                    </tspan>
+                  ))}
+                </text>
               </>
             );
             return n.href ? (

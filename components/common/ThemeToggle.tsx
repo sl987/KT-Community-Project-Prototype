@@ -12,7 +12,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={cn(buttonVariants({ variant: "ghost", size: "icon-lg" }), className)}
+      className={cn(buttonVariants({ variant: "ghost", size: "icon-lg" }), "size-11", className)}
       aria-label="Toggle dark mode"
     >
       {/* Both icons render; CSS picks one, so server and client markup match. */}

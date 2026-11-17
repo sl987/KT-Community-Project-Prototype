@@ -28,7 +28,13 @@ export default function AppleIcon() {
         />
         <ellipse cx="50" cy="50" rx="7.5" ry="5" />
         <circle cx="32" cy="32" r="6" />
-        <path d="M32 36 L32 70" fill="none" stroke="#1e3765" strokeWidth="10" strokeLinecap="round" />
+        <path
+          d="M32 36 L32 70"
+          fill="none"
+          stroke="#1e3765"
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
         <rect x="28" y="67" width="8" height="7" rx="1" />
         <circle cx="32" cy="84" r="13" />
         <circle cx="32" cy="84" r="8" fill="#007fa3" />

@@ -118,7 +118,7 @@ export function ResultCard({ result, rank }: { result: CareerResult; rank: numbe
           <>
             <Link
               href={f.href}
-              className={buttonVariants({ variant: "default", className: "h-10 px-4" })}
+              className={buttonVariants({ variant: "default", className: "h-11 px-4" })}
             >
               Explore this career
               <ArrowRight aria-hidden />
@@ -126,7 +126,7 @@ export function ResultCard({ result, rank }: { result: CareerResult; rank: numbe
             {f.partners > 0 && (
               <Link
                 href={f.directoryHref}
-                className={buttonVariants({ variant: "outline", className: "h-10 px-4" })}
+                className={buttonVariants({ variant: "outline", className: "h-11 px-4" })}
               >
                 <MessageCircle aria-hidden />
                 Talk to {f.partners === 1 ? "a" : f.partners} {c.title}

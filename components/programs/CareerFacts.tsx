@@ -26,7 +26,7 @@ function Source({ href, label = "Source" }: { href: string; label?: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-muted-foreground inline-flex items-center gap-0.5 text-xs underline underline-offset-2"
+      className="text-muted-foreground inline-flex min-h-6 items-center gap-0.5 py-1 text-xs underline underline-offset-2"
     >
       {label}
       <ArrowUpRight className="size-3" aria-hidden />

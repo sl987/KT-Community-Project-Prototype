@@ -60,14 +60,13 @@ export default function Home() {
       </section>
       <div id="programs" className="mx-auto grid max-w-6xl scroll-mt-4 gap-6 px-4 py-10">
         <header className="grid max-w-3xl gap-2">
-          <h2 className="text-3xl font-semibold tracking-tight">
-            Featured programs by profession
-          </h2>
+          <h2 className="text-3xl font-semibold tracking-tight">Featured programs by profession</h2>
           <p className="text-muted-foreground text-lg">
             These are the professions our partner professionals work in. Under each one are the
             Ontario schools where you can study it, starting straight from high school. Always check
             the official program page for current admission requirements.
-          </p>        </header>
+          </p>
+        </header>
         <PartnerPrograms fields={partnerFieldPrograms} partnerCounts={partnerCounts} />
       </div>
     </>

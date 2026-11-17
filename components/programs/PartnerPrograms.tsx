@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   ArrowUpRight,
+  ChevronDown,
   GraduationCap,
   MapPin,
   MessageCircle,
@@ -9,7 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import type { CareerFacts as Facts, PartnerFieldPrograms } from "@/lib/schema";
+import type { CareerFacts as Facts, PartnerFieldPrograms, PartnerProgram } from "@/lib/schema";
 
 type Field = PartnerFieldPrograms & { title: string; career: Facts | null };
 
@@ -66,7 +67,7 @@ export function PartnerPrograms({
                 {f.career && (
                   <Link
                     href={`/careers/${f.field}`}
-                    className="text-link inline-flex w-fit items-center gap-1 text-sm font-medium underline underline-offset-2"
+                    className="text-link inline-flex w-fit items-center gap-1 py-1.5 text-sm font-medium underline underline-offset-2"
                   >
                     Scope of practice, licensing, pay and career path
                     <ArrowRight className="size-4" aria-hidden />
@@ -76,7 +77,7 @@ export function PartnerPrograms({
               {partners > 0 && (
                 <Link
                   href={`/connect/directory?field=${f.field}`}
-                  className={buttonVariants({ variant: "outline", className: "h-10 px-4" })}
+                  className={buttonVariants({ variant: "outline", className: "h-11 px-4" })}
                 >
                   <MessageCircle aria-hidden />
                   Talk to {partners === 1 ? "a" : partners} {f.title}
@@ -86,49 +87,33 @@ export function PartnerPrograms({
             </div>
 
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {f.programs.map((p) => (
-                <li
-                  key={`${p.institution}-${p.program}`}
-                  className="bg-card flex flex-col gap-3 rounded-xl border p-5"
-                >
-                  <div className="grid gap-1">
-                    <h3 className="text-lg leading-snug font-semibold">{p.institution}</h3>
-                    <p className="text-base">{p.program}</p>
-                  </div>
-                  <ul className="text-muted-foreground grid gap-1 text-sm">
-                    <li className="flex items-center gap-1.5">
-                      <MapPin className="size-4 shrink-0" aria-hidden />
-                      {p.city}
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <GraduationCap className="size-4 shrink-0" aria-hidden />
-                      {p.credential}
-                      {p.years ? ` · ${p.years} years` : ""}
-                    </li>
-                  </ul>
-                  {p.detail && <p className="text-sm">{p.detail}</p>}
-                  {p.partnerAlumni && (
-                    <p className="text-link flex items-center gap-1.5 text-sm font-medium">
-                      <Star className="size-4 shrink-0" aria-hidden />A PAHSSION partner studied
-                      here
-                    </p>
-                  )}
-                  <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1 text-sm font-medium">
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-0.5 underline"
-                    >
-                      Official page
-                      <ArrowUpRight className="size-3.5" aria-hidden />
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </a>
-                    <span className="text-muted-foreground font-normal">{PORTAL[p.portal]}</span>
-                  </div>
-                </li>
+              {shown(f.programs).first.map((p) => (
+                <ProgramCard key={`${p.institution}-${p.program}`} p={p} />
               ))}
             </ul>
+            {shown(f.programs).rest.length > 0 && (
+              <details className="group">
+                <summary
+                  className={buttonVariants({
+                    variant: "outline",
+                    className:
+                      "h-11 w-fit cursor-pointer list-none px-4 [&::-webkit-details-marker]:hidden",
+                  })}
+                >
+                  <ChevronDown className="transition-transform group-open:rotate-180" aria-hidden />
+                  <span className="group-open:hidden">
+                    Show {shown(f.programs).rest.length} more{" "}
+                    {shown(f.programs).rest.length === 1 ? "school" : "schools"}
+                  </span>
+                  <span className="hidden group-open:inline">Show fewer schools</span>
+                </summary>
+                <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {shown(f.programs).rest.map((p) => (
+                    <ProgramCard key={`${p.institution}-${p.program}`} p={p} />
+                  ))}
+                </ul>
+              </details>
+            )}
 
             {(f.note || f.moreUrl) && (
               <div className="text-muted-foreground grid gap-1 text-sm">
@@ -186,5 +171,56 @@ export function PartnerPrograms({
         </Link>
       </aside>
     </div>
+  );
+}
+
+/** Schools shown before "Show more": keeps long lists (e.g. 12 paramedic programs) short on phones. */
+const FIRST = 3;
+function shown(programs: PartnerProgram[]) {
+  // Programs a partner studied in come first; otherwise keep the data order.
+  const sorted = [...programs].sort(
+    (a, b) => Number(!!b.partnerAlumni) - Number(!!a.partnerAlumni),
+  );
+  return { first: sorted.slice(0, FIRST), rest: sorted.slice(FIRST) };
+}
+
+function ProgramCard({ p }: { p: PartnerProgram }) {
+  return (
+    <li className="bg-card flex flex-col gap-3 rounded-xl border p-5">
+      <div className="grid gap-1">
+        <h3 className="text-lg leading-snug font-semibold">{p.institution}</h3>
+        <p className="text-base">{p.program}</p>
+      </div>
+      <ul className="text-muted-foreground grid gap-1 text-sm">
+        <li className="flex items-center gap-1.5">
+          <MapPin className="size-4 shrink-0" aria-hidden />
+          {p.city}
+        </li>
+        <li className="flex items-center gap-1.5">
+          <GraduationCap className="size-4 shrink-0" aria-hidden />
+          {p.credential}
+          {p.years ? ` · ${p.years} years` : ""}
+        </li>
+      </ul>
+      {p.detail && <p className="text-sm">{p.detail}</p>}
+      {p.partnerAlumni && (
+        <p className="text-link flex items-center gap-1.5 text-sm font-medium">
+          <Star className="size-4 shrink-0" aria-hidden />A PAHSSION partner studied here
+        </p>
+      )}
+      <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1 text-sm font-medium">
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-0.5 py-1.5 underline"
+        >
+          Official page
+          <ArrowUpRight className="size-3.5" aria-hidden />
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
+        <span className="text-muted-foreground font-normal">{PORTAL[p.portal]}</span>
+      </div>
+    </li>
   );
 }

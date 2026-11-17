@@ -129,26 +129,29 @@ export default function GuidePage() {
         </h2>
         <ul className="grid gap-2">
           {guide.costs.map((c) => (
-            <li key={c.id} className="flex gap-3 rounded-lg border p-3 text-sm">
-              <input
-                type="checkbox"
-                aria-label={`Budgeted for ${c.label}`}
-                className="accent-primary mt-1 size-4"
-              />
-              <div>
-                <p className="font-medium">{c.label}</p>
-                <p className="text-muted-foreground">{c.description}</p>
-                <p>
-                  Amount:{" "}
-                  {c.amountCAD.value !== null ? (
-                    <>
-                      {formatCAD(c.amountCAD.value)} <SourceLink href={c.amountCAD.sourceUrl} />
-                    </>
-                  ) : (
-                    "varies / not yet verified"
-                  )}
-                </p>
-              </div>
+            <li key={c.id} className="rounded-lg border text-sm">
+              {/* The whole row toggles the checkbox, so it's easy to tap on a phone. */}
+              <label className="flex cursor-pointer gap-3 p-3">
+                <input
+                  type="checkbox"
+                  aria-label={`Budgeted for ${c.label}`}
+                  className="accent-primary mt-0.5 size-5 shrink-0"
+                />
+                <div>
+                  <p className="font-medium">{c.label}</p>
+                  <p className="text-muted-foreground">{c.description}</p>
+                  <p>
+                    Amount:{" "}
+                    {c.amountCAD.value !== null ? (
+                      <>
+                        {formatCAD(c.amountCAD.value)} <SourceLink href={c.amountCAD.sourceUrl} />
+                      </>
+                    ) : (
+                      "varies / not yet verified"
+                    )}
+                  </p>
+                </div>
+              </label>
             </li>
           ))}
         </ul>

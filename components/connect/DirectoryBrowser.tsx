@@ -23,7 +23,7 @@ export function DirectoryBrowser({
 
   const chip = (selected: boolean) =>
     cn(
-      "inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+      "inline-flex h-11 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
       selected
         ? "border-primary bg-primary text-primary-foreground"
         : "bg-background hover:bg-muted",

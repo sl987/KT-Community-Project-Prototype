@@ -132,7 +132,7 @@ export function CompareTable({ programs }: { programs: ProgramSummary[] }) {
                       <button
                         type="button"
                         onClick={() => setSelected(selected.filter((s) => s !== p))}
-                        className="hover:bg-muted rounded-md p-1"
+                        className="hover:bg-muted -m-2 grid size-11 shrink-0 place-items-center rounded-md"
                         aria-label={`Remove ${p.name} at ${p.institutions[0]?.name}`}
                       >
                         <X className="size-4" aria-hidden />

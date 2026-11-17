@@ -12,7 +12,9 @@ export function generateStaticParams() {
   return careerFields.map((f) => ({ slug: f.field }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/careers/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/careers/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const f = getCareerField(slug);
   return f ? { title: f.title, description: f.summary } : {};
@@ -30,7 +32,7 @@ export default async function CareerPage({ params }: PageProps<"/careers/[slug]"
       <header className="grid gap-3">
         <Link
           href={`/#${f.field}`}
-          className="text-muted-foreground inline-flex w-fit items-center gap-1 text-sm underline underline-offset-2"
+          className="text-muted-foreground inline-flex w-fit items-center gap-1 py-2 text-sm underline underline-offset-2"
         >
           <ArrowLeft className="size-4" aria-hidden />
           Back to programs
@@ -40,14 +42,14 @@ export default async function CareerPage({ params }: PageProps<"/careers/[slug]"
         <div className="flex flex-wrap gap-3">
           <Link
             href={`/#${f.field}`}
-            className={buttonVariants({ variant: "default", className: "h-10 px-4" })}
+            className={buttonVariants({ variant: "default", className: "h-11 px-4" })}
           >
             See where to study ({f.programs.length})
           </Link>
           {partners > 0 && (
             <Link
               href={`/connect/directory?field=${f.field}`}
-              className={buttonVariants({ variant: "outline", className: "h-10 px-4" })}
+              className={buttonVariants({ variant: "outline", className: "h-11 px-4" })}
             >
               <MessageCircle aria-hidden />
               Talk to {partners === 1 ? "a" : partners} {f.title}

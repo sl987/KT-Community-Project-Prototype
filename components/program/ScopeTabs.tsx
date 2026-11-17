@@ -22,7 +22,7 @@ export function ScopeTabs(p: ScopeTabsProps) {
   return (
     <Tabs defaultValue="what">
       <div className="-mx-4 overflow-x-auto px-4 pb-2">
-        <TabsList className="h-10">
+        <TabsList className="group-data-horizontal/tabs:h-12">
           <TabsTrigger value="what" className="px-3">
             What they do
           </TabsTrigger>

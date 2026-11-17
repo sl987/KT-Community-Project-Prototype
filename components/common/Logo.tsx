@@ -18,7 +18,13 @@ export function LogoMark({
 }) {
   return (
     <svg viewBox="0 -4 100 104" className={className} aria-hidden fill="currentColor">
-      <path d="M32 30 L17 7" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+      <path
+        d="M32 30 L17 7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
       <ellipse cx="15" cy="4" rx="7.5" ry="5" transform="rotate(57 15 4)" />
       <path
         d="M32 30 C32 16 40 8 52 8 C66 8 76 18 76 30 C76 42 66 50 56 50"
@@ -29,7 +35,13 @@ export function LogoMark({
       />
       <ellipse cx="50" cy="50" rx="7.5" ry="5" />
       <circle cx="32" cy="32" r="6" />
-      <path d="M32 36 L32 70" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
+      <path
+        d="M32 36 L32 70"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="10"
+        strokeLinecap="round"
+      />
       <rect x="28" y="67" width="8" height="7" rx="1" />
       <circle cx="32" cy="84" r="13" />
       <circle cx="32" cy="84" r="8" fill={accent} />
@@ -66,7 +78,13 @@ export function LogoWordmark({
 }
 
 /** The long name with each acronym letter emphasised (skips "and"). */
-export function LogoLongName({ className, letterClassName }: { className?: string; letterClassName?: string }) {
+export function LogoLongName({
+  className,
+  letterClassName,
+}: {
+  className?: string;
+  letterClassName?: string;
+}) {
   const words = siteLongName.split(" ");
   return (
     <span className={className}>
