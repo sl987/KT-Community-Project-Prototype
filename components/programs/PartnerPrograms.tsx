@@ -4,6 +4,7 @@ import {
   GraduationCap,
   MapPin,
   MessageCircle,
+  Sparkles,
   Star,
 } from "lucide-react";
 import Link from "next/link";
@@ -163,6 +164,27 @@ export function PartnerPrograms({
           </section>
         );
       })}
+
+      <aside
+        aria-labelledby="coming-soon-heading"
+        className="bg-muted/40 grid gap-3 rounded-xl border border-dashed p-6 sm:p-8"
+      >
+        <h2 id="coming-soon-heading" className="flex items-center gap-2 text-xl font-semibold">
+          <Sparkles className="text-link size-5" aria-hidden />
+          More careers coming soon
+        </h2>
+        <p className="text-muted-foreground max-w-2xl text-base">
+          We&apos;re inviting more allied health professionals to share their stories. New
+          professions will be featured here as they join.
+        </p>
+        <Link
+          href="/team"
+          className={buttonVariants({ variant: "outline", className: "h-10 w-fit px-4" })}
+        >
+          Explore the care team
+          <ArrowRight aria-hidden />
+        </Link>
+      </aside>
     </div>
   );
 }
