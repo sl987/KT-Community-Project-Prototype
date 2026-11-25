@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { Disclaimer } from "@/components/common/Disclaimer";
 import { SourceLink } from "@/components/common/SourceLink";
+import { TrackedLink } from "@/components/common/TrackedLink";
 import { UnverifiedField } from "@/components/common/UnverifiedField";
 import { VerifiedBadge } from "@/components/common/VerifiedBadge";
 import { ContactButton, ProgramContacts } from "@/components/connect/ProgramContacts";
@@ -103,8 +104,8 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
   const field = fieldForProfession(profession.id);
   const contacts = field ? professionalsInField(field.slug) : [];
   const official = [
-    ...institutions.map((i) => ({ label: i.name, url: i.url })),
-    ...(regulator ? [{ label: regulator.name, url: regulator.url }] : []),
+    ...institutions.map((i) => ({ label: i.name, url: i.url, isSchool: true })),
+    ...(regulator ? [{ label: regulator.name, url: regulator.url, isSchool: false }] : []),
   ];
 
   return (
@@ -396,14 +397,26 @@ export default async function ProgramPage({ params }: PageProps<"/programs/[slug
           <ul className="list-disc pl-5">
             {official.map((o) => (
               <li key={o.url}>
-                <a
-                  href={o.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block py-1 underline"
-                >
-                  {o.label}
-                </a>
+                {o.isSchool ? (
+                  <TrackedLink
+                    href={o.url}
+                    event="program_click"
+                    profession={field?.slug ?? profession.slug}
+                    program={`${o.label} — ${program.name}`}
+                    className="inline-block py-1 underline"
+                  >
+                    {o.label}
+                  </TrackedLink>
+                ) : (
+                  <a
+                    href={o.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block py-1 underline"
+                  >
+                    {o.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

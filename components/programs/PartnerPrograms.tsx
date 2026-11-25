@@ -9,6 +9,7 @@ import {
   Star,
 } from "lucide-react";
 import Link from "next/link";
+import { TrackedLink } from "@/components/common/TrackedLink";
 import { buttonVariants } from "@/components/ui/button";
 import type { CareerFacts as Facts, PartnerFieldPrograms, PartnerProgram } from "@/lib/schema";
 
@@ -88,7 +89,7 @@ export function PartnerPrograms({
 
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {shown(f.programs).first.map((p) => (
-                <ProgramCard key={`${p.institution}-${p.program}`} p={p} />
+                <ProgramCard key={`${p.institution}-${p.program}`} p={p} profession={f.field} />
               ))}
             </ul>
             {shown(f.programs).rest.length > 0 && (
@@ -109,7 +110,7 @@ export function PartnerPrograms({
                 </summary>
                 <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {shown(f.programs).rest.map((p) => (
-                    <ProgramCard key={`${p.institution}-${p.program}`} p={p} />
+                    <ProgramCard key={`${p.institution}-${p.program}`} p={p} profession={f.field} />
                   ))}
                 </ul>
               </details>
@@ -184,7 +185,7 @@ function shown(programs: PartnerProgram[]) {
   return { first: sorted.slice(0, FIRST), rest: sorted.slice(FIRST) };
 }
 
-function ProgramCard({ p }: { p: PartnerProgram }) {
+function ProgramCard({ p, profession }: { p: PartnerProgram; profession: string }) {
   return (
     <li className="bg-card flex flex-col gap-3 rounded-xl border p-5">
       <div className="grid gap-1">
@@ -209,16 +210,17 @@ function ProgramCard({ p }: { p: PartnerProgram }) {
         </p>
       )}
       <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1 text-sm font-medium">
-        <a
+        <TrackedLink
           href={p.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          event="program_click"
+          profession={profession}
+          program={`${p.institution} — ${p.program}`}
           className="inline-flex items-center gap-0.5 py-1.5 underline"
         >
           Official page
           <ArrowUpRight className="size-3.5" aria-hidden />
           <span className="sr-only"> (opens in a new tab)</span>
-        </a>
+        </TrackedLink>
         <span className="text-muted-foreground font-normal">{PORTAL[p.portal]}</span>
       </div>
     </li>

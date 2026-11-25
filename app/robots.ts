@@ -4,7 +4,7 @@ import { isIndexable, siteUrl } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   if (!isIndexable) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: "/quiz/results" },
+    rules: { userAgent: "*", allow: "/", disallow: ["/quiz/results", "/admin"] },
     sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

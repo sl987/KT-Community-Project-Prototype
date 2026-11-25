@@ -2,6 +2,7 @@ import { ArrowRight, Coffee, IdCard, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { TrackedLink } from "@/components/common/TrackedLink";
 import { CommunityPanel } from "@/components/connect/CommunityPanel";
 import { buttonVariants } from "@/components/ui/button";
 import { professionals } from "@/lib/data";
@@ -180,12 +181,23 @@ export default function ConnectPage() {
                 ["#community", "Community"],
               ].map(([href, label]) => (
                 <li key={href}>
-                  <a
-                    href={href}
-                    className="hover:text-brand-foreground decoration-brand-accent underline underline-offset-4"
-                  >
-                    {label}
-                  </a>
+                  {href === "#coffee-chats" ? (
+                    <TrackedLink
+                      href={href}
+                      event="guide_open"
+                      internal
+                      className="hover:text-brand-foreground decoration-brand-accent underline underline-offset-4"
+                    >
+                      {label}
+                    </TrackedLink>
+                  ) : (
+                    <a
+                      href={href}
+                      className="hover:text-brand-foreground decoration-brand-accent underline underline-offset-4"
+                    >
+                      {label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

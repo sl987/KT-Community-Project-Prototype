@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { lastDataUpdate } from "@/lib/data";
 import { formatDate } from "@/lib/format";
-import { siteLongName, siteName } from "@/lib/site";
+import { feedbackFormUrl, siteLongName, siteName } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -18,9 +18,18 @@ export function SiteFooter() {
           ) : (
             "not yet verified"
           )}
-          . This site is a starting point, not advice. Always confirm on official program pages.
+          . This site is a starting point, not advice. Always confirm on official program pages. We
+          count anonymous clicks to improve this site.
         </p>
         <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-1">
+          <a
+            href={feedbackFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-foreground decoration-brand-accent focus-visible:ring-brand-accent shrink-0 rounded-sm underline underline-offset-4 outline-none hover:decoration-2 focus-visible:ring-2"
+          >
+            Give feedback
+          </a>
           <Link
             href="/about#terms"
             className="text-brand-foreground decoration-brand-accent focus-visible:ring-brand-accent shrink-0 rounded-sm underline underline-offset-4 outline-none hover:decoration-2 focus-visible:ring-2"

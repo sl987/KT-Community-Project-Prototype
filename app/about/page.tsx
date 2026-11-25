@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FeedbackPanel } from "@/components/common/FeedbackPanel";
 import { lastDataUpdate } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import {
   linkedinCommunityPoliciesUrl,
   linkedinUserAgreementUrl,
   partnerVerificationText,
+  reportEmail,
   reportErrorHref,
-  reportErrorTarget,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -114,7 +115,10 @@ export default function AboutPage() {
         <p>
           There are no accounts. Quiz answers stay on your device. They are stored in your browser
           and in the part of the results link after the <code>#</code>, which browsers never send to
-          a server. We use cookieless analytics that count page views without identifying you.
+          a server. We use cookieless analytics that count page views without identifying you. We
+          also count anonymous clicks on LinkedIn, program, and coffee chat links, using a random ID
+          that only lasts while your browser tab is open. We never store your IP address, name,
+          email, or device details.
         </p>
       </section>
 
@@ -177,6 +181,8 @@ export default function AboutPage() {
         </ol>
       </section>
 
+      <FeedbackPanel />
+
       <section aria-labelledby="report-h" id="report" className="scroll-mt-4">
         <h2 id="report-h">Report a problem</h2>
         <h3 className="text-lg font-semibold">An error on the site</h3>
@@ -192,23 +198,24 @@ export default function AboutPage() {
           into it. You can also report the message or profile directly on LinkedIn. If you are ever
           in danger, call 911, and talk to a parent, guardian, or teacher you trust.
         </p>
-        {reportErrorTarget ? (
-          <p className="flex flex-wrap gap-x-6 gap-y-1">
-            <a href={reportErrorHref("general")} className="underline">
-              Report an error
-            </a>
-            <a
-              href={reportErrorHref("partner", "Concern about a professional partner")}
-              className="underline"
-            >
-              Report a concern about a partner
-            </a>
-          </p>
-        ) : (
-          <p className="text-muted-foreground">
-            The reporting address hasn&apos;t been set up yet.
-          </p>
-        )}
+        <p className="flex flex-wrap gap-x-6 gap-y-1">
+          <a href={reportErrorHref("general")} className="underline">
+            Report an error
+          </a>
+          <a
+            href={reportErrorHref("partner", "Concern about a professional partner")}
+            className="underline"
+          >
+            Report a concern about a partner
+          </a>
+        </p>
+        <p className="text-muted-foreground">
+          Or email us directly at{" "}
+          <a href={`mailto:${reportEmail}`} className="underline">
+            {reportEmail}
+          </a>
+          .
+        </p>
         <p>
           <Link href="/" className="underline">
             Back to programs

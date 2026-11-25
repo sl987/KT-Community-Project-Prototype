@@ -2,6 +2,7 @@ import { ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { TrackedLink } from "@/components/common/TrackedLink";
 import { CommunityPanel } from "@/components/connect/CommunityPanel";
 import { DirectoryBrowser } from "@/components/connect/DirectoryBrowser";
 import { networkFields, professionals } from "@/lib/data";
@@ -43,9 +44,14 @@ export default function DirectoryPage() {
               LinkedIn ground rules
             </Link>{" "}
             and{" "}
-            <Link href="/connect#coffee-chats" className="font-medium underline">
+            <TrackedLink
+              href="/connect#coffee-chats"
+              event="guide_open"
+              internal
+              className="font-medium underline"
+            >
               how to ask for a coffee chat
-            </Link>{" "}
+            </TrackedLink>{" "}
             before you send a message. By connecting on LinkedIn, you agree to follow
             LinkedIn&apos;s{" "}
             <a

@@ -1,5 +1,6 @@
 import { ListChecks, MessageCircle, Search } from "lucide-react";
 import Link from "next/link";
+import { FeedbackPanel } from "@/components/common/FeedbackPanel";
 import { PartnerPrograms } from "@/components/programs/PartnerPrograms";
 import { buttonVariants } from "@/components/ui/button";
 import { partnerFieldPrograms, professionalsInField } from "@/lib/data";
@@ -68,6 +69,9 @@ export default function Home() {
           </p>
         </header>
         <PartnerPrograms fields={partnerFieldPrograms} partnerCounts={partnerCounts} />
+        <div className="mt-6">
+          <FeedbackPanel />
+        </div>
       </div>
     </>
   );

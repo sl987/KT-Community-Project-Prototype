@@ -1,5 +1,6 @@
 import { GraduationCap } from "lucide-react";
 import type { Professional } from "@/lib/schema";
+import { TrackedLink } from "@/components/common/TrackedLink";
 import { cn } from "@/lib/utils";
 import { LinkedInIcon } from "./LinkedInIcon";
 
@@ -62,16 +63,16 @@ export function ProfessionalCard({
         </span>
       </p>
       {person.description && <p className="text-sm">{person.description}</p>}
-      <a
+      <TrackedLink
         href={person.linkedinUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+        event="linkedin_click"
+        profession={person.field}
         className="focus-visible:ring-ring/50 mt-auto inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[#0A66C2] px-4 text-sm font-semibold text-white transition-colors outline-none hover:bg-[#004182] focus-visible:ring-3"
       >
         <LinkedInIcon className="size-4" />
         Connect on LinkedIn
         <span className="sr-only">with {person.name} (opens in a new tab)</span>
-      </a>
+      </TrackedLink>
     </article>
   );
 }

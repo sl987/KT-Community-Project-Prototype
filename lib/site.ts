@@ -36,7 +36,14 @@ export const isIndexable = !process.env.VERCEL_ENV || process.env.VERCEL_ENV ===
  * Where "Report an error" links go (§11): a mailto: address or a form URL.
  * Unset means the link points to the About page's reporting section.
  */
-export const reportErrorTarget = process.env.NEXT_PUBLIC_REPORT_ERROR_URL || null;
+/** Where reports go when NEXT_PUBLIC_REPORT_ERROR_URL isn't set. */
+export const reportEmail = "ildem.gur@mail.utoronto.ca";
+export const reportErrorTarget: string | null =
+  process.env.NEXT_PUBLIC_REPORT_ERROR_URL || `mailto:${reportEmail}`;
+
+/** Anonymous Google Form for first-time and early users. */
+export const feedbackFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc5fyzRgjZ4T-MK8mAzlex64ANmdYiAed84hC0tDhSUvu0mrg/viewform?usp=dialog";
 
 export function reportErrorHref(context: string, subject = `Data error: ${context}`) {
   if (!reportErrorTarget) return "/about#report";
